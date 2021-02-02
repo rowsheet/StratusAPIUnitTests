@@ -207,7 +207,7 @@ TESTS = [
     # @TODO 'url': 'circle/api/USER_NAME',
     {
         'url': 'circle/api/USER_NAME',
-        'label': 'profile',
+        'label': 'cir_pro',
         'GET': {
             '200': {
                 'load profile': {
@@ -368,10 +368,10 @@ def print_test(url, method, result, test_name, wanted, status_code, data, text, 
         print(text)
         print('')
     with open('runs.txt', 'a') as f:
-        f.write('%s: %s %s %s\n' % (result, label, method, status))
+        f.write('%s: %s %s %s\n' % (result, label, method, status_code))
         f.close()
 
-def run_tests(chosen_label, chosen_method, chosen_status, minimal=True):
+def run_method_status(chosen_label, chosen_method, chosen_status, minimal=True):
     
     # Count tests run.
     tests_run = 0
@@ -447,43 +447,71 @@ def run_tests(chosen_label, chosen_method, chosen_status, minimal=True):
         print('--------------------------------------------------------------------------------')
         print("Finshed\n\t%s test requests made." % tests_run)
 
+# Run all of the tests with this label (for all specified
+# HTTP methods and HTTP status codes). 
+def run_label(label):
+    tests_run = 0
+    tests_failed = 0
+    tests_passed = 0
+    print("Running all tests for label '%s'." % label)
+    print('--------------------------------------------------------------------------------')
+    print(chr(27) + "[2J")
+    tests = list(filter(lambda test:
+        test.get('label') == label, TESTS))
+    for test in tests:
+        for method, val in test.items():
+            if method in ['POST','GET','DELETE']:
+                for status, test in val.items():
+                    run_method_status(label, method, status, minimal=True)
+                    tests_run += 1
+    print('--------------------------------------------------------------------------------')
+    print('--------------------------------------------------------------------------------')
+    print("Finshed\n\t%s test requests made." % tests_run)
+    exit()
+
+# All the tests I've already done.
+DONE_LIST = ['cir_pro_tim',]
+
 if __name__ == '__main__':
 
+    # Print args
     if len(sys.argv) == 1:
         print("test [label] +| ([method|status] [status|method])")
         exit()
 
+    # Get the label you want to run. 
     label = sys.argv[1]
 
-    if len(sys.argv) == 2:
-        tests_run = 0
-        tests_failed = 0
-        tests_passed = 0
-        print("Running all tests for label '%s'." % label)
-        print('--------------------------------------------------------------------------------')
-        print(chr(27) + "[2J")
-        tests = list(filter(lambda test:
-            test.get('label') == label, TESTS))
-        for test in tests:
-            for method, val in test.items():
-                if method in ['POST','GET','DELETE']:
-                    for status, test in val.items():
-                        run_tests(label, method, status, minimal=True)
-                        tests_run += 1
-        print('--------------------------------------------------------------------------------')
-        print('--------------------------------------------------------------------------------')
-        print("Finshed\n\t%s test requests made." % tests_run)
-        exit()
+    # Run all previously done tests.
+    if label == 'donelist':
+        for _label in DONE_LIST:
+            run_label(_label)
 
+    # Not specifying an HTTP method or status will run all tests with that label.
+    if len(sys.argv) == 2:
+        run_labels(label)
+
+    # Print args again if missuse.
     if len(sys.argv) < 4:
         print("test [label] +| ([method|status] [status|method])")
         exit()
 
-    label = sys.argv[1]
-
+    # Parse the next args, but let them swap order. Allow the arguments
+    # 2 and 4 to be short for the common 200 and 400 http codes.
+    # For example:
+    #
+    #       $test label POST 200
+    #
+    # can also be run as:
+    #
+    #       $test label p 2
+    #       $test label 2 p
+    # 
+    # Anything more specific must specify either 'post','get','delete' and
+    # the exact HTTP status code, i.e. 405, 401, etc. Other HTTP methods
+    # are not supported.
     one = sys.argv[2]
     two = sys.argv[3]
-
     if one[0] in ['2','4']:
         status = one
         method = two
@@ -491,5 +519,7 @@ if __name__ == '__main__':
         method  = one
         status = two
 
+    # Clear the screen so it's easier to read.
     print(chr(27) + "[2J")
-    run_tests(label, method, status, minimal=False)
+    # Run the tests.
+    run_method_status(label, method, status, minimal=False)
