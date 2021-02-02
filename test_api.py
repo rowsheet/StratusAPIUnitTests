@@ -204,12 +204,14 @@ TESTS = [
     # @TODO 'url': 'circle/api/market/PAGE',
     # @TODO 'url': 'circle/api/market/category/CATEGORY_ID/PAGE',
     # @TODO 'url': 'circle/api/market/post/POST_ID',
-    # @TODO 'url': 'circle/api/USER_NAME',
+    # @TODO 'url': 'circle/api/market/post/POST_ID',
+    # @DONE 'url': 'circle/api/USER_NAME',
     {
         'url': 'circle/api/USER_NAME',
         'label': 'cir_pro',
         'GET': {
             '200': {
+                # DONE
                 'load profile': {
                     'path': {
                         'USER_NAME': 'akelinhans',
@@ -217,9 +219,20 @@ TESTS = [
                 },
             },
             '404': {
+                # DONE
                 'alex profile normal': {
                     'path': {
                         'USER_NAME': '****',
+                    },
+                },
+            },
+        },
+        'POST': {
+            '405': {
+                # DONE
+                'anththing': {
+                    'path': {
+                        'USER_NAME': 'akleinhans',
                     },
                 },
             },
@@ -278,15 +291,141 @@ TESTS = [
             },
         },
     },
-    # @TODO 'url': 'circle/api/USER_NAME/timeline/PAGE',
-    # @TODO 'url': 'circle/api/USER_NAME/friends/PAGE',
-    # @TODO 'url': 'circle/api/USER_NAME/following/PAGE',
-    # @TODO 'url': 'circle/api/USER_NAME/followers/PAGE',
-    # @TODO 'url': 'circle/api/USER_NAME/photos/PAGE',
-    # @TODO 'url': 'circle/api/USER_NAME/albums/PAGE',
-    # @TODO 'url': 'circle/api/USER_NAME/videos/PAGE',
-    # @TODO 'url': 'circle/api/USER_NAME/groups/PAGE',
-    # @TODO 'url': 'circle/api/USER_NAME/events/PAGE',
+    # @DONE 'url': 'circle/api/USER_NAME/timeline/PAGE',
+    {
+        'url': 'circle/api/USER_NAME/timeline/PAGE',
+        'label': 'cir_pro_tim_page',
+        'GET': {
+            '200': { #DONE
+                'read profile timeline': {
+                    'path': {
+                        'USER_NAME': 'DrPib',
+                        'PAGE': '3',
+                    },
+                },
+            },
+        },
+    },
+    # @DONE 'url': 'circle/api/USER_NAME/friends/PAGE',
+    {
+        'url': 'circle/api/USER_NAME/friends/PAGE',
+        'label': 'cir_pro_tim_fr',
+        'GET': {
+            '200': { #DONE
+                'read profile friend list': {
+                    'path': {
+                        'USER_NAME': 'DrPib',
+                        'PAGE': '3',
+                    },
+                },
+            },
+        },
+    },
+    # @DONE 'url': 'circle/api/USER_NAME/following/PAGE',
+    {
+        'url': 'circle/api/USER_NAME/following/PAGE',
+        'label': 'cir_pro_fing',
+        'GET': {
+            '200': { #DONE
+                'read profile following': {
+                    'path': {
+                        'USER_NAME': 'DrPib',
+                        'PAGE': '3',
+                    },
+                },
+            },
+        },
+    },
+    # @DONE 'url': 'circle/api/USER_NAME/followers/PAGE',
+    {
+        'url': 'circle/api/USER_NAME/followers/PAGE',
+        'label': 'cir_pro_frs',
+        'GET': {
+            '200': { #DONE
+                'read profile followers': {
+                    'path': {
+                        'USER_NAME': 'DrPib',
+                        'PAGE': '3',
+                    },
+                },
+            },
+        },
+    },
+    # @DONE 'url': 'circle/api/USER_NAME/photos/PAGE',
+    {
+        'url': 'circle/api/USER_NAME/photos/PAGE',
+        'label': 'cir_pro_photos',
+        'GET': {
+            '200': { #DONE
+                'read profile photos': {
+                    'path': {
+                        'USER_NAME': 'DrPib',
+                        'PAGE': '3',
+                    },
+                },
+            },
+        },
+    },
+    # @DONE 'url': 'circle/api/USER_NAME/albums/PAGE',
+    {
+        'url': 'circle/api/USER_NAME/albums/PAGE',
+        'label': 'cir_pro_albums',
+        'GET': {
+            '200': { #DONE
+                'read profile albums': {
+                    'path': {
+                        'USER_NAME': 'DrPib',
+                        'PAGE': '3',
+                    },
+                },
+            },
+        },
+    },
+    # @DONE 'url': 'circle/api/USER_NAME/videos/PAGE',
+    {
+        'url': 'circle/api/USER_NAME/videos/PAGE',
+        'label': 'cir_pro_videos',
+        'GET': {
+            '200': { #DONE
+                'read profile videos': {
+                    'path': {
+                        'USER_NAME': 'DrPib',
+                        'PAGE': '3',
+                    },
+                },
+            },
+        },
+    },
+    # @DONE 'url': 'circle/api/USER_NAME/groups/PAGE',
+    {
+        'url': 'circle/api/USER_NAME/groups/PAGE',
+        'label': 'cir_pro_groups',
+        'GET': {
+            '200': { #DONE
+                'read profile groups': {
+                    'path': {
+                        'USER_NAME': 'DrPib',
+                        'PAGE': '3',
+                    },
+                },
+            },
+        },
+    },
+    # @DONE 'url': 'circle/api/USER_NAME/events/PAGE',
+    {
+        'url': 'circle/api/USER_NAME/events/PAGE',
+        'label': 'cir_pro_events',
+        'GET': {
+            '200': { #DONE
+                'read profile events': {
+                    'path': {
+                        'USER_NAME': 'DrPib',
+                        'PAGE': '3',
+                    },
+                },
+            },
+        },
+    },
     # @TODO 'url': 'atrium/api/_index',
     # @TODO 'url': 'atrium/api/timeline',
     # @TODO 'url': 'atrium/api/timeline/PAGE',
@@ -371,22 +510,42 @@ def print_test(url, method, result, test_name, wanted, status_code, data, text, 
         f.write('%s: %s %s %s\n' % (result, label, method, status_code))
         f.close()
 
+def print_summary(tests_run, tests_passed, tests_failed):
+    print('--------------------------------------------------------------------------------')
+    print('--------------------------------------------------------------------------------')
+    if tests_run == 0:
+        print('\033[91mno matching tests found\033[0m')
+    elif tests_failed == 0:
+        print("""Finshed
+    tests ran:      %s
+    \033[92mPASSED\033[0m          %s
+    FAILED:         0""" % (tests_run, tests_passed))
+        print('\033[92mAll tests PASSED\033[0m')
+    else:
+        print("""Finshed
+    tests ran:      %s
+    PASSED:         %s
+    \033[91mFAILED:         %s \033[0m
+        """ % (tests_run, tests_passed, tests_failed))
+
 def run_method_status(chosen_label, chosen_method, chosen_status, minimal=True):
     
     # Count tests run.
     tests_run = 0
+    tests_failed = 0
+    tests_passed = 0
 
     # You need to choose a test label.
     if chosen_label is None:
         print('No label specified. Aborting.')
-        exit()
+        return
 
     # Filiter all tests with matching label.
     tests = list(filter(lambda test:
         test.get('label') == chosen_label, TESTS))
     if len(tests) == 0:
         print('no tests with that label')
-        exit()
+        return
 
     # For all tests...
     for test in tests:
@@ -437,43 +596,56 @@ def run_method_status(chosen_label, chosen_method, chosen_status, minimal=True):
                         print_test(URL, method, '\033[92mPASSED\033[0m', test_name, status, status_code, data, text,
                                 minimal=minimal)
                         tests_run += 1
+                        tests_passed += 1
                     else:
                         print_test(URL, method, '\033[91mFAILED\033[0m', test_name, status, status_code, data, text,
                                 minimal=minimal)
                         tests_run += 1
+                        tests_failed += 1
 
+    # Don't print if we're running multiple tests because
+    # the summary will print at the end.
     if minimal == False:
-        print('--------------------------------------------------------------------------------')
-        print('--------------------------------------------------------------------------------')
-        print("Finshed\n\t%s test requests made." % tests_run)
+        print_summary(tests_run, tests_passed, tests_failed)
+
+    return tests_run, tests_passed, tests_failed
 
 # Run all of the tests with this label (for all specified
 # HTTP methods and HTTP status codes). 
-def run_label(label):
+def run_label(label, minimal=True):
     tests_run = 0
     tests_failed = 0
     tests_passed = 0
-    print("Running all tests for label '%s'." % label)
-    print('--------------------------------------------------------------------------------')
-    print(chr(27) + "[2J")
     tests = list(filter(lambda test:
         test.get('label') == label, TESTS))
     for test in tests:
         for method, val in test.items():
             if method in ['POST','GET','DELETE']:
                 for status, test in val.items():
-                    run_method_status(label, method, status, minimal=True)
-                    tests_run += 1
-    print('--------------------------------------------------------------------------------')
-    print('--------------------------------------------------------------------------------')
-    print("Finshed\n\t%s test requests made." % tests_run)
-    exit()
+                    _tests_run, _tests_passed, _tests_failed = run_method_status(
+                        label, method, status, minimal=True)
+                    tests_run += _tests_run
+                    tests_passed += _tests_passed
+                    tests_failed += _tests_failed
+    if minimal == False:
+        print_summary(tests_run, tests_passed, tests_failed)
+    return tests_run, tests_passed, tests_failed
 
 # All the tests I've already done.
-DONE_LIST = ['cir_pro_tim',]
+DONE_LIST = ['cir_pro_tim','cir_pro','cir_pro_tim_page',
+        'cir_pro_fr',
+        'cir_pro_fing',
+        'cir_pro_frs',
+        'cir_pro_photos',
+        'cir_pro_albums',
+        'cir_pro_videos',
+        'cir_pro_groups',
+        'cir_pro_events',
+        ]
 
 if __name__ == '__main__':
 
+    print(chr(27) + "[2J")
     # Print args
     if len(sys.argv) == 1:
         print("test [label] +| ([method|status] [status|method])")
@@ -484,12 +656,19 @@ if __name__ == '__main__':
 
     # Run all previously done tests.
     if label == 'donelist':
+        tests_run = 0
+        tests_failed = 0
+        tests_passed = 0
         for _label in DONE_LIST:
-            run_label(_label)
-
+            _tests_run, _tests_passed, _tests_failed = run_label(_label)
+            tests_run += _tests_run
+            tests_passed += _tests_passed
+            tests_failed += _tests_failed
+        print_summary(tests_run, tests_passed, tests_failed)
+        exit()
     # Not specifying an HTTP method or status will run all tests with that label.
     if len(sys.argv) == 2:
-        run_labels(label)
+        run_label(label)
 
     # Print args again if missuse.
     if len(sys.argv) < 4:
@@ -519,7 +698,5 @@ if __name__ == '__main__':
         method  = one
         status = two
 
-    # Clear the screen so it's easier to read.
-    print(chr(27) + "[2J")
     # Run the tests.
     run_method_status(label, method, status, minimal=False)
