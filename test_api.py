@@ -1,4 +1,60 @@
 SESSION_ID = '8okfl9z8yftehjw8btj3codtbuy46db1'
+PAGE_EXAMPLES = {
+    'valid_page': {
+        'page_name': 'Exampe_Page',
+        'title': 'Exampe Page',
+        'description': 'Descriptin of my Page',
+        'category': 'abalian',
+        # Optional
+        'company': 'Page, LLC',
+        'phone_number': '911',
+        'website': 'https://www.example.com',
+        'photo': 'https://cdn1.stratus.co/231123141312312312.png',
+        'pinned_post': '100',
+        'location': 'Exampe Page',
+        'action_text': 'Some Action Text',
+        'action_url': 'https://www.example.com',
+        'action_color': 'primary',
+        'facebook_link': 'https://www.facebook.com/thispage',
+        'twitter_link': 'https://www.twitter.com/thispage',
+        'youtube_link': 'https://www.youtube.com/thispage',
+        'instagram_link': 'https://www.instagram.com/thispage',
+        'linkedin_link': 'https://www.linkedin.com/thispage',
+        'vkontate_link': 'https://www.example.com/thispage',
+    },
+    'invalid_page_bad_socials': {
+        'page_name': 'Exampe_Page',
+        'description': 'Descriptin of my Page',
+        'category': 'abalian',
+        'facebook_link': 'BAD URL',
+        'twitter_link': 'https://www.twitter.com/thispage',
+        'youtube_link': 'BAD URL',
+        'instagram_link': 'https://www.instagram.com/thispage',
+        'linkedin_link': 'https://www.linkedin.com/thispage',
+        'vkontate_link': 'https://www.example.com/thispage',
+    },
+    'invalid_page_missing_title': {
+        'page_name': 'Exampe_Page',
+        'description': 'Descriptin of my Page',
+        'category': 'abalian',
+        # Optional
+        'company': 'Page, LLC',
+        'phone_number': '911',
+        'website': 'https://www.example.com',
+        'photo': 'https://cdn1.stratus.co/231123141312312312.png',
+        'pinned_post': '100',
+        'location': 'Exampe Page',
+        'action_text': 'Some Action Text',
+        'action_url': 'https://www.example.com',
+        'action_color': 'primary',
+        'facebook_link': 'https://www.facebook.com/thispage',
+        'twitter_link': 'https://www.twitter.com/thispage',
+        'youtube_link': 'https://www.youtube.com/thispage',
+        'instagram_link': 'https://www.instagram.com/thispage',
+        'linkedin_link': 'https://www.linkedin.com/thispage',
+        'vkontate_link': 'https://www.example.com/thispage',
+    },
+}   
 POST_EXAMPLES = {
     #---------------------------------------------------------------------------
     # INVALID POSTS 
@@ -185,6 +241,44 @@ TESTS = [
     # @TODO 'url': 'circle/api/events/EVENT_NAME/interested/PAGE',
     # @TODO 'url': 'circle/api/events/EVENT_NAME/invited/PAGE',
     # @TODO 'url': 'circle/api/pages',
+    {
+        'url': 'circle/api/pages',
+        'label': 'cir_pag',
+        'POST': {
+            '200': {
+                # DONE
+                'create a new page': {
+                    'data': PAGE_EXAMPLES['valid_page'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                # DONE
+                'create a new page (while not logged in)': {
+                    'path': {
+                        'USER_NAME': 'akleinhans',
+                    },
+                },
+            },
+            '400': {
+                # DONE
+                'create a new page (with a missing title)': {
+                    'data': PAGE_EXAMPLES['invalid_page_missing_title'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+                'create a new page (bad social links)': {
+                    'data': PAGE_EXAMPLES['invalid_page_bad_socials'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
     # @TODO 'url': 'circle/api/pages/PAGE',
     # @TODO 'url': 'circle/api/pages/liked/PAGE',
     # @TODO 'url': 'circle/api/pages/manage/PAGE',
@@ -203,8 +297,21 @@ TESTS = [
     # @TODO 'url': 'circle/api/market',
     # @TODO 'url': 'circle/api/market/PAGE',
     # @TODO 'url': 'circle/api/market/category/CATEGORY_ID/PAGE',
-    # @TODO 'url': 'circle/api/market/post/POST_ID',
-    # @TODO 'url': 'circle/api/market/post/POST_ID',
+    # @DONE 'url': 'circle/api/market/post/POST_ID',
+    {
+        'url': 'circle/api/market/post/POST_ID',
+        'label': 'cir_mar_post', #DONE
+        'GET': {
+            '200': {
+                # DONE
+                'view market post': {
+                    'path': {
+                        'POST_ID': '100',
+                    },
+                },
+            },
+        },
+    },
     # @DONE 'url': 'circle/api/USER_NAME',
     {
         'url': 'circle/api/USER_NAME',
@@ -641,6 +748,7 @@ DONE_LIST = ['cir_pro_tim','cir_pro','cir_pro_tim_page',
         'cir_pro_videos',
         'cir_pro_groups',
         'cir_pro_events',
+        'cir_pag',
         ]
 
 if __name__ == '__main__':
