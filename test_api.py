@@ -1,4 +1,31 @@
 SESSION_ID = '8okfl9z8yftehjw8btj3codtbuy46db1'
+GROUP_EXAMPLES = {
+    'valid_group': {
+        'group_name': 'Example_Group',
+        'title': 'Exampe Group',
+        'description': 'Descriptin of my Group',
+        'category': 'abalian',
+        # Optional
+        'photo': 'https://cdn1.stratus.co/231123141312312312.png',
+        'pinned_post': '100',
+    },
+    'valid_group_for_update': {
+        'group_name': 'New_Name',
+        'title': 'A New Title',
+        'category': 'othercatagory',
+    },
+    'invalid_group_not_own_by_req_user': {
+        'group_name': 'a_group_i_dont_own',
+        'title': 'Exampe Group',
+        'description': 'Descriptin of my Group',
+        'category': 'abalian',
+    },
+    'invalid_group_missing_title': {
+        'group_name': 'Exampe_Group',
+        'description': 'Descriptin of my Group',
+        'category': 'abalian',
+    },
+}   
 PAGE_EXAMPLES = {
     'valid_page': {
         'page_name': 'Example_Page',
@@ -243,17 +270,289 @@ TESTS = [
     # @TODO 'url': 'circle/api/messages',
     # @TODO 'url': 'circle/api/messages/CONVERSATION_ID',
     # @TODO 'url': 'circle/api/messages/CONVERSATION_ID/MESSAGE_ID',
-    # @TODO 'url': 'circle/api/groups',
-    # @TODO 'url': 'circle/api/groups/PAGE',
-    # @TODO 'url': 'circle/api/groups/joined/PAGE',
-    # @TODO 'url': 'circle/api/groups/manage/PAGE',
-    # @TODO 'url': 'circle/api/groups/GROUP_NAME',
-    # @TODO 'url': 'circle/api/groups/GROUP_NAME/timeline',
-    # @TODO 'url': 'circle/api/groups/GROUP_NAME/timeline/PAGE',
-    # @TODO 'url': 'circle/api/groups/GROUP_NAME/photos/PAGE',
-    # @TODO 'url': 'circle/api/groups/GROUP_NAME/albums/PAGE',
-    # @TODO 'url': 'circle/api/groups/GROUP_NAME/videos/PAGE',
-    # @TODO 'url': 'circle/api/groups/GROUP_NAME/members/PAGE',
+    {
+        'url': 'circle/api/groups',
+        'label': 'cir_grp',
+        'POST': {
+            '200': {
+                'create a new group': {
+                    'data': GROUP_EXAMPLES['valid_group'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'create a new group (while not logged in)': {
+                    'path': {
+                        'USER_NAME': 'akleinhans',
+                    },
+                },
+            },
+            '400': {
+                'create a new group (with a missing title)': {
+                    'data': GROUP_EXAMPLES['invalid_group_missing_title'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/groups/PAGE',
+        'label': 'cir_grp_page',
+        'GET': {
+            '200': {
+                'load groups list': {
+                    'path': {
+                        'PAGE': '10',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/groups/joined/PAGE',
+        'label': 'cir_grp_jnd_page',
+        'GET': {
+            '200': {
+                'load joined groups list': {
+                    'path': {
+                        'PAGE': '10',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'load joined groups list (not logged in)': {
+                    'path': {
+                        'PAGE': '10',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/groups/manage/PAGE',
+        'label': 'cir_grp_man_page',
+        'GET': {
+            '200': {
+                'load managed groups list': {
+                    'path': {
+                        'PAGE': '10',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'load managed groups list (not logged in)': {
+                    'path': {
+                        'PAGE': '10',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/groups/GROUP_NAME',
+        'label': 'cir_grp_pro',
+        'GET': {
+            '200': {
+                'load a group profile': {
+                    'path': {
+                        'GROUP_NAME': 'some_page_handle',
+                    },
+                },
+            },
+        },
+        'POST': {
+            '200': {
+                'update a group': {
+                    'path': {
+                        'GROUP_NAME':'Example_Group',
+                    },
+                    'data': GROUP_EXAMPLES['valid_group_for_update'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'update a group (while not logged in)': {
+                    'path': {
+                        'GROUP_NAME':'FExample_Group',
+                    },
+                },
+                'update a group (I\'m not an admin of)': {
+                    'path': {
+                        'GROUP_NAME':'Group_I_Dont_Admin_Foo',
+                    },
+                    'data': GROUP_EXAMPLES['valid_group_for_update'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+        'DELETE': {
+            '200': {
+                'delete a group': {
+                    'path': {
+                        'GROUP_NAME':'Example_Group',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'delete a group (while not logged in)': {
+                    'path': {
+                        'GROUP_NAME':'FExample_Group',
+                    },
+                },
+                'delete a group (I\'m not an admin of)': {
+                    'path': {
+                        'GROUP_NAME':'Group_I_Dont_Admin_Foo',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/groups/GROUP_NAME/timeline',
+        'label': 'cir_grp_pro_tim', 
+        'POST': {
+            '200': {
+                'post to group timline': {
+                    'path': {
+                        'GROUP_NAME':'Example_Group',
+                    },
+                    'data': POST_EXAMPLES['valid_media'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '400': {
+                'post to group timline (invalid post)': {
+                    'path': {
+                        'GROUP_NAME':'Example_Group',
+                    },
+                    'data': POST_EXAMPLES['invalid_media_bad_url'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'post to group timline (bad/no session_id)': {
+                    'path': {
+                        'GROUP_NAME':'Example_Group',
+                    },
+                    'data': POST_EXAMPLES['valid_media'],
+                    'cookies': {
+                        'sessionid': 'Fake Session ID',
+                    },
+                },
+                'post to group timline (I\'m not an admin of)': {
+                    'path': {
+                        'GROUP_NAME':'GroupThatsNotMyGroup',
+                    },
+                    'data': POST_EXAMPLES['valid_media'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+        'GET': {
+            '405': {
+                'get profile timeline without specifying a page': {
+                    'path': {
+                        'GROUP_NAME':'Example_Group',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/groups/GROUP_NAME/timeline/PAGE',
+        'label': 'cir_grp_pro_tim_page',
+        'GET': {
+            '200': { 
+                'read group profile timeline': {
+                    'path': {
+                        'GROUP_NAME': 'SomeGroup',
+                        'PAGE': '3',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/groups/GROUP_NAME/members/PAGE',
+        'label': 'cir_grp_pro_mbr_page',
+        'GET': {
+            '200': { 
+                'read group members list': {
+                    'path': {
+                        'PAGE': '3',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/groups/GROUP_NAME/photos/PAGE',
+        'label': 'cir_grp_pro_photos',
+        'GET': {
+            '200': { 
+                'read group profile photos': {
+                    'path': {
+                        'GROUP_NAME': 'SomeGroup',
+                        'PAGE': '3',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/USER_NAME/albums/PAGE',
+        'label': 'cir_grp_pro_albums',
+        'GET': {
+            '200': { 
+                'read profile albums': {
+                    'path': {
+                        'USER_NAME': 'DrPib',
+                        'PAGE': '3',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/groups/GROUP_NAME/videos/PAGE',
+        'label': 'cir_grp_pro_videos',
+        'GET': {
+            '200': { 
+                'read group profile videos': {
+                    'path': {
+                        'GROUP_NAME': 'SomeGroup',
+                        'PAGE': '3',
+                    },
+                },
+            },
+        },
+    },
     # @TODO 'url': 'circle/api/events',
     # @TODO 'url': 'circle/api/events/PAGE',
     # @TODO 'url': 'circle/api/events/going/PAGE',
@@ -982,6 +1281,17 @@ DONE_LIST = ['cir_pro_tim','cir_pro','cir_pro_tim_page',
         'cir_pag_pro_tim',
         'cir_pag_pro_photos',
         'cir_pag_pro_videos',
+        'cir_grp',
+        'cir_grp_pro_tim', 
+        'cir_grp_pro',
+        'cir_grp_man_page',
+        'cir_grp_jnd_page',
+        'cir_grp_page',
+        'cir_grp_pro_videos',
+        'cir_grp_pro_albums',
+        'cir_grp_pro_photos',
+        'cir_grp_pro_mbr_page',
+        'cir_grp_pro_tim_page',
         ]
 
 if __name__ == '__main__':
@@ -1015,6 +1325,7 @@ if __name__ == '__main__':
     # Not specifying an HTTP method or status will run all tests with that label.
     if len(sys.argv) == 2:
         run_label(label)
+        exit()
 
     # Print args again if missuse.
     if len(sys.argv) < 4:
