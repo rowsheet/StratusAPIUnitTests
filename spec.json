@@ -1,17 +1,5 @@
 [
     {
-        "url": "_URL_",
-        "label": "_LABEL_",
-        "POST": {
-            "200": {
-                "_TEST_NAME_": {
-                    "data": {},
-                    "headers": {}
-                }
-            }
-        }
-    },
-    {
         "url": "circle/api/timeline",
         "label": "ctimeline",
         "POST": {
@@ -41,6 +29,340 @@
                         "html": "<html>how to meet ladies</html>"
                     },
                     "headers": null
+                }
+            }
+        }
+    },
+    {
+        "url": "circle/api/groups",
+        "label": "cir_grp",
+        "POST": {
+            "200": {
+                "create a new group": {
+                    "data": {
+                        "group_name": "Example_Group",
+                        "title": "Exampe Group",
+                        "description": "Descriptin of my Group",
+                        "category": "abalian",
+                        "photo": "https://cdn1.stratus.co/231123141312312312.png",
+                        "pinned_post": "100"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "create a new group (while not logged in)": {
+                    "path": {
+                        "USER_NAME": "akleinhans"
+                    }
+                }
+            },
+            "400": {
+                "create a new group (with a missing title)": {
+                    "data": {
+                        "group_name": "Exampe_Group",
+                        "description": "Descriptin of my Group",
+                        "category": "abalian"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "circle/api/groups/PAGE",
+        "label": "cir_grp_page",
+        "GET": {
+            "200": {
+                "load groups list": {
+                    "path": {
+                        "PAGE": "10"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "circle/api/groups/joined/PAGE",
+        "label": "cir_grp_jnd_page",
+        "GET": {
+            "200": {
+                "load joined groups list": {
+                    "path": {
+                        "PAGE": "10"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "load joined groups list (not logged in)": {
+                    "path": {
+                        "PAGE": "10"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "circle/api/groups/manage/PAGE",
+        "label": "cir_grp_man_page",
+        "GET": {
+            "200": {
+                "load managed groups list": {
+                    "path": {
+                        "PAGE": "10"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "load managed groups list (not logged in)": {
+                    "path": {
+                        "PAGE": "10"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "circle/api/groups/GROUP_NAME",
+        "label": "cir_grp_pro",
+        "GET": {
+            "200": {
+                "load a group profile": {
+                    "path": {
+                        "GROUP_NAME": "some_page_handle"
+                    }
+                }
+            }
+        },
+        "POST": {
+            "200": {
+                "update a group": {
+                    "path": {
+                        "GROUP_NAME": "Example_Group"
+                    },
+                    "data": {
+                        "group_name": "New_Name",
+                        "title": "A New Title",
+                        "category": "othercatagory"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "update a group (while not logged in)": {
+                    "path": {
+                        "GROUP_NAME": "FExample_Group"
+                    }
+                },
+                "update a group (I'm not an admin of)": {
+                    "path": {
+                        "GROUP_NAME": "Group_I_Dont_Admin_Foo"
+                    },
+                    "data": {
+                        "group_name": "New_Name",
+                        "title": "A New Title",
+                        "category": "othercatagory"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            }
+        },
+        "DELETE": {
+            "200": {
+                "delete a group": {
+                    "path": {
+                        "GROUP_NAME": "Example_Group"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "delete a group (while not logged in)": {
+                    "path": {
+                        "GROUP_NAME": "FExample_Group"
+                    }
+                },
+                "delete a group (I'm not an admin of)": {
+                    "path": {
+                        "GROUP_NAME": "Group_I_Dont_Admin_Foo"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "circle/api/groups/GROUP_NAME/timeline",
+        "label": "cir_grp_pro_tim",
+        "POST": {
+            "200": {
+                "post to group timline": {
+                    "path": {
+                        "GROUP_NAME": "Example_Group"
+                    },
+                    "data": {
+                        "post_type": "media",
+                        "url": "https://google.com/?no=matter&how=fast&i=run",
+                        "provider": "Breitbart Media Outlet",
+                        "type": "photo",
+                        "title": "Title of my post",
+                        "text": "The joke is that both the words ending in the same sylable that rhyme.",
+                        "html": "<html>how to meet ladies</html>"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "400": {
+                "post to group timline (invalid post)": {
+                    "path": {
+                        "GROUP_NAME": "Example_Group"
+                    },
+                    "data": {
+                        "post_type": "media",
+                        "url": "THIS IS NOT A URL",
+                        "provider": "Breitbart Media Outlet",
+                        "type": "photo",
+                        "title": "Title of my post",
+                        "text": "The joke is that both the words ending in the same sylable that rhyme.",
+                        "html": "<html>how to meet ladies</html>"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "post to group timline (bad/no session_id)": {
+                    "path": {
+                        "GROUP_NAME": "Example_Group"
+                    },
+                    "data": {
+                        "post_type": "media",
+                        "url": "https://google.com/?no=matter&how=fast&i=run",
+                        "provider": "Breitbart Media Outlet",
+                        "type": "photo",
+                        "title": "Title of my post",
+                        "text": "The joke is that both the words ending in the same sylable that rhyme.",
+                        "html": "<html>how to meet ladies</html>"
+                    },
+                    "cookies": {
+                        "sessionid": "Fake Session ID"
+                    }
+                },
+                "post to group timline (I'm not an admin of)": {
+                    "path": {
+                        "GROUP_NAME": "GroupThatsNotMyGroup"
+                    },
+                    "data": {
+                        "post_type": "media",
+                        "url": "https://google.com/?no=matter&how=fast&i=run",
+                        "provider": "Breitbart Media Outlet",
+                        "type": "photo",
+                        "title": "Title of my post",
+                        "text": "The joke is that both the words ending in the same sylable that rhyme.",
+                        "html": "<html>how to meet ladies</html>"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            }
+        },
+        "GET": {
+            "405": {
+                "get profile timeline without specifying a page": {
+                    "path": {
+                        "GROUP_NAME": "Example_Group"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "circle/api/groups/GROUP_NAME/timeline/PAGE",
+        "label": "cir_grp_pro_tim_page",
+        "GET": {
+            "200": {
+                "read group profile timeline": {
+                    "path": {
+                        "GROUP_NAME": "SomeGroup",
+                        "PAGE": "3"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "circle/api/groups/GROUP_NAME/members/PAGE",
+        "label": "cir_grp_pro_mbr_page",
+        "GET": {
+            "200": {
+                "read group members list": {
+                    "path": {
+                        "PAGE": "3"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "circle/api/groups/GROUP_NAME/photos/PAGE",
+        "label": "cir_grp_pro_photos",
+        "GET": {
+            "200": {
+                "read group profile photos": {
+                    "path": {
+                        "GROUP_NAME": "SomeGroup",
+                        "PAGE": "3"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "circle/api/USER_NAME/albums/PAGE",
+        "label": "cir_grp_pro_albums",
+        "GET": {
+            "200": {
+                "read profile albums": {
+                    "path": {
+                        "USER_NAME": "DrPib",
+                        "PAGE": "3"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "circle/api/groups/GROUP_NAME/videos/PAGE",
+        "label": "cir_grp_pro_videos",
+        "GET": {
+            "200": {
+                "read group profile videos": {
+                    "path": {
+                        "GROUP_NAME": "SomeGroup",
+                        "PAGE": "3"
+                    }
                 }
             }
         }
