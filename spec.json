@@ -1,0 +1,643 @@
+[
+    {
+        "url": "_URL_",
+        "label": "_LABEL_",
+        "POST": {
+            "200": {
+                "_TEST_NAME_": {
+                    "data": {},
+                    "headers": {}
+                }
+            }
+        }
+    },
+    {
+        "url": "circle/api/timeline",
+        "label": "ctimeline",
+        "POST": {
+            "200": {
+                "one": {
+                    "data": {
+                        "post_type": "media",
+                        "url": "https://google.com/?no=matter&how=fast&i=run",
+                        "provider": "Breitbart Media Outlet",
+                        "type": "photo",
+                        "title": "Title of my post",
+                        "text": "The joke is that both the words ending in the same sylable that rhyme.",
+                        "html": "<html>how to meet ladies</html>"
+                    },
+                    "headers": null
+                }
+            },
+            "400": {
+                "Invlaid post_type": {
+                    "data": {
+                        "post_type": "foo",
+                        "url": "https://google.com/?no=matter&how=fast&i=run",
+                        "provider": "Breitbart Media Outlet",
+                        "type": "photo",
+                        "title": "Title of my post",
+                        "text": "The joke is that both the words ending in the same sylable that rhyme.",
+                        "html": "<html>how to meet ladies</html>"
+                    },
+                    "headers": null
+                }
+            }
+        }
+    },
+    {
+        "url": "circle/api/pages",
+        "label": "cir_pag",
+        "POST": {
+            "200": {
+                "create a new page": {
+                    "data": {
+                        "page_name": "Example_Page",
+                        "title": "Exampe Page",
+                        "description": "Descriptin of my Page",
+                        "category": "abalian",
+                        "company": "Page, LLC",
+                        "phone_number": "911",
+                        "website": "https://www.example.com",
+                        "photo": "https://cdn1.stratus.co/231123141312312312.png",
+                        "pinned_post": "100",
+                        "location": "Exampe Page",
+                        "action_text": "Some Action Text",
+                        "action_url": "https://www.example.com",
+                        "action_color": "primary",
+                        "facebook_link": "https://www.facebook.com/thispage",
+                        "twitter_link": "https://www.twitter.com/thispage",
+                        "youtube_link": "https://www.youtube.com/thispage",
+                        "instagram_link": "https://www.instagram.com/thispage",
+                        "linkedin_link": "https://www.linkedin.com/thispage",
+                        "vkontate_link": "https://www.example.com/thispage"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "create a new page (while not logged in)": {
+                    "path": {
+                        "USER_NAME": "akleinhans"
+                    }
+                }
+            },
+            "400": {
+                "create a new page (with a missing title)": {
+                    "data": {
+                        "page_name": "Exampe_Page",
+                        "description": "Descriptin of my Page",
+                        "category": "abalian",
+                        "company": "Page, LLC",
+                        "phone_number": "911",
+                        "website": "https://www.example.com",
+                        "photo": "https://cdn1.stratus.co/231123141312312312.png",
+                        "pinned_post": "100",
+                        "location": "Exampe Page",
+                        "action_text": "Some Action Text",
+                        "action_url": "https://www.example.com",
+                        "action_color": "primary",
+                        "facebook_link": "https://www.facebook.com/thispage",
+                        "twitter_link": "https://www.twitter.com/thispage",
+                        "youtube_link": "https://www.youtube.com/thispage",
+                        "instagram_link": "https://www.instagram.com/thispage",
+                        "linkedin_link": "https://www.linkedin.com/thispage",
+                        "vkontate_link": "https://www.example.com/thispage"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                },
+                "create a new page (bad social links)": {
+                    "data": {
+                        "page_name": "Exampe_Page",
+                        "description": "Descriptin of my Page",
+                        "category": "abalian",
+                        "facebook_link": "BAD URL",
+                        "twitter_link": "https://www.twitter.com/thispage",
+                        "youtube_link": "BAD URL",
+                        "instagram_link": "https://www.instagram.com/thispage",
+                        "linkedin_link": "https://www.linkedin.com/thispage",
+                        "vkontate_link": "https://www.example.com/thispage"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "circle/api/pages/PAGE",
+        "label": "cir_pag_page",
+        "GET": {
+            "200": {
+                "load pages list": {
+                    "path": {
+                        "PAGE": "10"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "circle/api/pages/liked/PAGE",
+        "label": "cir_pag_lik_page",
+        "GET": {
+            "200": {
+                "load liked pages list": {
+                    "path": {
+                        "PAGE": "10"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "load liked pages list (not logged in)": {
+                    "path": {
+                        "PAGE": "10"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "circle/api/pages/manage/PAGE",
+        "label": "cir_pag_man_page",
+        "GET": {
+            "200": {
+                "load managed pages list": {
+                    "path": {
+                        "PAGE": "10"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "load managed pages list (not logged in)": {
+                    "path": {
+                        "PAGE": "10"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "circle/api/pages/PAGE_NAME",
+        "label": "cir_pag_pro",
+        "GET": {
+            "200": {
+                "load a page profile": {
+                    "path": {
+                        "PAGE_NAME": "some_page_handle"
+                    }
+                }
+            }
+        },
+        "POST": {
+            "200": {
+                "update a page": {
+                    "path": {
+                        "PAGE_NAME": "Example_Page"
+                    },
+                    "data": {
+                        "page_name": "New_Name",
+                        "title": "A New Title",
+                        "category": "othercatagory",
+                        "action_text": "Some New Action Text",
+                        "twitter_link": "https://www.twitter.com/newthing"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "update a page (while not logged in)": {
+                    "path": {
+                        "PAGE_NAME": "FExample_Page"
+                    }
+                },
+                "update a page (I'm not an admin of)": {
+                    "path": {
+                        "PAGE_NAME": "Page_I_Dont_Admin_Foo"
+                    },
+                    "data": {
+                        "page_name": "New_Name",
+                        "title": "A New Title",
+                        "category": "othercatagory",
+                        "action_text": "Some New Action Text",
+                        "twitter_link": "https://www.twitter.com/newthing"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            }
+        },
+        "DELETE": {
+            "200": {
+                "delete a page": {
+                    "path": {
+                        "PAGE_NAME": "Example_Page"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "delete a page (while not logged in)": {
+                    "path": {
+                        "PAGE_NAME": "FExample_Page"
+                    }
+                },
+                "delete a page (I'm not an admin of)": {
+                    "path": {
+                        "PAGE_NAME": "Page_I_Dont_Admin_Foo"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "circle/api/pages/PAGE_NAME/timeline",
+        "label": "cir_pag_pro_tim",
+        "POST": {
+            "200": {
+                "post to page timline": {
+                    "path": {
+                        "PAGE_NAME": "Example_Page"
+                    },
+                    "data": {
+                        "post_type": "media",
+                        "url": "https://google.com/?no=matter&how=fast&i=run",
+                        "provider": "Breitbart Media Outlet",
+                        "type": "photo",
+                        "title": "Title of my post",
+                        "text": "The joke is that both the words ending in the same sylable that rhyme.",
+                        "html": "<html>how to meet ladies</html>"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "400": {
+                "post to page timline (invalid post)": {
+                    "path": {
+                        "PAGE_NAME": "Example_Page"
+                    },
+                    "data": {
+                        "post_type": "media",
+                        "url": "THIS IS NOT A URL",
+                        "provider": "Breitbart Media Outlet",
+                        "type": "photo",
+                        "title": "Title of my post",
+                        "text": "The joke is that both the words ending in the same sylable that rhyme.",
+                        "html": "<html>how to meet ladies</html>"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "post to page timline (bad/no session_id)": {
+                    "path": {
+                        "PAGE_NAME": "Example_Page"
+                    },
+                    "data": {
+                        "post_type": "media",
+                        "url": "https://google.com/?no=matter&how=fast&i=run",
+                        "provider": "Breitbart Media Outlet",
+                        "type": "photo",
+                        "title": "Title of my post",
+                        "text": "The joke is that both the words ending in the same sylable that rhyme.",
+                        "html": "<html>how to meet ladies</html>"
+                    },
+                    "cookies": {
+                        "sessionid": "Fake Session ID"
+                    }
+                },
+                "post to page timline (I'm not an admin of)": {
+                    "path": {
+                        "PAGE_NAME": "PageThatsNotMyPage"
+                    },
+                    "data": {
+                        "post_type": "media",
+                        "url": "https://google.com/?no=matter&how=fast&i=run",
+                        "provider": "Breitbart Media Outlet",
+                        "type": "photo",
+                        "title": "Title of my post",
+                        "text": "The joke is that both the words ending in the same sylable that rhyme.",
+                        "html": "<html>how to meet ladies</html>"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            }
+        },
+        "GET": {
+            "405": {
+                "get profile timeline without specifying a page": {
+                    "path": {
+                        "PAGE_NAME": "Example_Page"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "circle/api/pages/PAGE_NAME/timeline/PAGE",
+        "label": "cir_pag_pro_tim_page",
+        "GET": {
+            "200": {
+                "read page profile timeline": {
+                    "path": {
+                        "PAGE_NAME": "SomePage",
+                        "PAGE": "3"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "circle/api/pages/PAGE_NAME/photos/PAGE",
+        "label": "cir_pag_pro_photos",
+        "GET": {
+            "200": {
+                "read page profile photos": {
+                    "path": {
+                        "PAGE_NAME": "SomePage",
+                        "PAGE": "3"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "circle/api/pages/PAGE_NAME/videos/PAGE",
+        "label": "cir_pag_pro_videos",
+        "GET": {
+            "200": {
+                "read page profile videos": {
+                    "path": {
+                        "PAGE_NAME": "SomePage",
+                        "PAGE": "3"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "circle/api/market/post/POST_ID",
+        "label": "cir_mar_post",
+        "GET": {
+            "200": {
+                "view market post": {
+                    "path": {
+                        "POST_ID": "100"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "circle/api/USER_NAME",
+        "label": "cir_pro",
+        "GET": {
+            "200": {
+                "load profile": {
+                    "path": {
+                        "USER_NAME": "akelinhans"
+                    }
+                }
+            },
+            "404": {
+                "alex profile normal": {
+                    "path": {
+                        "USER_NAME": "****"
+                    }
+                }
+            }
+        },
+        "POST": {
+            "405": {
+                "anththing": {
+                    "path": {
+                        "USER_NAME": "akleinhans"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "circle/api/USER_NAME/timeline",
+        "label": "cir_pro_tim",
+        "POST": {
+            "200": {
+                "post to profile timline": {
+                    "path": {
+                        "USER_NAME": "DrPib"
+                    },
+                    "data": {
+                        "post_type": "media",
+                        "url": "https://google.com/?no=matter&how=fast&i=run",
+                        "provider": "Breitbart Media Outlet",
+                        "type": "photo",
+                        "title": "Title of my post",
+                        "text": "The joke is that both the words ending in the same sylable that rhyme.",
+                        "html": "<html>how to meet ladies</html>"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "400": {
+                "post to profile timline (invalid post)": {
+                    "path": {
+                        "USER_NAME": "DrPib"
+                    },
+                    "data": {
+                        "post_type": "media",
+                        "url": "THIS IS NOT A URL",
+                        "provider": "Breitbart Media Outlet",
+                        "type": "photo",
+                        "title": "Title of my post",
+                        "text": "The joke is that both the words ending in the same sylable that rhyme.",
+                        "html": "<html>how to meet ladies</html>"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "post to profile timline (bad/no session_id)": {
+                    "path": {
+                        "USER_NAME": "DrPib"
+                    },
+                    "data": {
+                        "post_type": "media",
+                        "url": "https://google.com/?no=matter&how=fast&i=run",
+                        "provider": "Breitbart Media Outlet",
+                        "type": "photo",
+                        "title": "Title of my post",
+                        "text": "The joke is that both the words ending in the same sylable that rhyme.",
+                        "html": "<html>how to meet ladies</html>"
+                    },
+                    "cookies": {
+                        "sessionid": "Fake Session ID"
+                    }
+                }
+            }
+        },
+        "GET": {
+            "405": {
+                "get profile timeline without specifying a page": {
+                    "path": {
+                        "USER_NAME": "DrPib"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "circle/api/USER_NAME/timeline/PAGE",
+        "label": "cir_pro_tim_page",
+        "GET": {
+            "200": {
+                "read profile timeline": {
+                    "path": {
+                        "USER_NAME": "DrPib",
+                        "PAGE": "3"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "circle/api/USER_NAME/friends/PAGE",
+        "label": "cir_pro_tim_fr",
+        "GET": {
+            "200": {
+                "read profile friend list": {
+                    "path": {
+                        "USER_NAME": "DrPib",
+                        "PAGE": "3"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "circle/api/USER_NAME/following/PAGE",
+        "label": "cir_pro_fing",
+        "GET": {
+            "200": {
+                "read profile following": {
+                    "path": {
+                        "USER_NAME": "DrPib",
+                        "PAGE": "3"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "circle/api/USER_NAME/followers/PAGE",
+        "label": "cir_pro_frs",
+        "GET": {
+            "200": {
+                "read profile followers": {
+                    "path": {
+                        "USER_NAME": "DrPib",
+                        "PAGE": "3"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "circle/api/USER_NAME/photos/PAGE",
+        "label": "cir_pro_photos",
+        "GET": {
+            "200": {
+                "read profile photos": {
+                    "path": {
+                        "USER_NAME": "DrPib",
+                        "PAGE": "3"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "circle/api/USER_NAME/albums/PAGE",
+        "label": "cir_pro_albums",
+        "GET": {
+            "200": {
+                "read profile albums": {
+                    "path": {
+                        "USER_NAME": "DrPib",
+                        "PAGE": "3"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "circle/api/USER_NAME/videos/PAGE",
+        "label": "cir_pro_videos",
+        "GET": {
+            "200": {
+                "read profile videos": {
+                    "path": {
+                        "USER_NAME": "DrPib",
+                        "PAGE": "3"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "circle/api/USER_NAME/groups/PAGE",
+        "label": "cir_pro_groups",
+        "GET": {
+            "200": {
+                "read profile groups": {
+                    "path": {
+                        "USER_NAME": "DrPib",
+                        "PAGE": "3"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "circle/api/USER_NAME/events/PAGE",
+        "label": "cir_pro_events",
+        "GET": {
+            "200": {
+                "read profile events": {
+                    "path": {
+                        "USER_NAME": "DrPib",
+                        "PAGE": "3"
+                    }
+                }
+            }
+        }
+    }
+]

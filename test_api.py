@@ -269,13 +269,11 @@ TESTS = [
     # @TODO 'url': 'circle/api/events/EVENT_NAME/going/PAGE',
     # @TODO 'url': 'circle/api/events/EVENT_NAME/interested/PAGE',
     # @TODO 'url': 'circle/api/events/EVENT_NAME/invited/PAGE',
-    # @DONE 'url': 'circle/api/pages',
     {
         'url': 'circle/api/pages',
         'label': 'cir_pag',
         'POST': {
             '200': {
-                # DONE
                 'create a new page': {
                     'data': PAGE_EXAMPLES['valid_page'],
                     'cookies': {
@@ -284,7 +282,6 @@ TESTS = [
                 },
             },
             '401': {
-                # DONE
                 'create a new page (while not logged in)': {
                     'path': {
                         'USER_NAME': 'akleinhans',
@@ -292,7 +289,6 @@ TESTS = [
                 },
             },
             '400': {
-                # DONE
                 'create a new page (with a missing title)': {
                     'data': PAGE_EXAMPLES['invalid_page_missing_title'],
                     'cookies': {
@@ -308,13 +304,11 @@ TESTS = [
             },
         },
     },
-    # @DONE 'url': 'circle/api/pages/PAGE',
     {
         'url': 'circle/api/pages/PAGE',
         'label': 'cir_pag_page',
         'GET': {
             '200': {
-                # DONE
                 'load pages list': {
                     'path': {
                         'PAGE': '10',
@@ -323,13 +317,11 @@ TESTS = [
             },
         },
     },
-    # @DONE 'url': 'circle/api/pages/liked/PAGE',
     {
         'url': 'circle/api/pages/liked/PAGE',
         'label': 'cir_pag_lik_page',
         'GET': {
             '200': {
-                # DONE
                 'load liked pages list': {
                     'path': {
                         'PAGE': '10',
@@ -340,7 +332,6 @@ TESTS = [
                 },
             },
             '401': {
-                # DONE
                 'load liked pages list (not logged in)': {
                     'path': {
                         'PAGE': '10',
@@ -349,13 +340,11 @@ TESTS = [
             },
         },
     },
-    # @DONE 'url': 'circle/api/pages/manage/PAGE',
     {
         'url': 'circle/api/pages/manage/PAGE',
         'label': 'cir_pag_man_page',
         'GET': {
             '200': {
-                # DONE
                 'load managed pages list': {
                     'path': {
                         'PAGE': '10',
@@ -366,7 +355,6 @@ TESTS = [
                 },
             },
             '401': {
-                # DONE
                 'load managed pages list (not logged in)': {
                     'path': {
                         'PAGE': '10',
@@ -375,13 +363,11 @@ TESTS = [
             },
         },
     },
-    # @DONE 'url': 'circle/api/pages/PAGE_NAME',
     {
         'url': 'circle/api/pages/PAGE_NAME',
         'label': 'cir_pag_pro',
         'GET': {
             '200': {
-                # DONE
                 'load a page profile': {
                     'path': {
                         'PAGE_NAME': 'some_page_handle',
@@ -391,7 +377,6 @@ TESTS = [
         },
         'POST': {
             '200': {
-                # DONE
                 'update a page': {
                     'path': {
                         'PAGE_NAME':'Example_Page',
@@ -403,7 +388,6 @@ TESTS = [
                 },
             },
             '401': {
-                # DONE
                 'update a page (while not logged in)': {
                     'path': {
                         'PAGE_NAME':'FExample_Page',
@@ -420,11 +404,133 @@ TESTS = [
                 },
             },
         },
+        'DELETE': {
+            '200': {
+                'delete a page': {
+                    'path': {
+                        'PAGE_NAME':'Example_Page',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'delete a page (while not logged in)': {
+                    'path': {
+                        'PAGE_NAME':'FExample_Page',
+                    },
+                },
+                'delete a page (I\'m not an admin of)': {
+                    'path': {
+                        'PAGE_NAME':'Page_I_Dont_Admin_Foo',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
     },
-    # @TODO 'url': 'circle/api/pages/PAGE_NAME/timeline',
-    # @TODO 'url': 'circle/api/pages/PAGE_NAME/timeline/PAGE',
-    # @TODO 'url': 'circle/api/pages/PAGE_NAME/photos/PAGE',
-    # @TODO 'url': 'circle/api/pages/PAGE_NAME/videos/PAGE',
+    {
+        'url': 'circle/api/pages/PAGE_NAME/timeline',
+        'label': 'cir_pag_pro_tim', 
+        'POST': {
+            '200': {
+                'post to page timline': {
+                    'path': {
+                        'PAGE_NAME':'Example_Page',
+                    },
+                    'data': POST_EXAMPLES['valid_media'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '400': {
+                'post to page timline (invalid post)': {
+                    'path': {
+                        'PAGE_NAME':'Example_Page',
+                    },
+                    'data': POST_EXAMPLES['invalid_media_bad_url'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'post to page timline (bad/no session_id)': {
+                    'path': {
+                        'PAGE_NAME':'Example_Page',
+                    },
+                    'data': POST_EXAMPLES['valid_media'],
+                    'cookies': {
+                        'sessionid': 'Fake Session ID',
+                    },
+                },
+                'post to page timline (I\'m not an admin of)': {
+                    'path': {
+                        'PAGE_NAME':'PageThatsNotMyPage',
+                    },
+                    'data': POST_EXAMPLES['valid_media'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+        'GET': {
+            '405': {
+                'get profile timeline without specifying a page': {
+                    'path': {
+                        'PAGE_NAME':'Example_Page',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/pages/PAGE_NAME/timeline/PAGE',
+        'label': 'cir_pag_pro_tim_page',
+        'GET': {
+            '200': { 
+                'read page profile timeline': {
+                    'path': {
+                        'PAGE_NAME': 'SomePage',
+                        'PAGE': '3',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/pages/PAGE_NAME/photos/PAGE',
+        'label': 'cir_pag_pro_photos',
+        'GET': {
+            '200': { 
+                'read page profile photos': {
+                    'path': {
+                        'PAGE_NAME': 'SomePage',
+                        'PAGE': '3',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/pages/PAGE_NAME/videos/PAGE',
+        'label': 'cir_pag_pro_videos',
+        'GET': {
+            '200': { 
+                'read page profile videos': {
+                    'path': {
+                        'PAGE_NAME': 'SomePage',
+                        'PAGE': '3',
+                    },
+                },
+            },
+        },
+    },
     # @TODO 'url': 'circle/api/people/PAGE',
     # @TODO 'url': 'circle/api/people/friend_requests/PAGE',
     # @TODO 'url': 'circle/api/people/friend_requests/sent/PAGE',
@@ -435,13 +541,12 @@ TESTS = [
     # @TODO 'url': 'circle/api/market',
     # @TODO 'url': 'circle/api/market/PAGE',
     # @TODO 'url': 'circle/api/market/category/CATEGORY_ID/PAGE',
-    # @DONE 'url': 'circle/api/market/post/POST_ID',
+    # @TODO 'url': 'circle/api/market/post/POST_ID',
     {
         'url': 'circle/api/market/post/POST_ID',
-        'label': 'cir_mar_post', #DONE
+        'label': 'cir_mar_post', 
         'GET': {
             '200': {
-                # DONE
                 'view market post': {
                     'path': {
                         'POST_ID': '100',
@@ -450,13 +555,11 @@ TESTS = [
             },
         },
     },
-    # @DONE 'url': 'circle/api/USER_NAME',
     {
         'url': 'circle/api/USER_NAME',
         'label': 'cir_pro',
         'GET': {
             '200': {
-                # DONE
                 'load profile': {
                     'path': {
                         'USER_NAME': 'akelinhans',
@@ -464,7 +567,6 @@ TESTS = [
                 },
             },
             '404': {
-                # DONE
                 'alex profile normal': {
                     'path': {
                         'USER_NAME': '****',
@@ -474,7 +576,6 @@ TESTS = [
         },
         'POST': {
             '405': {
-                # DONE
                 'anththing': {
                     'path': {
                         'USER_NAME': 'akleinhans',
@@ -483,13 +584,11 @@ TESTS = [
             },
         },
     },
-    # @DONE 'url': 'circle/api/USER_NAME/timeline',
     {
         'url': 'circle/api/USER_NAME/timeline',
-        'label': 'cir_pro_tim', #DONE
+        'label': 'cir_pro_tim', 
         'POST': {
             '200': {
-                # DONE
                 'post to profile timline': {
                     'path': {
                         'USER_NAME': 'DrPib',
@@ -501,7 +600,6 @@ TESTS = [
                 },
             },
             '400': {
-                # DONE
                 'post to profile timline (invalid post)': {
                     'path': {
                         'USER_NAME': 'DrPib',
@@ -513,7 +611,6 @@ TESTS = [
                 },
             },
             '401': {
-                # DONE
                 'post to profile timline (bad/no session_id)': {
                     'path': {
                         'USER_NAME': 'DrPib',
@@ -527,7 +624,6 @@ TESTS = [
         },
         'GET': {
             '405': {
-                # DONE
                 'get profile timeline without specifying a page': {
                     'path': {
                         'USER_NAME': 'DrPib',
@@ -536,12 +632,11 @@ TESTS = [
             },
         },
     },
-    # @DONE 'url': 'circle/api/USER_NAME/timeline/PAGE',
     {
         'url': 'circle/api/USER_NAME/timeline/PAGE',
         'label': 'cir_pro_tim_page',
         'GET': {
-            '200': { #DONE
+            '200': { 
                 'read profile timeline': {
                     'path': {
                         'USER_NAME': 'DrPib',
@@ -551,12 +646,11 @@ TESTS = [
             },
         },
     },
-    # @DONE 'url': 'circle/api/USER_NAME/friends/PAGE',
     {
         'url': 'circle/api/USER_NAME/friends/PAGE',
         'label': 'cir_pro_tim_fr',
         'GET': {
-            '200': { #DONE
+            '200': { 
                 'read profile friend list': {
                     'path': {
                         'USER_NAME': 'DrPib',
@@ -566,12 +660,11 @@ TESTS = [
             },
         },
     },
-    # @DONE 'url': 'circle/api/USER_NAME/following/PAGE',
     {
         'url': 'circle/api/USER_NAME/following/PAGE',
         'label': 'cir_pro_fing',
         'GET': {
-            '200': { #DONE
+            '200': { 
                 'read profile following': {
                     'path': {
                         'USER_NAME': 'DrPib',
@@ -581,12 +674,11 @@ TESTS = [
             },
         },
     },
-    # @DONE 'url': 'circle/api/USER_NAME/followers/PAGE',
     {
         'url': 'circle/api/USER_NAME/followers/PAGE',
         'label': 'cir_pro_frs',
         'GET': {
-            '200': { #DONE
+            '200': { 
                 'read profile followers': {
                     'path': {
                         'USER_NAME': 'DrPib',
@@ -596,12 +688,11 @@ TESTS = [
             },
         },
     },
-    # @DONE 'url': 'circle/api/USER_NAME/photos/PAGE',
     {
         'url': 'circle/api/USER_NAME/photos/PAGE',
         'label': 'cir_pro_photos',
         'GET': {
-            '200': { #DONE
+            '200': { 
                 'read profile photos': {
                     'path': {
                         'USER_NAME': 'DrPib',
@@ -611,12 +702,11 @@ TESTS = [
             },
         },
     },
-    # @DONE 'url': 'circle/api/USER_NAME/albums/PAGE',
     {
         'url': 'circle/api/USER_NAME/albums/PAGE',
         'label': 'cir_pro_albums',
         'GET': {
-            '200': { #DONE
+            '200': { 
                 'read profile albums': {
                     'path': {
                         'USER_NAME': 'DrPib',
@@ -626,12 +716,11 @@ TESTS = [
             },
         },
     },
-    # @DONE 'url': 'circle/api/USER_NAME/videos/PAGE',
     {
         'url': 'circle/api/USER_NAME/videos/PAGE',
         'label': 'cir_pro_videos',
         'GET': {
-            '200': { #DONE
+            '200': { 
                 'read profile videos': {
                     'path': {
                         'USER_NAME': 'DrPib',
@@ -641,12 +730,11 @@ TESTS = [
             },
         },
     },
-    # @DONE 'url': 'circle/api/USER_NAME/groups/PAGE',
     {
         'url': 'circle/api/USER_NAME/groups/PAGE',
         'label': 'cir_pro_groups',
         'GET': {
-            '200': { #DONE
+            '200': { 
                 'read profile groups': {
                     'path': {
                         'USER_NAME': 'DrPib',
@@ -656,12 +744,11 @@ TESTS = [
             },
         },
     },
-    # @DONE 'url': 'circle/api/USER_NAME/events/PAGE',
     {
         'url': 'circle/api/USER_NAME/events/PAGE',
         'label': 'cir_pro_events',
         'GET': {
-            '200': { #DONE
+            '200': { 
                 'read profile events': {
                     'path': {
                         'USER_NAME': 'DrPib',
@@ -831,7 +918,7 @@ def run_method_status(chosen_label, chosen_method, chosen_status, minimal=True):
                     elif method == 'GET':
                         response = requests.get(url, data, cookies=cookies)
                     elif method == 'DELETE':
-                        response = requests.delete(url, data, cookies=cookies)
+                        response = requests.delete(url, cookies=cookies)
                     else:
                         raise Exception("Unknown HTTP request method '%s'." % method)
 
@@ -892,6 +979,9 @@ DONE_LIST = ['cir_pro_tim','cir_pro','cir_pro_tim_page',
         'cir_pag_lik_page',
         'cir_pag_man_page',
         'cir_pag_pro',
+        'cir_pag_pro_tim',
+        'cir_pag_pro_photos',
+        'cir_pag_pro_videos',
         ]
 
 if __name__ == '__main__':
@@ -904,6 +994,11 @@ if __name__ == '__main__':
 
     # Get the label you want to run. 
     label = sys.argv[1]
+
+    if label == 'dumpspec':
+        import json
+        print(json.dumps(TESTS, indent=4))
+        exit()
 
     # Run all previously done tests.
     if label == 'donelist':
