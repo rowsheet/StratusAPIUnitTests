@@ -24,7 +24,7 @@ In the file `spec.json`, you'll find the tests that are done so far. They are in
 ## Examples:
 
 Test all timeline posts for non-authorized writes (POST 401)
-`python3 test_api.py cir_tim 401 POST`
+`python3 main.py cir_tim 401 POST`
 
 ## Results:
 After running an individual test, you will get a result back like this:
