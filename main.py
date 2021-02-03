@@ -1,10 +1,57 @@
 SESSION_ID = '8okfl9z8yftehjw8btj3codtbuy46db1'
+EVENT_EXAMPLES = {
+    'valid_event': {
+        'event_name': 'TheGretaReset',
+        'title': 'A Brave New World',
+        'description': 'Don\' forget you\'re here forever.',
+        'category': 'CompositionOfMorphisms',
+        'timestamp_start': '1984-01-01T00:00:00+0000',
+        'timestamp_end': '2077-11-05T23:58:20+0000',
+        'location': 'Above',
+        # Optional
+        'photo': 'https://cdn1.stratus.co/09F911029D74E35BD84156C5635688C0.png',
+        'pinned_post': '100',
+    },
+    'valid_event_for_update': {
+        'event_name': 'abelian',
+        'title': 'As Above',
+        'location': 'Bellow',
+        'description': 'Ideas Worth Sharing',
+        'category': 'CompositionOfMorphisms',
+    },
+    'invalid_event_not_own_by_req_user': {
+        'event_name': 'nonAbelian',
+        'title': 'As Above',
+        'description': 'Deus Ex',
+        'category': 'ThisStatementIsFalse',
+    },
+    'invalid_event_missing_title': {
+        'event_name': 'incompleteness',
+        'description': 'No consistent system of axioms whose theorems can be listed by an effective procedure is capable of proving all truths about the arithmetic of natural numbers',
+        'category': 'Entscheidungsproblem',
+    },
+    'invalid_event_invalid_date': {
+        'event_name': 'Have_We',
+        'title': '4got What 1t',
+        'timestamp_start': '2077-11-05T23:58:20+0000',
+        'timestamp_end': '1984-01-01T00:00:00+0000',
+        'description': 'means 2B',
+        'category': 'human',
+    },
+    'invalid_event_invalid_location': {
+        'event_name': 'IMustStop',
+        'title': 'Falling In Love',
+        'description': 'with every girl who',
+        'location': 'F*#$s',
+        'category': 'me',
+    },
+}
 GROUP_EXAMPLES = {
     'valid_group': {
         'group_name': 'Example_Group',
         'title': 'Exampe Group',
         'description': 'Descriptin of my Group',
-        'category': 'abalian',
+        'category': 'CompositionOfMorphisms',
         # Optional
         'photo': 'https://cdn1.stratus.co/231123141312312312.png',
         'pinned_post': '100',
@@ -13,17 +60,19 @@ GROUP_EXAMPLES = {
         'group_name': 'New_Name',
         'title': 'A New Title',
         'category': 'othercatagory',
+        'photo': 'https://cdn1.stratus.co/WH4000.png',
+        'pinned_post': '45',
     },
     'invalid_group_not_own_by_req_user': {
         'group_name': 'a_group_i_dont_own',
         'title': 'Exampe Group',
         'description': 'Descriptin of my Group',
-        'category': 'abalian',
+        'category': 'CompositionOfMorphisms',
     },
     'invalid_group_missing_title': {
         'group_name': 'Exampe_Group',
         'description': 'Descriptin of my Group',
-        'category': 'abalian',
+        'category': 'CompositionOfMorphisms',
     },
 }   
 PAGE_EXAMPLES = {
@@ -31,7 +80,7 @@ PAGE_EXAMPLES = {
         'page_name': 'Example_Page',
         'title': 'Exampe Page',
         'description': 'Descriptin of my Page',
-        'category': 'abalian',
+        'category': 'CompositionOfMorphisms',
         # Optional
         'company': 'Page, LLC',
         'phone_number': '911',
@@ -60,7 +109,7 @@ PAGE_EXAMPLES = {
         'page_name': 'a_page_i_dont_own',
         'title': 'Exampe Page',
         'description': 'Descriptin of my Page',
-        'category': 'abalian',
+        'category': 'CompositionOfMorphisms',
         # Optional
         'company': 'Page, LLC',
         'phone_number': '911',
@@ -81,7 +130,7 @@ PAGE_EXAMPLES = {
     'invalid_page_bad_socials': {
         'page_name': 'Exampe_Page',
         'description': 'Descriptin of my Page',
-        'category': 'abalian',
+        'category': 'CompositionOfMorphisms',
         'facebook_link': 'BAD URL',
         'twitter_link': 'https://www.twitter.com/thispage',
         'youtube_link': 'BAD URL',
@@ -92,7 +141,7 @@ PAGE_EXAMPLES = {
     'invalid_page_missing_title': {
         'page_name': 'Exampe_Page',
         'description': 'Descriptin of my Page',
-        'category': 'abalian',
+        'category': 'CompositionOfMorphisms',
         # Optional
         'company': 'Page, LLC',
         'phone_number': '911',
@@ -505,6 +554,7 @@ TESTS = [
             '200': { 
                 'read group members list': {
                     'path': {
+                        'GROUP_NAME': 'SomeGroup',
                         'PAGE': '3',
                     },
                 },
@@ -553,21 +603,370 @@ TESTS = [
             },
         },
     },
-    # @TODO 'url': 'circle/api/events',
+    {
+        'url': 'circle/api/events',
+        'label': 'cir_evt',
+        'POST': {
+            '200': {
+                'create a new event': {
+                    'data': EVENT_EXAMPLES['valid_event'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'create a new event (while not logged in)': {
+                    'path': {
+                        'USER_NAME': 'akleinhans',
+                    },
+                },
+            },
+            '400': {
+                'create a new event (with a missing title)': {
+                    'data': EVENT_EXAMPLES['invalid_event_missing_title'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
     # @TODO 'url': 'circle/api/events/PAGE',
+    {
+        'url': 'circle/api/events/PAGE',
+        'label': 'cir_evt_page',
+        'GET': {
+            '200': {
+                'load events list': {
+                    'path': {
+                        'PAGE': '10',
+                    },
+                },
+            },
+        },
+    },
     # @TODO 'url': 'circle/api/events/going/PAGE',
+    {
+        'url': 'circle/api/events/going/PAGE',
+        'label': 'cir_evt_gng_page',
+        'GET': {
+            '200': {
+                'load going events list': {
+                    'path': {
+                        'PAGE': '10',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'load going events list (not logged in)': {
+                    'path': {
+                        'PAGE': '10',
+                    },
+                },
+            },
+        },
+    },
     # @TODO 'url': 'circle/api/events/interested/PAGE',
+    {
+        'url': 'circle/api/events/interested/PAGE',
+        'label': 'cir_evt_int_page',
+        'GET': {
+            '200': {
+                'load interested events list': {
+                    'path': {
+                        'PAGE': '10',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'load interested events list (not logged in)': {
+                    'path': {
+                        'PAGE': '10',
+                    },
+                },
+            },
+        },
+    },
     # @TODO 'url': 'circle/api/events/invited/PAGE',
+    {
+        'url': 'circle/api/events/invited/PAGE',
+        'label': 'cir_evt_ivt_page',
+        'GET': {
+            '200': {
+                'load invited events list': {
+                    'path': {
+                        'PAGE': '10',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'load invited events list (not logged in)': {
+                    'path': {
+                        'PAGE': '10',
+                    },
+                },
+            },
+        },
+    },
     # @TODO 'url': 'circle/api/events/manage/PAGE',
-    # @TODO 'url': 'circle/api/events/EVENT_NAME',
-    # @TODO 'url': 'circle/api/events/EVENT_NAME/timeline',
-    # @TODO 'url': 'circle/api/events/EVENT_NAME/timeline/PAGE',
-    # @TODO 'url': 'circle/api/events/EVENT_NAME/photos/PAGE',
-    # @TODO 'url': 'circle/api/events/EVENT_NAME/albums/PAGE',
-    # @TODO 'url': 'circle/api/events/EVENT_NAME/videos/PAGE',
-    # @TODO 'url': 'circle/api/events/EVENT_NAME/going/PAGE',
-    # @TODO 'url': 'circle/api/events/EVENT_NAME/interested/PAGE',
-    # @TODO 'url': 'circle/api/events/EVENT_NAME/invited/PAGE',
+    {
+        'url': 'circle/api/events/manage/PAGE',
+        'label': 'cir_evt_man_page',
+        'GET': {
+            '200': {
+                'load managed events list': {
+                    'path': {
+                        'PAGE': '10',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'load managed events list (not logged in)': {
+                    'path': {
+                        'PAGE': '10',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/events/EVENT_NAME',
+        'label': 'cir_evt_pro',
+        'GET': {
+            '200': {
+                'load a event profile': {
+                    'path': {
+                        'EVENT_NAME': 'some_page_handle',
+                    },
+                },
+            },
+        },
+        'POST': {
+            '200': {
+                'update a event': {
+                    'path': {
+                        'EVENT_NAME':'TheGretaReset',
+                    },
+                    'data': EVENT_EXAMPLES['valid_event_for_update'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'update a event (while not logged in)': {
+                    'path': {
+                        'EVENT_NAME':'FExample_Event',
+                    },
+                },
+                'update a event (I\'m not an admin of)': {
+                    'path': {
+                        'EVENT_NAME':'Event_I_Dont_Admin_Foo',
+                    },
+                    'data': EVENT_EXAMPLES['valid_event_for_update'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+        'DELETE': {
+            '200': {
+                'delete a event': {
+                    'path': {
+                        'EVENT_NAME':'TheGretaReset',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'delete a event (while not logged in)': {
+                    'path': {
+                        'EVENT_NAME':'FExample_Event',
+                    },
+                },
+                'delete a event (I\'m not an admin of)': {
+                    'path': {
+                        'EVENT_NAME':'Event_I_Dont_Admin_Foo',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/events/EVENT_NAME/timeline',
+        'label': 'cir_evt_pro_tim', 
+        'POST': {
+            '200': {
+                'post to event timline': {
+                    'path': {
+                        'EVENT_NAME':'TheGretaReset',
+                    },
+                    'data': POST_EXAMPLES['valid_media'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '400': {
+                'post to event timline (invalid post)': {
+                    'path': {
+                        'EVENT_NAME':'Example_Event',
+                    },
+                    'data': POST_EXAMPLES['invalid_media_bad_url'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'post to event timline (bad/no session_id)': {
+                    'path': {
+                        'EVENT_NAME':'Example_Event',
+                    },
+                    'data': POST_EXAMPLES['valid_media'],
+                    'cookies': {
+                        'sessionid': 'Fake Session ID',
+                    },
+                },
+                'post to event timline (I\'m not an admin of)': {
+                    'path': {
+                        'EVENT_NAME':'EventThatsNotMyEvent',
+                    },
+                    'data': POST_EXAMPLES['valid_media'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+        'GET': {
+            '405': {
+                'get profile timeline without specifying a page': {
+                    'path': {
+                        'EVENT_NAME':'Example_Event',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/events/EVENT_NAME/timeline/PAGE',
+        'label': 'cir_evt_pro_tim_page',
+        'GET': {
+            '200': { 
+                'read event profile timeline': {
+                    'path': {
+                        'EVENT_NAME': 'SomeEvent',
+                        'PAGE': '3',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/events/EVENT_NAME/interested/PAGE',
+        'label': 'cir_evt_pro_int_page',
+        'GET': {
+            '200': { 
+                'read event interested list': {
+                    'path': {
+                        'EVENT_NAME': 'SomeEvent',
+                        'PAGE': '3',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/events/EVENT_NAME/invited/PAGE',
+        'label': 'cir_evt_pro_inv_page',
+        'GET': {
+            '200': { 
+                'read event invited list': {
+                    'path': {
+                        'EVENT_NAME': 'SomeEvent',
+                        'PAGE': '3',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/events/EVENT_NAME/going/PAGE',
+        'label': 'cir_evt_pro_gng_page',
+        'GET': {
+            '200': { 
+                'read event going list': {
+                    'path': {
+                        'EVENT_NAME': 'SomeEvent',
+                        'PAGE': '3',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/events/EVENT_NAME/photos/PAGE',
+        'label': 'cir_evt_pro_photos',
+        'GET': {
+            '200': { 
+                'read event profile photos': {
+                    'path': {
+                        'EVENT_NAME': 'SomeEvent',
+                        'PAGE': '3',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/events/EVENT_NAME/albums/PAGE',
+        'label': 'cir_evt_pro_albums',
+        'GET': {
+            '200': { 
+                'read profile albums': {
+                    'path': {
+                        'EVENT_NAME': 'DrPib',
+                        'PAGE': '3',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/events/EVENT_NAME/videos/PAGE',
+        'label': 'cir_evt_pro_videos',
+        'GET': {
+            '200': { 
+                'read event profile videos': {
+                    'path': {
+                        'EVENT_NAME': 'SomeEvent',
+                        'PAGE': '3',
+                    },
+                },
+            },
+        },
+    },
+    # ----------------
     {
         'url': 'circle/api/pages',
         'label': 'cir_pag',
@@ -1292,6 +1691,21 @@ DONE_LIST = ['cir_pro_tim','cir_pro','cir_pro_tim_page',
         'cir_grp_pro_photos',
         'cir_grp_pro_mbr_page',
         'cir_grp_pro_tim_page',
+        'cir_evt',
+        'cir_evt_page',
+        'cir_evt_ivt_page',
+        'cir_evt_int_page',
+        'cir_evt_gng_page',
+        'cir_evt_man_page',
+        'cir_evt_pro',
+        'cir_evt_pro_tim', 
+        'cir_evt_pro_tim_page',
+        'cir_evt_pro_int_page',
+        'cir_evt_pro_inv_page',
+        'cir_evt_pro_gng_page',
+        'cir_evt_pro_videos',
+        'cir_evt_pro_albums',
+        'cir_evt_pro_photos',
         ]
 
 if __name__ == '__main__':
