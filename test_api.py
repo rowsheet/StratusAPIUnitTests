@@ -1,7 +1,36 @@
 SESSION_ID = '8okfl9z8yftehjw8btj3codtbuy46db1'
 PAGE_EXAMPLES = {
     'valid_page': {
-        'page_name': 'Exampe_Page',
+        'page_name': 'Example_Page',
+        'title': 'Exampe Page',
+        'description': 'Descriptin of my Page',
+        'category': 'abalian',
+        # Optional
+        'company': 'Page, LLC',
+        'phone_number': '911',
+        'website': 'https://www.example.com',
+        'photo': 'https://cdn1.stratus.co/231123141312312312.png',
+        'pinned_post': '100',
+        'location': 'Exampe Page',
+        'action_text': 'Some Action Text',
+        'action_url': 'https://www.example.com',
+        'action_color': 'primary',
+        'facebook_link': 'https://www.facebook.com/thispage',
+        'twitter_link': 'https://www.twitter.com/thispage',
+        'youtube_link': 'https://www.youtube.com/thispage',
+        'instagram_link': 'https://www.instagram.com/thispage',
+        'linkedin_link': 'https://www.linkedin.com/thispage',
+        'vkontate_link': 'https://www.example.com/thispage',
+    },
+    'valid_page_for_update': {
+        'page_name': 'New_Name',
+        'title': 'A New Title',
+        'category': 'othercatagory',
+        'action_text': 'Some New Action Text',
+        'twitter_link': 'https://www.twitter.com/newthing',
+    },
+    'invalid_page_not_own_by_req_user': {
+        'page_name': 'a_page_i_dont_own',
         'title': 'Exampe Page',
         'description': 'Descriptin of my Page',
         'category': 'abalian',
@@ -240,7 +269,7 @@ TESTS = [
     # @TODO 'url': 'circle/api/events/EVENT_NAME/going/PAGE',
     # @TODO 'url': 'circle/api/events/EVENT_NAME/interested/PAGE',
     # @TODO 'url': 'circle/api/events/EVENT_NAME/invited/PAGE',
-    # @TODO 'url': 'circle/api/pages',
+    # @DONE 'url': 'circle/api/pages',
     {
         'url': 'circle/api/pages',
         'label': 'cir_pag',
@@ -279,10 +308,119 @@ TESTS = [
             },
         },
     },
-    # @TODO 'url': 'circle/api/pages/PAGE',
-    # @TODO 'url': 'circle/api/pages/liked/PAGE',
-    # @TODO 'url': 'circle/api/pages/manage/PAGE',
-    # @TODO 'url': 'circle/api/pages/PAGE_NAME',
+    # @DONE 'url': 'circle/api/pages/PAGE',
+    {
+        'url': 'circle/api/pages/PAGE',
+        'label': 'cir_pag_page',
+        'GET': {
+            '200': {
+                # DONE
+                'load pages list': {
+                    'path': {
+                        'PAGE': '10',
+                    },
+                },
+            },
+        },
+    },
+    # @DONE 'url': 'circle/api/pages/liked/PAGE',
+    {
+        'url': 'circle/api/pages/liked/PAGE',
+        'label': 'cir_pag_lik_page',
+        'GET': {
+            '200': {
+                # DONE
+                'load liked pages list': {
+                    'path': {
+                        'PAGE': '10',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                # DONE
+                'load liked pages list (not logged in)': {
+                    'path': {
+                        'PAGE': '10',
+                    },
+                },
+            },
+        },
+    },
+    # @DONE 'url': 'circle/api/pages/manage/PAGE',
+    {
+        'url': 'circle/api/pages/manage/PAGE',
+        'label': 'cir_pag_man_page',
+        'GET': {
+            '200': {
+                # DONE
+                'load managed pages list': {
+                    'path': {
+                        'PAGE': '10',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                # DONE
+                'load managed pages list (not logged in)': {
+                    'path': {
+                        'PAGE': '10',
+                    },
+                },
+            },
+        },
+    },
+    # @DONE 'url': 'circle/api/pages/PAGE_NAME',
+    {
+        'url': 'circle/api/pages/PAGE_NAME',
+        'label': 'cir_pag_pro',
+        'GET': {
+            '200': {
+                # DONE
+                'load a page profile': {
+                    'path': {
+                        'PAGE_NAME': 'some_page_handle',
+                    },
+                },
+            },
+        },
+        'POST': {
+            '200': {
+                # DONE
+                'update a page': {
+                    'path': {
+                        'PAGE_NAME':'Example_Page',
+                    },
+                    'data': PAGE_EXAMPLES['valid_page_for_update'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                # DONE
+                'update a page (while not logged in)': {
+                    'path': {
+                        'PAGE_NAME':'FExample_Page',
+                    },
+                },
+                'update a page (I\'m not an admin of)': {
+                    'path': {
+                        'PAGE_NAME':'Page_I_Dont_Admin_Foo',
+                    },
+                    'data': PAGE_EXAMPLES['valid_page_for_update'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
     # @TODO 'url': 'circle/api/pages/PAGE_NAME/timeline',
     # @TODO 'url': 'circle/api/pages/PAGE_NAME/timeline/PAGE',
     # @TODO 'url': 'circle/api/pages/PAGE_NAME/photos/PAGE',
@@ -676,11 +814,12 @@ def run_method_status(chosen_label, chosen_method, chosen_status, minimal=True):
             if METHOD_STATUSs is not None:
 
                 for test_name, METHOD_STATUS in METHOD_STATUSs.items():
-
+                
+                    url = URL
                     path_vars = METHOD_STATUS.get('path')
                     if path_vars is not None:
                         for key, val in path_vars.items():
-                            URL = URL.replace(key, val)
+                            url = url.replace(key,val)
 
                     data = METHOD_STATUS.get('data')
                     cookies = METHOD_STATUS.get('cookies')
@@ -688,11 +827,11 @@ def run_method_status(chosen_label, chosen_method, chosen_status, minimal=True):
                     text = None
 
                     if method == 'POST':
-                        response = requests.post(URL, data, cookies=cookies)
+                        response = requests.post(url, data, cookies=cookies)
                     elif method == 'GET':
-                        response = requests.get(URL, data, cookies=cookies)
+                        response = requests.get(url, data, cookies=cookies)
                     elif method == 'DELETE':
-                        response = requests.delete(URL, data, cookies=cookies)
+                        response = requests.delete(url, data, cookies=cookies)
                     else:
                         raise Exception("Unknown HTTP request method '%s'." % method)
 
@@ -700,12 +839,12 @@ def run_method_status(chosen_label, chosen_method, chosen_status, minimal=True):
                     text = response.text
 
                     if str(status_code) == status:
-                        print_test(URL, method, '\033[92mPASSED\033[0m', test_name, status, status_code, data, text,
+                        print_test(url, method, '\033[92mPASSED\033[0m', test_name, status, status_code, data, text,
                                 minimal=minimal)
                         tests_run += 1
                         tests_passed += 1
                     else:
-                        print_test(URL, method, '\033[91mFAILED\033[0m', test_name, status, status_code, data, text,
+                        print_test(url, method, '\033[91mFAILED\033[0m', test_name, status, status_code, data, text,
                                 minimal=minimal)
                         tests_run += 1
                         tests_failed += 1
@@ -749,6 +888,10 @@ DONE_LIST = ['cir_pro_tim','cir_pro','cir_pro_tim_page',
         'cir_pro_groups',
         'cir_pro_events',
         'cir_pag',
+        'cir_pag_page',
+        'cir_pag_lik_page',
+        'cir_pag_man_page',
+        'cir_pag_pro',
         ]
 
 if __name__ == '__main__':
