@@ -1843,9 +1843,65 @@ TESTS = [
             },
         },
     },
-    # @TODO 'url': 'circle/api/people/PAGE',
-    # @TODO 'url': 'circle/api/people/friend_requests/PAGE',
-    # @TODO 'url': 'circle/api/people/friend_requests/sent/PAGE',
+    {
+        'url': 'circle/api/people/PAGE',
+        'label': 'cir_pep_page',
+        'GET': {
+            '200': { 
+                'list other profiles': {
+                    'path': {
+                        'PAGE': '3',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/people/friend_requests/PAGE',
+        'label': 'cir_pep_frn_req_page',
+        'GET': {
+            '200': { 
+                'list your firend requests': {
+                    'path': {
+                        'PAGE': '3',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'list your firend requests (not logged in)': {
+                    'path': {
+                        'PAGE': '3',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/people/friend_requests/sent/PAGE',
+        'label': 'cir_pep_frn_req_snt_page',
+        'GET': {
+            '200': { 
+                'list your firend requests sent': {
+                    'path': {
+                        'PAGE': '3',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'list your firend requests sent (not logged in)': {
+                    'path': {
+                        'PAGE': '3',
+                    },
+                },
+            },
+        },
+    },
     # @TODO 'url': 'circle/api/blogs',
     # @TODO 'url': 'circle/api/blogs/PAGE',
     # @TODO 'url': 'circle/api/blogs/category/CATEGORY_ID/PAGE',

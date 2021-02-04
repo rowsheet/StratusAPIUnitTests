@@ -71,6 +71,9 @@ reference of examples in the `spec.json`, only full layouts of them.
 	circle/api/saved/PAGE
 	circle/api/products/PAGE
 	circle/api/articles/PAGE
+	circle/api/people/PAGE
+	circle/api/people/friend_requests/PAGE
+	circle/api/people/friend_requests/sent/PAGE
 	circle/api/search/PAGE
 	circle/api/search/hashtag/PAGE
 	circle/api/search/articles/PAGE
@@ -132,9 +135,6 @@ reference of examples in the `spec.json`, only full layouts of them.
 ## URLs Not Done:
 
     # Circle
-	circle/api/people/PAGE
-	circle/api/people/friend_requests/PAGE
-	circle/api/people/friend_requests/sent/PAGE
 	circle/api/blogs
 	circle/api/blogs/PAGE
 	circle/api/blogs/category/CATEGORY_ID/PAGE
