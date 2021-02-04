@@ -1,5 +1,7 @@
 # Stratus API Unit Test Coverage
-	      
+
+This library is written in Python, but all the information you need is in `spec.json`. This Python code has nothing to do with the API except for running the tests and creating the spec. You are expected to use the spec and write a client in whatever language your platform requires. The requests are all the same and extreemly simple. There are three HTTP methods `POST`, `DELETE`, `GET`. Data will return a standard HTTP status code `401 Unauthorized`, `400 Bad Request`, `405 Method Not Supported`, `200 OK`. Data are just standard `POST` parameters, except for `GET` requests, in which they are URL encoded. If you run the tests, you will be able to see exactly what the URL is, but you should be able to use the `data` parameter in the spec. The `path` parameter in the spec is for replacing keywords in the URL path. Authentaction is done with a cookie's `sessionid` (you can put this in the header or do whatever you like. The spec does not specify the `BASE_URL`. You need to use whatever `BASE_URL` is availble and deployed at the time (or your local).
+
 ## Quickstart:
 
 Run all the tests and make sure they all pass:
