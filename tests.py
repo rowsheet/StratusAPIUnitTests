@@ -26,9 +26,40 @@ TESTS = [
     },
     # TOP 
     #---------------------------------------------------------------------------
-    # @TODO 'url': 'core/api/signup',
-    # @TODO 'url': 'core/api/signup',
-    # @TODO 'url': 'core/api/siginin',
+    {
+        'url': 'core/api/signup',
+        'label': 'cor_signup',
+        'POST': {
+            '200': {
+                'create a new account': {
+                    'data': {
+                        'user_name': 'newusername',
+                        'first_name': 'Firstname',
+                        'last_name': 'Lastname',
+                        'email_address': 'email@email.com',
+                        'password': 'somethinglongerthan12characters',
+                        'confirm_password': 'somethinglongerthan12characters',
+                        'newsletter': False,
+                        'terms': True,
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'core/api/siginin',
+        'label': 'cor_signin',
+        'POST': {
+            '200': {
+                'login': {
+                    'data': {
+                        'user_name': 'newusername',
+                        'password': 'somethinglongerthan12characters',
+                    },
+                },
+            },
+        },
+    },
     {
         'url': 'core/api/settings',
         'label': 'cor_set',

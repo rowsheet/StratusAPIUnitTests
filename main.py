@@ -248,6 +248,8 @@ DONE_LIST = ['cir_pro_tim','cir_pro','cir_pro_tim_page',
         'cir_sch_pag',
         'cir_sch_grp',
         'cir_sch_evt',
+        'cor_signup',
+        'cor_signin',
         ]
 
 def print_usage():
