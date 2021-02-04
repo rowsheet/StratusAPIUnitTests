@@ -47,6 +47,8 @@ reference of examples in the `spec.json`, only full layouts of them.
 ## URLs Done So Far:
 
     # Core 
+	core/api/signup
+	core/api/siginin
 	core/api/settings
 	core/api/settings/profile/basic
 	core/api/settings/profile/work
@@ -129,9 +131,6 @@ reference of examples in the `spec.json`, only full layouts of them.
 
 ## URLs Not Done:
 
-    # Core 
-	core/api/signup
-	core/api/siginin
     # Circle
 	circle/api/people/PAGE
 	circle/api/people/friend_requests/PAGE
