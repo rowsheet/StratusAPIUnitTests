@@ -1,5 +1,137 @@
 # Stratus API Unit Test Coverage
 
+## URLs Done So Far:
+
+	circle/api/timeline
+	circle/api/timeline/PAGE
+	circle/api/post/POST_ID
+	circle/api/popular/PAGE
+	circle/api/saved/PAGE
+	circle/api/products/PAGE
+	circle/api/articles/PAGE
+	circle/api/messages
+	circle/api/messages/CONVERSATION_ID
+	circle/api/message/MESSAGE_ID
+	circle/api/groups
+	circle/api/groups/PAGE
+	circle/api/groups/joined/PAGE
+	circle/api/groups/manage/PAGE
+	circle/api/groups/GROUP_NAME
+	circle/api/groups/GROUP_NAME/timeline
+	circle/api/groups/GROUP_NAME/timeline/PAGE
+	circle/api/groups/GROUP_NAME/members/PAGE
+	circle/api/groups/GROUP_NAME/photos/PAGE
+	circle/api/USER_NAME/albums/PAGE
+	circle/api/groups/GROUP_NAME/videos/PAGE
+	circle/api/events
+	circle/api/events/PAGE
+	circle/api/events/going/PAGE
+	circle/api/events/interested/PAGE
+	circle/api/events/invited/PAGE
+	circle/api/events/manage/PAGE
+	circle/api/events/EVENT_NAME
+	circle/api/events/EVENT_NAME/timeline
+	circle/api/events/EVENT_NAME/timeline/PAGE
+	circle/api/events/EVENT_NAME/interested/PAGE
+	circle/api/events/EVENT_NAME/invited/PAGE
+	circle/api/events/EVENT_NAME/going/PAGE
+	circle/api/events/EVENT_NAME/photos/PAGE
+	circle/api/events/EVENT_NAME/albums/PAGE
+	circle/api/events/EVENT_NAME/videos/PAGE
+	circle/api/pages
+	circle/api/pages/PAGE
+	circle/api/pages/liked/PAGE
+	circle/api/pages/manage/PAGE
+	circle/api/pages/PAGE_NAME
+	circle/api/pages/PAGE_NAME/timeline
+	circle/api/pages/PAGE_NAME/timeline/PAGE
+	circle/api/pages/PAGE_NAME/photos/PAGE
+	circle/api/pages/PAGE_NAME/videos/PAGE
+	circle/api/market/post/POST_ID
+	circle/api/USER_NAME
+	circle/api/USER_NAME/timeline
+	circle/api/USER_NAME/timeline/PAGE
+	circle/api/USER_NAME/friends/PAGE
+	circle/api/USER_NAME/following/PAGE
+	circle/api/USER_NAME/followers/PAGE
+	circle/api/USER_NAME/photos/PAGE
+	circle/api/USER_NAME/albums/PAGE
+	circle/api/USER_NAME/videos/PAGE
+	circle/api/USER_NAME/groups/PAGE
+	circle/api/USER_NAME/events/PAGE
+
+## URLs Not Done:
+
+	core/api/signup
+	core/api/signup
+	core/api/siginin
+	core/api/settings
+	core/api/settings/profile
+	core/api/settings/profile/basic
+	core/api/settings/profile/work
+	core/api/settings/profile/location
+	core/api/settings/profile/education
+	core/api/settings/profile/social
+	core/api/settings/security
+	core/api/settings/security/password
+	core/api/settings/security/sessions
+	core/api/settings/privacy
+	core/api/settings/notifications
+	core/api/settings/affiliates
+	core/api/settings/verification
+	core/api/settings/blocking
+	core/api/settings/delete
+	circle/api/timeline
+	circle/api/search/PAGE
+	circle/api/search/hashtag/PAGE
+	circle/api/search/articles/PAGE
+	circle/api/search/users/PAGE
+	circle/api/search/pages/PAGE
+	circle/api/search/groups/PAGE
+	circle/api/search/events/PAGE
+	circle/api/people/PAGE
+	circle/api/people/friend_requests/PAGE
+	circle/api/people/friend_requests/sent/PAGE
+	circle/api/blogs
+	circle/api/blogs/PAGE
+	circle/api/blogs/category/CATEGORY_ID/PAGE
+	circle/api/blogs/post/POST_ID
+	circle/api/market
+	circle/api/market/PAGE
+	circle/api/market/category/CATEGORY_ID/PAGE
+	circle/api/market/post/POST_ID
+	atrium/api/timeline
+	atrium/api/timeline/PAGE
+	atrium/api/post/POST_ID
+	atrium/api/messages
+	atrium/api/messages/CONVERSATION_ID
+	atrium/api/messages/CONVERSATION_ID/MESSAGE_ID
+	atrium/api/trending/PAGE
+	atrium/api/explore/PAGE
+	atrium/api/explore/hashtag/PAGE
+	atrium/api/explore/articles/PAGE
+	atrium/api/explore/users/PAGE
+	atrium/api/bookmarks
+	atrium/api/bookmarks/BOOKMARK_ID
+	atrium/api/bookmarks/PAGE
+	atrium/api/blogs
+	atrium/api/blogs/PAGE
+	atrium/api/blogs/category/CATEGORY_ID/PAGE
+	atrium/api/blogs/post/POST_ID
+	atrium/api/USER_NAME
+	atrium/api/USER_NAME/timeline
+	atrium/api/USER_NAME/timeline/PAGE
+	atrium/api/USER_NAME/following/PAGE
+	atrium/api/USER_NAME/followers/PAGE
+	atrium/api/USER_NAME/photos/PAGE
+	atrium/api/USER_NAME/albums/PAGE
+	atrium/api/USER_NAME/videos/PAGE
+	ads/api/wallet
+	ads/api/campaigns
+	ads/api/promoted
+	ads/api/promoted/pages
+	ads/api/promoted/posts
+
 ## Diclaimer:
 I started wrting these unit tests today and am most of the way through Circle (which is 80% of the app).
 In the file `spec.json`, you'll find the tests that are done so far. They are in the following format:
@@ -133,3 +265,4 @@ If everything is okay, you should see `All tests PASSED`, otherwise failed tests
 	    PASSED          63
 	    FAILED:         0
 	All tests PASSED
+
