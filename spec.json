@@ -1,4 +1,12 @@
 {
+    "_URL_": {
+        "POST": {
+            "_TEST_NAME_": {
+                "data": {},
+                "headers": {}
+            }
+        }
+    },
     "core/api/signup": {
         "POST": {
             "create a new account": {
@@ -1082,6 +1090,39 @@
             }
         }
     },
+    "circle/api/people/PAGE": {
+        "GET": {
+            "list other profiles": {
+                "path": {
+                    "PAGE": "3"
+                }
+            }
+        }
+    },
+    "circle/api/people/friend_requests/PAGE": {
+        "GET": {
+            "list your firend requests": {
+                "path": {
+                    "PAGE": "3"
+                },
+                "cookies": {
+                    "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                }
+            }
+        }
+    },
+    "circle/api/people/friend_requests/sent/PAGE": {
+        "GET": {
+            "list your firend requests sent": {
+                "path": {
+                    "PAGE": "3"
+                },
+                "cookies": {
+                    "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                }
+            }
+        }
+    },
     "circle/api/market/post/POST_ID": {
         "GET": {
             "view market post": {
@@ -1206,6 +1247,190 @@
     "circle/api/USER_NAME/events/PAGE": {
         "GET": {
             "read profile events": {
+                "path": {
+                    "USER_NAME": "DrPib",
+                    "PAGE": "3"
+                }
+            }
+        }
+    },
+    "atrium/api/messages": {
+        "POST": {
+            "create a new message conversation": {
+                "data": {
+                    "user_name": "myFriendTom"
+                },
+                "cookies": {
+                    "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                }
+            }
+        },
+        "GET": {
+            "read my message conversations": {
+                "cookies": {
+                    "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                }
+            }
+        }
+    },
+    "atrium/api/messages/CONVERSATION_ID": {
+        "POST": {
+            "create a new message": {
+                "path": {
+                    "CONVERSATION_ID": "123123123"
+                },
+                "data": {
+                    "message_text": "This is some message text."
+                },
+                "cookies": {
+                    "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                }
+            }
+        },
+        "GET": {
+            "read my conversation messages": {
+                "path": {
+                    "CONVERSATION_ID": "123123123"
+                },
+                "cookies": {
+                    "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                }
+            }
+        },
+        "DELETE": {
+            "delete a conversation": {
+                "path": {
+                    "CONVERSATION_ID": "123123123"
+                },
+                "cookies": {
+                    "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                }
+            }
+        }
+    },
+    "atrium/api/message/MESSAGE_ID": {
+        "POST": {
+            "update an old message": {
+                "path": {
+                    "MESSAGE_ID": "35435345"
+                },
+                "data": {
+                    "message_text": "This is some message text."
+                },
+                "cookies": {
+                    "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                }
+            }
+        },
+        "DELETE": {
+            "delete an old message": {
+                "path": {
+                    "MESSAGE_ID": "35435345"
+                },
+                "data": {
+                    "message_text": "This is some message text."
+                },
+                "cookies": {
+                    "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                }
+            }
+        }
+    },
+    "atrium/api/USER_NAME": {
+        "POST": null,
+        "GET": {
+            "load profile": {
+                "path": {
+                    "USER_NAME": "akelinhans"
+                }
+            }
+        }
+    },
+    "atrium/api/USER_NAME/timeline": {
+        "POST": {
+            "post to profile timline": {
+                "path": {
+                    "USER_NAME": "DrPib"
+                },
+                "data": {
+                    "text": "The joke is that both the words ending in the same sylable that rhyme.",
+                    "post_type": "media",
+                    "url": "https://google.com/?no=matter&how=fast&i=run",
+                    "provider": "Breitbart Media Outlet",
+                    "type": "photo",
+                    "title": "Title of my post",
+                    "html": "<html>how to meet ladies</html>"
+                },
+                "cookies": {
+                    "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                }
+            }
+        },
+        "GET": null
+    },
+    "atrium/api/USER_NAME/timeline/PAGE": {
+        "GET": {
+            "read profile timeline": {
+                "path": {
+                    "USER_NAME": "DrPib",
+                    "PAGE": "3"
+                }
+            }
+        }
+    },
+    "atrium/api/USER_NAME/friends/PAGE": {
+        "GET": {
+            "read profile friend list": {
+                "path": {
+                    "USER_NAME": "DrPib",
+                    "PAGE": "3"
+                }
+            }
+        }
+    },
+    "atrium/api/USER_NAME/following/PAGE": {
+        "GET": {
+            "read profile following": {
+                "path": {
+                    "USER_NAME": "DrPib",
+                    "PAGE": "3"
+                }
+            }
+        }
+    },
+    "atrium/api/USER_NAME/followers/PAGE": {
+        "GET": {
+            "read profile followers": {
+                "path": {
+                    "USER_NAME": "DrPib",
+                    "PAGE": "3"
+                }
+            }
+        }
+    },
+    "atrium/api/USER_NAME/photos/PAGE": {
+        "GET": {
+            "read profile photos": {
+                "path": {
+                    "USER_NAME": "DrPib",
+                    "PAGE": "3"
+                }
+            }
+        }
+    },
+    "atrium/api/USER_NAME/albums/PAGE": {
+        "GET": {
+            "read profile albums": {
+                "path": {
+                    "USER_NAME": "DrPib",
+                    "PAGE": "3"
+                }
+            }
+        }
+    },
+    "atrium/api/USER_NAME/videos/PAGE": {
+        "GET": {
+            "read profile videos": {
                 "path": {
                     "USER_NAME": "DrPib",
                     "PAGE": "3"

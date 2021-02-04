@@ -2124,6 +2124,65 @@
         }
     },
     {
+        "url": "circle/api/people/PAGE",
+        "label": "cir_pep_page",
+        "GET": {
+            "200": {
+                "list other profiles": {
+                    "path": {
+                        "PAGE": "3"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "circle/api/people/friend_requests/PAGE",
+        "label": "cir_pep_frn_req_page",
+        "GET": {
+            "200": {
+                "list your firend requests": {
+                    "path": {
+                        "PAGE": "3"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "list your firend requests (not logged in)": {
+                    "path": {
+                        "PAGE": "3"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "circle/api/people/friend_requests/sent/PAGE",
+        "label": "cir_pep_frn_req_snt_page",
+        "GET": {
+            "200": {
+                "list your firend requests sent": {
+                    "path": {
+                        "PAGE": "3"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "list your firend requests sent (not logged in)": {
+                    "path": {
+                        "PAGE": "3"
+                    }
+                }
+            }
+        }
+    },
+    {
         "url": "circle/api/market/post/POST_ID",
         "label": "cir_mar_post",
         "GET": {
@@ -2355,6 +2414,399 @@
         "GET": {
             "200": {
                 "read profile events": {
+                    "path": {
+                        "USER_NAME": "DrPib",
+                        "PAGE": "3"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "atrium/api/messages",
+        "label": "atr_msg",
+        "GET": {
+            "200": {
+                "read my message conversations": {
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "read my messages (while not logged in)": {}
+            }
+        },
+        "POST": {
+            "200": {
+                "create a new message conversation": {
+                    "data": {
+                        "user_name": "myFriendTom"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "create a new message conversation (while not logged in)": {
+                    "data": {
+                        "user_name": "myFriendTom"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "atrium/api/messages/CONVERSATION_ID",
+        "label": "atr_msg_cnv",
+        "GET": {
+            "200": {
+                "read my conversation messages": {
+                    "path": {
+                        "CONVERSATION_ID": "123123123"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "read my conversation messages (while not logged in).": {
+                    "path": {
+                        "CONVERSATION_ID": "123123123"
+                    }
+                },
+                "read my conversation messages (to a conversation I don't own).": {
+                    "path": {
+                        "CONVERSATION_ID": "000000000000"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            }
+        },
+        "POST": {
+            "200": {
+                "create a new message": {
+                    "path": {
+                        "CONVERSATION_ID": "123123123"
+                    },
+                    "data": {
+                        "message_text": "This is some message text."
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "create a new message (while not logged in).": {
+                    "path": {
+                        "CONVERSATION_ID": "123123123"
+                    },
+                    "data": {
+                        "message_text": "This is some message text."
+                    }
+                }
+            }
+        },
+        "DELETE": {
+            "200": {
+                "delete a conversation": {
+                    "path": {
+                        "CONVERSATION_ID": "123123123"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "delete a conversation (while not logged in)": {
+                    "path": {
+                        "CONVERSATION_ID": "123123123"
+                    }
+                },
+                "delete a conversation (that I don't own).": {
+                    "path": {
+                        "CONVERSATION_ID": "000000000000"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "atrium/api/message/MESSAGE_ID",
+        "label": "atr_msg_cnv_msg",
+        "POST": {
+            "200": {
+                "update an old message": {
+                    "path": {
+                        "MESSAGE_ID": "35435345"
+                    },
+                    "data": {
+                        "message_text": "This is some message text."
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "update an old message (while not logged in).": {
+                    "path": {
+                        "MESSAGE_ID": "35435345"
+                    },
+                    "data": {
+                        "message_text": "This is some message text."
+                    }
+                },
+                "update an old message (that I don't own).": {
+                    "path": {
+                        "MESSAGE_ID": "00000000000000"
+                    },
+                    "data": {
+                        "message_text": "This is some message text."
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            }
+        },
+        "DELETE": {
+            "200": {
+                "delete an old message": {
+                    "path": {
+                        "MESSAGE_ID": "35435345"
+                    },
+                    "data": {
+                        "message_text": "This is some message text."
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "delete an old message (while not logged in).": {
+                    "path": {
+                        "MESSAGE_ID": "35435345"
+                    },
+                    "data": {
+                        "message_text": "This is some message text."
+                    }
+                },
+                "delete an old message (that I don't own).": {
+                    "path": {
+                        "MESSAGE_ID": "00000000000000"
+                    },
+                    "data": {
+                        "message_text": "This is some message text."
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "atrium/api/USER_NAME",
+        "label": "atr_pro",
+        "GET": {
+            "200": {
+                "load profile": {
+                    "path": {
+                        "USER_NAME": "akelinhans"
+                    }
+                }
+            },
+            "404": {
+                "alex profile normal": {
+                    "path": {
+                        "USER_NAME": "****"
+                    }
+                }
+            }
+        },
+        "POST": {
+            "405": {
+                "anththing": {
+                    "path": {
+                        "USER_NAME": "akleinhans"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "atrium/api/USER_NAME/timeline",
+        "label": "atr_pro_tim",
+        "POST": {
+            "200": {
+                "post to profile timline": {
+                    "path": {
+                        "USER_NAME": "DrPib"
+                    },
+                    "data": {
+                        "text": "The joke is that both the words ending in the same sylable that rhyme.",
+                        "post_type": "media",
+                        "url": "https://google.com/?no=matter&how=fast&i=run",
+                        "provider": "Breitbart Media Outlet",
+                        "type": "photo",
+                        "title": "Title of my post",
+                        "html": "<html>how to meet ladies</html>"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "400": {
+                "post to profile timline (invalid post)": {
+                    "path": {
+                        "USER_NAME": "DrPib"
+                    },
+                    "data": {
+                        "post_type": "media",
+                        "url": "THIS IS NOT A URL",
+                        "provider": "Breitbart Media Outlet",
+                        "type": "photo",
+                        "title": "Title of my post",
+                        "text": "The joke is that both the words ending in the same sylable that rhyme.",
+                        "html": "<html>how to meet ladies</html>"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "post to profile timline (bad/no session_id)": {
+                    "path": {
+                        "USER_NAME": "DrPib"
+                    },
+                    "data": {
+                        "text": "The joke is that both the words ending in the same sylable that rhyme.",
+                        "post_type": "media",
+                        "url": "https://google.com/?no=matter&how=fast&i=run",
+                        "provider": "Breitbart Media Outlet",
+                        "type": "photo",
+                        "title": "Title of my post",
+                        "html": "<html>how to meet ladies</html>"
+                    },
+                    "cookies": {
+                        "sessionid": "Fake Session ID"
+                    }
+                }
+            }
+        },
+        "GET": {
+            "405": {
+                "get profile timeline without specifying a page": {
+                    "path": {
+                        "USER_NAME": "DrPib"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "atrium/api/USER_NAME/timeline/PAGE",
+        "label": "atr_pro_tim_page",
+        "GET": {
+            "200": {
+                "read profile timeline": {
+                    "path": {
+                        "USER_NAME": "DrPib",
+                        "PAGE": "3"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "atrium/api/USER_NAME/friends/PAGE",
+        "label": "atr_pro_tim_fr",
+        "GET": {
+            "200": {
+                "read profile friend list": {
+                    "path": {
+                        "USER_NAME": "DrPib",
+                        "PAGE": "3"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "atrium/api/USER_NAME/following/PAGE",
+        "label": "atr_pro_fing",
+        "GET": {
+            "200": {
+                "read profile following": {
+                    "path": {
+                        "USER_NAME": "DrPib",
+                        "PAGE": "3"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "atrium/api/USER_NAME/followers/PAGE",
+        "label": "atr_pro_frs",
+        "GET": {
+            "200": {
+                "read profile followers": {
+                    "path": {
+                        "USER_NAME": "DrPib",
+                        "PAGE": "3"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "atrium/api/USER_NAME/photos/PAGE",
+        "label": "atr_pro_photos",
+        "GET": {
+            "200": {
+                "read profile photos": {
+                    "path": {
+                        "USER_NAME": "DrPib",
+                        "PAGE": "3"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "atrium/api/USER_NAME/albums/PAGE",
+        "label": "atr_pro_albums",
+        "GET": {
+            "200": {
+                "read profile albums": {
+                    "path": {
+                        "USER_NAME": "DrPib",
+                        "PAGE": "3"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "atrium/api/USER_NAME/videos/PAGE",
+        "label": "atr_pro_videos",
+        "GET": {
+            "200": {
+                "read profile videos": {
                     "path": {
                         "USER_NAME": "DrPib",
                         "PAGE": "3"
