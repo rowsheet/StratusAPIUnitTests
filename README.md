@@ -69,6 +69,13 @@ reference of examples in the `spec.json`, only full layouts of them.
 	circle/api/saved/PAGE
 	circle/api/products/PAGE
 	circle/api/articles/PAGE
+	circle/api/search/PAGE
+	circle/api/search/hashtag/PAGE
+	circle/api/search/articles/PAGE
+	circle/api/search/users/PAGE
+	circle/api/search/pages/PAGE
+	circle/api/search/groups/PAGE
+	circle/api/search/events/PAGE
 	circle/api/messages
 	circle/api/messages/CONVERSATION_ID
 	circle/api/message/MESSAGE_ID
@@ -124,17 +131,8 @@ reference of examples in the `spec.json`, only full layouts of them.
 
     # Core 
 	core/api/signup
-	core/api/signup
 	core/api/siginin
     # Circle
-	circle/api/timeline
-	circle/api/search/PAGE
-	circle/api/search/hashtag/PAGE
-	circle/api/search/articles/PAGE
-	circle/api/search/users/PAGE
-	circle/api/search/pages/PAGE
-	circle/api/search/groups/PAGE
-	circle/api/search/events/PAGE
 	circle/api/people/PAGE
 	circle/api/people/friend_requests/PAGE
 	circle/api/people/friend_requests/sent/PAGE

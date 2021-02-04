@@ -601,13 +601,118 @@ TESTS = [
             },
         },
     },
-    # @TODO 'url': 'circle/api/search/PAGE',
-    # @TODO 'url': 'circle/api/search/hashtag/PAGE',
-    # @TODO 'url': 'circle/api/search/articles/PAGE',
-    # @TODO 'url': 'circle/api/search/users/PAGE',
-    # @TODO 'url': 'circle/api/search/pages/PAGE',
-    # @TODO 'url': 'circle/api/search/groups/PAGE',
-    # @TODO 'url': 'circle/api/search/events/PAGE',
+    {
+        'url': 'circle/api/search/PAGE',
+        'label': 'cir_sch_pos',
+        'GET': {
+            '200': {
+                'search posts': {
+                    'path': {
+                        'PAGE': '1',
+                    },
+                    'data': {
+                        'q': 'some search',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/search/hashtag/PAGE',
+        'label': 'cir_sch_hsh',
+        'GET': {
+            '200': {
+                'search posts': {
+                    'path': {
+                        'PAGE': '1',
+                    },
+                    'data': {
+                        'q': 'some search',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/search/articles/PAGE',
+        'label': 'cir_sch_art',
+        'GET': {
+            '200': {
+                'search posts': {
+                    'path': {
+                        'PAGE': '1',
+                    },
+                    'data': {
+                        'q': 'some search',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/search/users/PAGE',
+        'label': 'cir_sch_usr',
+        'GET': {
+            '200': {
+                'search posts': {
+                    'path': {
+                        'PAGE': '1',
+                    },
+                    'data': {
+                        'q': 'some search',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/search/pages/PAGE',
+        'label': 'cir_sch_pag',
+        'GET': {
+            '200': {
+                'search posts': {
+                    'path': {
+                        'PAGE': '1',
+                    },
+                    'data': {
+                        'q': 'some search',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/search/groups/PAGE',
+        'label': 'cir_sch_grp',
+        'GET': {
+            '200': {
+                'search posts': {
+                    'path': {
+                        'PAGE': '1',
+                    },
+                    'data': {
+                        'q': 'some search',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/search/events/PAGE',
+        'label': 'cir_sch_evt',
+        'GET': {
+            '200': {
+                'search posts': {
+                    'path': {
+                        'PAGE': '1',
+                    },
+                    'data': {
+                        'q': 'some search',
+                    },
+                },
+            },
+        },
+    },
     {
         'url': 'circle/api/messages',
         'label': 'cir_msg',

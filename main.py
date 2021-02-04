@@ -1,3 +1,4 @@
+import urllib.parse
 import requests
 import sys
 import json
@@ -114,6 +115,11 @@ def run_method_status(chosen_label, chosen_method, chosen_status, minimal=True):
                             url = url.replace(key,val)
 
                     data = METHOD_STATUS.get('data')
+                    if method == 'GET': 
+                        if data is not None:
+                            query = urllib.parse.urlencode(
+                                METHOD_STATUS.get('data'))
+                            url += '?' + query
                     cookies = METHOD_STATUS.get('cookies')
                     status_code = None
                     text = None
@@ -235,6 +241,13 @@ DONE_LIST = ['cir_pro_tim','cir_pro','cir_pro_tim_page',
         'cor_set_not',
         'cor_set_ver',
         'cor_set_del',
+        'cir_sch_pos',
+        'cir_sch_hsh',
+        'cir_sch_art',
+        'cir_sch_usr',
+        'cir_sch_pag',
+        'cir_sch_grp',
+        'cir_sch_evt',
         ]
 
 def print_usage():
@@ -252,6 +265,8 @@ Examples:
     exit()
 
 if __name__ == '__main__':
+
+    print(chr(27) + "[2J")
 
     # Print args
     if len(sys.argv) == 1:
