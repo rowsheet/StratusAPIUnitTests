@@ -268,6 +268,9 @@ DONE_LIST = [
         'atr_pro_photos',
         'atr_pro_albums',
         'atr_pro_videos',
+        'atr_post',
+        'atr_tim',
+        'atr_tim_page',
         ]
 
 def print_usage():

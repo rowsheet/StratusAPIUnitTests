@@ -474,7 +474,7 @@ TESTS = [
         'label': 'cir_post',
         'GET': {
             '200': {
-                'read my timeline feed': {
+                'read my a post': {
                     'path': {
                         'POST_ID': '100',
                     },
@@ -2126,9 +2126,119 @@ TESTS = [
             },
         },
     },
-    # @TODO 'url': 'atrium/api/timeline',
-    # @TODO 'url': 'atrium/api/timeline/PAGE',
-    # @TODO 'url': 'atrium/api/post/POST_ID',
+    {
+        'url': 'atrium/api/timeline',
+        'label': 'atr_tim',
+        'POST': {
+            '200': {
+                'create a post on my own timeline': {
+                    'data': POST_EXAMPLES['valid_media'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'create a post on my own timeline (while not logged in)': {
+                    'data': POST_EXAMPLES['valid_media'],
+                },
+            },
+        },
+    },
+    {
+        'url': 'atrium/api/timeline/PAGE',
+        'label': 'atr_tim_page',
+        'GET': {
+            '200': {
+                'read my timeline feed': {
+                    'path': {
+                        'PAGE': '1',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'read my timeline feed (while not logged in)': {
+                    'path': {
+                        'PAGE': '1',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'atrium/api/post/POST_ID',
+        'label': 'atr_post',
+        'GET': {
+            '200': {
+                'read a post': {
+                    'path': {
+                        'POST_ID': '100',
+                    },
+                },
+            },
+        },
+        'POST': {
+            '200': {
+                'update a post': {
+                    'path': {
+                        'POST_ID': '100',
+                    },
+                    'data': POST_EXAMPLES['valid_media_post_update'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'update a post (while not logged in)': {
+                    'path': {
+                        'POST_ID': '100',
+                    },
+                    'data': POST_EXAMPLES['valid_media_post_update'],
+                },
+                'update a post (that I don\'t own)': {
+                    'path': {
+                        'POST_ID': '200',
+                    },
+                    'data': POST_EXAMPLES['valid_media_post_update'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+        'DELETE': {
+            '200': {
+                'delete a post': {
+                    'path': {
+                        'POST_ID': '100',
+                    },
+                    'data': POST_EXAMPLES['valid_media_post_update'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'delete a post (while not logged in)': {
+                    'path': {
+                        'POST_ID': '100',
+                    },
+                },
+                'delete a post (that I don\'t own)': {
+                    'path': {
+                        'POST_ID': '200',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
     {
         'url': 'atrium/api/messages',
         'label': 'atr_msg',
