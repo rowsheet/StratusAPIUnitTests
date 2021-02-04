@@ -165,12 +165,21 @@ POST_EXAMPLES = {
     # INVALID POSTS 
     #---------------------------------------------------------------------------
     'valid_media': {
+        'text': 'The joke is that both the words ending in the same sylable that rhyme.',
         'post_type': 'media',
         'url': 'https://google.com/?no=matter&how=fast&i=run',
         'provider': 'Breitbart Media Outlet',
         'type': 'photo',
         'title': 'Title of my post',
-        'text': 'The joke is that both the words ending in the same sylable that rhyme.',
+        'html': '<html>how to meet ladies</html>',
+    },
+    'valid_media_post_update': {
+        'text': 'Im changing the text of this post',
+        'post_type': 'media',
+        'url': 'https://google.com/?no=matter&how=fast&i=run',
+        'provider': 'Breitbart Media Outlet',
+        'type': 'photo',
+        'title': 'Title of my post',
         'html': '<html>how to meet ladies</html>',
     },
     #---------------------------------------------------------------------------
@@ -271,44 +280,209 @@ TESTS = [
     # @TODO 'url': 'circle/api/timeline',
     {
         'url': 'circle/api/timeline',
-        'label': 'ctimeline',
+        'label': 'cir_tim',
         'POST': {
             '200': {
-                'one': {
-                    'data': {
-                        'post_type': 'media',
-                        'url': 'https://google.com/?no=matter&how=fast&i=run',
-                        'provider': 'Breitbart Media Outlet',
-                        'type': 'photo',
-                        'title': 'Title of my post',
-                        'text': 'The joke is that both the words ending in the same sylable that rhyme.',
-                        'html': '<html>how to meet ladies</html>',
+                'create a post on my own timeline': {
+                    'data': POST_EXAMPLES['valid_media'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
                     },
-                    'headers': None,
                 },
             },
-            '400': {
-                'Invlaid post_type': {
-                    'data': {
-                        'post_type': 'foo',
-                        'url': 'https://google.com/?no=matter&how=fast&i=run',
-                        'provider': 'Breitbart Media Outlet',
-                        'type': 'photo',
-                        'title': 'Title of my post',
-                        'text': 'The joke is that both the words ending in the same sylable that rhyme.',
-                        'html': '<html>how to meet ladies</html>',
-                    },
-                    'headers': None,
+            '401': {
+                'create a post on my own timeline (while not logged in)': {
+                    'data': POST_EXAMPLES['valid_media'],
                 },
             },
         },
     },
-    # @TODO 'url': 'circle/api/timeline/PAGE',
-    # @TODO 'url': 'circle/api/post/POST_ID',
-    # @TODO 'url': 'circle/api/popular/PAGE',
-    # @TODO 'url': 'circle/api/saved/PAGE',
-    # @TODO 'url': 'circle/api/products/PAGE',
-    # @TODO 'url': 'circle/api/articles/PAGE',
+    {
+        'url': 'circle/api/timeline/PAGE',
+        'label': 'cir_tim_page',
+        'GET': {
+            '200': {
+                'read my timeline feed': {
+                    'path': {
+                        'PAGE': '1',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'read my timeline feed (while not logged in)': {
+                    'path': {
+                        'PAGE': '1',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/post/POST_ID',
+        'label': 'cir_post',
+        'GET': {
+            '200': {
+                'read my timeline feed': {
+                    'path': {
+                        'POST_ID': '100',
+                    },
+                },
+            },
+        },
+        'POST': {
+            '200': {
+                'update a post': {
+                    'path': {
+                        'POST_ID': '100',
+                    },
+                    'data': POST_EXAMPLES['valid_media_post_update'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'update a post (while not logged in)': {
+                    'path': {
+                        'POST_ID': '100',
+                    },
+                    'data': POST_EXAMPLES['valid_media_post_update'],
+                },
+                'update a post (that I don\'t own)': {
+                    'path': {
+                        'POST_ID': '200',
+                    },
+                    'data': POST_EXAMPLES['valid_media_post_update'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+        'DELETE': {
+            '200': {
+                'delete a post': {
+                    'path': {
+                        'POST_ID': '100',
+                    },
+                    'data': POST_EXAMPLES['valid_media_post_update'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'delete a post (while not logged in)': {
+                    'path': {
+                        'POST_ID': '100',
+                    },
+                },
+                'delete a post (that I don\'t own)': {
+                    'path': {
+                        'POST_ID': '200',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/popular/PAGE',
+        'label': 'cir_tim_pop_page',
+        'GET': {
+            '200': {
+                'read my popular timeline feed': {
+                    'path': {
+                        'PAGE': '1',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'read my popular timeline feed (while not logged in)': {
+                    'path': {
+                        'PAGE': '1',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/saved/PAGE',
+        'label': 'cir_tim_svd_page',
+        'GET': {
+            '200': {
+                'read my saved timeline feed': {
+                    'path': {
+                        'PAGE': '1',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'read my saved timeline feed (while not logged in)': {
+                    'path': {
+                        'PAGE': '1',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/products/PAGE',
+        'label': 'cir_tim_prd_page',
+        'GET': {
+            '200': {
+                'read my product timeline feed': {
+                    'path': {
+                        'PAGE': '1',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'read my product timeline feed (while not logged in)': {
+                    'path': {
+                        'PAGE': '1',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/articles/PAGE',
+        'label': 'cir_tim_art_page',
+        'GET': {
+            '200': {
+                'read my article timeline feed': {
+                    'path': {
+                        'PAGE': '1',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'read my article timeline feed (while not logged in)': {
+                    'path': {
+                        'PAGE': '1',
+                    },
+                },
+            },
+        },
+    },
     # @TODO 'url': 'circle/api/search/PAGE',
     # @TODO 'url': 'circle/api/search/hashtag/PAGE',
     # @TODO 'url': 'circle/api/search/articles/PAGE',
@@ -316,9 +490,201 @@ TESTS = [
     # @TODO 'url': 'circle/api/search/pages/PAGE',
     # @TODO 'url': 'circle/api/search/groups/PAGE',
     # @TODO 'url': 'circle/api/search/events/PAGE',
-    # @TODO 'url': 'circle/api/messages',
-    # @TODO 'url': 'circle/api/messages/CONVERSATION_ID',
-    # @TODO 'url': 'circle/api/messages/CONVERSATION_ID/MESSAGE_ID',
+    {
+        'url': 'circle/api/messages',
+        'label': 'cir_msg',
+        'GET': {
+            '200': {
+                'read my message conversations': {
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'read my messages (while not logged in)': {
+                },
+            },
+        },
+        'POST': {
+            '200': {
+                'create a new message conversation': {
+                    'data': {
+                        'user_name': 'myFriendTom',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'create a new message conversation (while not logged in)': {
+                    'data': {
+                        'user_name': 'myFriendTom',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/messages/CONVERSATION_ID',
+        'label': 'cir_msg_cnv',
+        'GET': {
+            '200': {
+                'read my conversation messages': {
+                    'path': {
+                        'CONVERSATION_ID': '123123123',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'read my conversation messages (while not logged in).': {
+                    'path': {
+                        'CONVERSATION_ID': '123123123',
+                    },
+                },
+                'read my conversation messages (to a conversation I don\'t own).': {
+                    'path': {
+                        'CONVERSATION_ID': '000000000000',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+        'POST': {
+            '200': {
+                'create a new message': {
+                    'path': {
+                        'CONVERSATION_ID': '123123123',
+                    },
+                    'data': {
+                        'message_text': 'This is some message text.',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'create a new message (while not logged in).': {
+                    'path': {
+                        'CONVERSATION_ID': '123123123',
+                    },
+                    'data': {
+                        'message_text': 'This is some message text.',
+                    },
+                },
+            },
+        },
+        'DELETE': {
+            '200': {
+                'delete a conversation': {
+                    'path': {
+                        'CONVERSATION_ID': '123123123',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'delete a conversation (while not logged in)': {
+                    'path': {
+                        'CONVERSATION_ID': '123123123',
+                    },
+                },
+                'delete a conversation (that I don\'t own).': {
+                    'path': {
+                        'CONVERSATION_ID': '000000000000',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/message/MESSAGE_ID',
+        'label': 'cir_msg_cnv_msg',
+        'POST': {
+            '200': {
+                'update an old message': {
+                    'path': {
+                        'MESSAGE_ID': '35435345',
+                    },
+                    'data': {
+                        'message_text': 'This is some message text.',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'update an old message (while not logged in).': {
+                    'path': {
+                        'MESSAGE_ID': '35435345',
+                    },
+                    'data': {
+                        'message_text': 'This is some message text.',
+                    },
+                },
+                'update an old message (that I don\'t own).': {
+                    'path': {
+                        'MESSAGE_ID': '00000000000000',
+                    },
+                    'data': {
+                        'message_text': 'This is some message text.',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+        'DELETE': {
+            '200': {
+                'delete an old message': {
+                    'path': {
+                        'MESSAGE_ID': '35435345',
+                    },
+                    'data': {
+                        'message_text': 'This is some message text.',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'delete an old message (while not logged in).': {
+                    'path': {
+                        'MESSAGE_ID': '35435345',
+                    },
+                    'data': {
+                        'message_text': 'This is some message text.',
+                    },
+                },
+                'delete an old message (that I don\'t own).': {
+                    'path': {
+                        'MESSAGE_ID': '00000000000000',
+                    },
+                    'data': {
+                        'message_text': 'This is some message text.',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
     {
         'url': 'circle/api/groups',
         'label': 'cir_grp',
@@ -632,7 +998,6 @@ TESTS = [
             },
         },
     },
-    # @TODO 'url': 'circle/api/events/PAGE',
     {
         'url': 'circle/api/events/PAGE',
         'label': 'cir_evt_page',
@@ -646,7 +1011,6 @@ TESTS = [
             },
         },
     },
-    # @TODO 'url': 'circle/api/events/going/PAGE',
     {
         'url': 'circle/api/events/going/PAGE',
         'label': 'cir_evt_gng_page',
@@ -670,7 +1034,6 @@ TESTS = [
             },
         },
     },
-    # @TODO 'url': 'circle/api/events/interested/PAGE',
     {
         'url': 'circle/api/events/interested/PAGE',
         'label': 'cir_evt_int_page',
@@ -694,7 +1057,6 @@ TESTS = [
             },
         },
     },
-    # @TODO 'url': 'circle/api/events/invited/PAGE',
     {
         'url': 'circle/api/events/invited/PAGE',
         'label': 'cir_evt_ivt_page',
@@ -718,7 +1080,6 @@ TESTS = [
             },
         },
     },
-    # @TODO 'url': 'circle/api/events/manage/PAGE',
     {
         'url': 'circle/api/events/manage/PAGE',
         'label': 'cir_evt_man_page',
@@ -966,7 +1327,6 @@ TESTS = [
             },
         },
     },
-    # ----------------
     {
         'url': 'circle/api/pages',
         'label': 'cir_pag',
@@ -1706,6 +2066,16 @@ DONE_LIST = ['cir_pro_tim','cir_pro','cir_pro_tim_page',
         'cir_evt_pro_videos',
         'cir_evt_pro_albums',
         'cir_evt_pro_photos',
+        'cir_post',
+        'cir_tim',
+        'cir_tim_page',
+        'cir_tim_pop_page',
+        'cir_tim_svd_page',
+        'cir_tim_prd_page',
+        'cir_tim_art_page',
+        'cir_msg',
+        'cir_msg_cnv',
+        'cir_msg_cnv_msg',
         ]
 
 if __name__ == '__main__':
