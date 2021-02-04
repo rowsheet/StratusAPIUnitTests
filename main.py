@@ -238,15 +238,17 @@ DONE_LIST = ['cir_pro_tim','cir_pro','cir_pro_tim_page',
         ]
 
 def print_usage():
-    print("""python3 main.py [label] +| ([method|status] [status|method])")
-    dump the current spec:
-        python3 main.py dumpspec > spec.json
-    run all tests in the 'donelist':
-        python3 main.py donelist
-    run a single test for a label, method, and status:
-        python3 main.py [label] [method] [status]
-    run all tests for a label:
-        python3 main.py [label]""")
+    print("""Usage:
+      $ python3 main.py [label] +| ([method|status] [status|method])")
+Examples:
+    Dump the current spec:
+      $ python3 main.py dumpspec > spec.json
+    Run all tests in the 'donelist':
+      $ python3 main.py donelist
+    Run a single test for a label, method, and status:
+      $ python3 main.py [label] [method] [status]
+    Run all tests for a label:
+      $ python3 main.py [label]""")
     exit()
 
 if __name__ == '__main__':

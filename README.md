@@ -1,5 +1,19 @@
 # Stratus API Unit Test Coverage
 
+## Usage:
+
+	Usage:
+	      $ python3 main.py [label] +| ([method|status] [status|method])")
+	Examples:
+	    Dump the current spec:
+	      $ python3 main.py dumpspec > spec.json
+	    Run all tests in the 'donelist':
+	      $ python3 main.py donelist
+	    Run a single test for a label, method, and status:
+	      $ python3 main.py [label] [method] [status]
+	    Run all tests for a label:
+	      $ python3 main.py [label]
+
 ## Running These Tests:
 
 You need some valid configuration. You can either set the `SESSION_ID` and `BASE_URL`
