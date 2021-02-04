@@ -2,6 +2,7 @@
 
 ## URLs Done So Far:
 
+    # Circle
 	circle/api/timeline
 	circle/api/timeline/PAGE
 	circle/api/post/POST_ID
@@ -21,7 +22,7 @@
 	circle/api/groups/GROUP_NAME/timeline/PAGE
 	circle/api/groups/GROUP_NAME/members/PAGE
 	circle/api/groups/GROUP_NAME/photos/PAGE
-	circle/api/USER_NAME/albums/PAGE
+	circle/api/groups/GROUP_NAME/albums/PAGE
 	circle/api/groups/GROUP_NAME/videos/PAGE
 	circle/api/events
 	circle/api/events/PAGE
@@ -62,6 +63,7 @@
 
 ## URLs Not Done:
 
+    # Core 
 	core/api/signup
 	core/api/signup
 	core/api/siginin
@@ -81,6 +83,7 @@
 	core/api/settings/verification
 	core/api/settings/blocking
 	core/api/settings/delete
+    # Circle
 	circle/api/timeline
 	circle/api/search/PAGE
 	circle/api/search/hashtag/PAGE
@@ -100,6 +103,7 @@
 	circle/api/market/PAGE
 	circle/api/market/category/CATEGORY_ID/PAGE
 	circle/api/market/post/POST_ID
+    # Atrium
 	atrium/api/timeline
 	atrium/api/timeline/PAGE
 	atrium/api/post/POST_ID
@@ -126,6 +130,7 @@
 	atrium/api/USER_NAME/photos/PAGE
 	atrium/api/USER_NAME/albums/PAGE
 	atrium/api/USER_NAME/videos/PAGE
+    # Ads
 	ads/api/wallet
 	ads/api/campaigns
 	ads/api/promoted

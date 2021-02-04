@@ -1,3 +1,4 @@
+[2J
 [
     {
         "url": "_URL_",
@@ -8,6 +9,415 @@
                     "data": {},
                     "headers": {}
                 }
+            }
+        }
+    },
+    {
+        "url": "core/api/settings",
+        "label": "cor_set",
+        "GET": {
+            "200": {
+                "read account settings": {
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "unauthorized request": {}
+            }
+        },
+        "POST": {
+            "200": {
+                "update account settings": {
+                    "data": {
+                        "email_address": "rowsheet.com@gmail.com",
+                        "user_name": "ThisIsMyUserName"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "unauthorized request": {}
+            }
+        }
+    },
+    {
+        "url": "core/api/settings/profile/basic",
+        "label": "cor_set_pro_bas",
+        "GET": {
+            "200": {
+                "read profile basic": {
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "unauthorized request": {}
+            }
+        },
+        "POST": {
+            "200": {
+                "update profile basic": {
+                    "data": {
+                        "first_name": "Alex",
+                        "last_name": "Kleinhans",
+                        "gender": "male",
+                        "relationship_status": "single",
+                        "country": "Antarctica",
+                        "website": "https://www.stratus.co",
+                        "birth_year": "1800",
+                        "birth_day": "01",
+                        "birth_month": "01",
+                        "about_me": "Thank you! Very cool!"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "unauthorized request": {}
+            }
+        }
+    },
+    {
+        "url": "core/api/settings/profile/work",
+        "label": "cor_set_pro_wrk",
+        "GET": {
+            "200": {
+                "read profile work": {
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "unauthorized request": {}
+            }
+        },
+        "POST": {
+            "200": {
+                "update profile work": {
+                    "data": {
+                        "work_title": "Lepricon",
+                        "work_place": "Rainbows",
+                        "work_website": "https://www.bitcoin.org"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "unauthorized request": {}
+            }
+        }
+    },
+    {
+        "url": "core/api/settings/profile/location",
+        "label": "cor_set_pro_loc",
+        "GET": {
+            "200": {
+                "read profile location": {
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "unauthorized request": {}
+            }
+        },
+        "POST": {
+            "200": {
+                "update profile location": {
+                    "data": {
+                        "current_city": "Tuskegee, Alabama",
+                        "hometown": "Tiananmen Square"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "unauthorized request": {}
+            }
+        }
+    },
+    {
+        "url": "core/api/settings/profile/education",
+        "label": "cor_set_pro_edu",
+        "GET": {
+            "200": {
+                "read profile education": {
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "unauthorized request": {}
+            }
+        },
+        "POST": {
+            "200": {
+                "update profile education": {
+                    "data": {
+                        "school": "Yale",
+                        "major": "Corruption",
+                        "graduation_class": "1984"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "unauthorized request": {}
+            }
+        }
+    },
+    {
+        "url": "core/api/settings/profile/social",
+        "label": "cor_set_pro_soc",
+        "GET": {
+            "200": {
+                "read profile social": {
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "unauthorized request": {}
+            }
+        },
+        "POST": {
+            "200": {
+                "update profile social": {
+                    "data": {
+                        "facebook": "https://www.facebook.com/sneed",
+                        "twitter": "https://www.twitter.com/sneed",
+                        "youtube": "https://www.youtube.com/sneed",
+                        "instagram": "https://www.instagram.com/sneed",
+                        "linkedin": "https://www.linkedin.com/sneed",
+                        "vkontakte": "https://www.vkontakte.com/sneed"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "unauthorized request": {}
+            }
+        }
+    },
+    {
+        "url": "core/api/settings/security/password",
+        "label": "cor_set_sec_pas",
+        "POST": {
+            "200": {
+                "update security password": {
+                    "data": {
+                        "current_password": "password is very long",
+                        "new_password": "passw0rd is very long",
+                        "confirm_new_password": "passw0rd is very long"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "unauthorized request": {}
+            }
+        }
+    },
+    {
+        "url": "core/api/settings/security/sessions",
+        "label": "cor_set_sec_ses",
+        "GET": {
+            "200": {
+                "read security sessions": {
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "unauthorized request": {}
+            }
+        },
+        "DELETE": {
+            "200": {
+                "update security sessions": {
+                    "data": {
+                        "session_id": "12312313123"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "unauthorized request": {}
+            }
+        }
+    },
+    {
+        "url": "core/api/settings/privacy",
+        "label": "cor_set_pri",
+        "GET": {
+            "200": {
+                "read privacy settings": {
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "unauthorized request": {}
+            }
+        },
+        "POST": {
+            "200": {
+                "update privacy settings": {
+                    "data": {
+                        "poke": "everyone",
+                        "post_wall": "everyone",
+                        "dob": "everyone",
+                        "see_rel": "everyone",
+                        "see_basic": "everyone",
+                        "see_work": "everyone",
+                        "see_loc": "everyone",
+                        "see_edu": "everyone",
+                        "see_other": "everyone",
+                        "see_friends": "everyone",
+                        "see_photos": "everyone",
+                        "see_liked": "everyone",
+                        "see_groups": "everyone",
+                        "see_events": "everyone"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "unauthorized request": {}
+            },
+            "400": {
+                "bad options": {
+                    "data": {
+                        "poke": "everyone",
+                        "post_wall": "foo",
+                        "dob": "everyone",
+                        "see_rel": "everyone",
+                        "see_basic": "everyone",
+                        "see_work": "bar",
+                        "see_loc": "everyone",
+                        "see_edu": "everyone",
+                        "see_other": "everyone",
+                        "see_friends": "myself",
+                        "see_photos": "everyone",
+                        "see_liked": "everyone",
+                        "see_groups": "everyone",
+                        "see_events": "everyone"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "core/api/settings/notifications",
+        "label": "cor_set_not",
+        "GET": {
+            "200": {
+                "read notification settings": {
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "unauthorized request": {}
+            }
+        },
+        "POST": {
+            "200": {
+                "update notification settings": {
+                    "data": {
+                        "sound": true,
+                        "chat_sount": true
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "unauthorized request": {}
+            }
+        }
+    },
+    {
+        "url": "core/api/settings/verification",
+        "label": "cor_set_ver",
+        "GET": {
+            "200": {
+                "read verification settings": {
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "unauthorized request": {}
+            }
+        },
+        "POST": {
+            "200": {
+                "update verification settings": {
+                    "data": {
+                        "photo_file": "file://me.png",
+                        "passport_file": "file://passport.png",
+                        "other_info": "$eth R1ch"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "unauthorized request": {}
+            }
+        }
+    },
+    {
+        "url": "core/api/settings/delete",
+        "label": "cor_set_del",
+        "POST": {
+            "200": {
+                "delete my account": {
+                    "data": {
+                        "confirmation_string": "I am absolutley sure that I, akleinhans, want to PERMINANTLY DELETE my account, and I understand this will PERMINANTLY REMOVE all of my data FOREVER."
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "unauthorized request": {}
             }
         }
     },
@@ -770,13 +1180,13 @@
         }
     },
     {
-        "url": "circle/api/USER_NAME/albums/PAGE",
+        "url": "circle/api/groups/GROUP_NAME/albums/PAGE",
         "label": "cir_grp_pro_albums",
         "GET": {
             "200": {
-                "read profile albums": {
+                "read group profile albums": {
                     "path": {
-                        "USER_NAME": "DrPib",
+                        "GROUP_NAME": "SomeGroup",
                         "PAGE": "3"
                     }
                 }

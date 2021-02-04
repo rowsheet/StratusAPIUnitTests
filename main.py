@@ -256,28 +256,376 @@ TESTS = [
     },
     # TOP 
     #---------------------------------------------------------------------------
-    # @TODO 'url': 'core/api/_index/',
     # @TODO 'url': 'core/api/signup',
     # @TODO 'url': 'core/api/signup',
     # @TODO 'url': 'core/api/siginin',
-    # @TODO 'url': 'core/api/settings',
-    # @TODO 'url': 'core/api/settings/profile',
-    # @TODO 'url': 'core/api/settings/profile/basic',
-    # @TODO 'url': 'core/api/settings/profile/work',
-    # @TODO 'url': 'core/api/settings/profile/location',
-    # @TODO 'url': 'core/api/settings/profile/education',
-    # @TODO 'url': 'core/api/settings/profile/social',
-    # @TODO 'url': 'core/api/settings/security',
-    # @TODO 'url': 'core/api/settings/security/password',
-    # @TODO 'url': 'core/api/settings/security/sessions',
-    # @TODO 'url': 'core/api/settings/privacy',
-    # @TODO 'url': 'core/api/settings/notifications',
+    {
+        'url': 'core/api/settings',
+        'label': 'cor_set',
+        'GET': {
+            '200': {
+                'read account settings': {
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {'unauthorized request': {},},
+        },
+        'POST': {
+            '200': {
+                'update account settings': {
+                    'data': {
+                        'email_address': 'rowsheet.com@gmail.com',
+                        'user_name': 'ThisIsMyUserName',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {'unauthorized request': {},},
+        },
+    },
+    {
+        'url': 'core/api/settings/profile/basic',
+        'label': 'cor_set_pro_bas',
+        'GET': {
+            '200': {
+                'read profile basic': {
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {'unauthorized request': {},},
+        },
+        'POST': {
+            '200': {
+                'update profile basic': {
+                    'data': {
+                        'first_name': 'Alex',
+                        'last_name': 'Kleinhans',
+                        'gender': 'male',
+                        'relationship_status': 'single',
+                        'country': 'Antarctica',
+                        'website': 'https://www.stratus.co',
+                        'birth_year': '1800',
+                        'birth_day': '01',
+                        'birth_month': '01',
+                        'about_me': 'Thank you! Very cool!',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {'unauthorized request': {},},
+        },
+    },
+    {
+        'url': 'core/api/settings/profile/work',
+        'label': 'cor_set_pro_wrk',
+        'GET': {
+            '200': {
+                'read profile work': {
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {'unauthorized request': {},},
+        },
+        'POST': {
+            '200': {
+                'update profile work': {
+                    'data': {
+                        'work_title': 'Lepricon',
+                        'work_place': 'Rainbows',
+                        'work_website': 'https://www.bitcoin.org',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {'unauthorized request': {},},
+        },
+    },
+    {
+        'url': 'core/api/settings/profile/location',
+        'label': 'cor_set_pro_loc',
+        'GET': {
+            '200': {
+                'read profile location': {
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {'unauthorized request': {},},
+        },
+        'POST': {
+            '200': {
+                'update profile location': {
+                    'data': {
+                        'current_city': 'Tuskegee, Alabama',
+                        'hometown': 'Tiananmen Square',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {'unauthorized request': {},},
+        },
+    },
+    {
+        'url': 'core/api/settings/profile/education',
+        'label': 'cor_set_pro_edu',
+        'GET': {
+            '200': {
+                'read profile education': {
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {'unauthorized request': {},},
+        },
+        'POST': {
+            '200': {
+                'update profile education': {
+                    'data': {
+                        'school': 'Yale',
+                        'major': 'Corruption',
+                        'graduation_class': '1984',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {'unauthorized request': {},},
+        },
+    },
+    {
+        'url': 'core/api/settings/profile/social',
+        'label': 'cor_set_pro_soc',
+        'GET': {
+            '200': {
+                'read profile social': {
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {'unauthorized request': {},},
+        },
+        'POST': {
+            '200': {
+                'update profile social': {
+                    'data': {
+                        'facebook': 'https://www.facebook.com/sneed',
+                        'twitter': 'https://www.twitter.com/sneed',
+                        'youtube': 'https://www.youtube.com/sneed',
+                        'instagram': 'https://www.instagram.com/sneed',
+                        'linkedin': 'https://www.linkedin.com/sneed',
+                        'vkontakte': 'https://www.vkontakte.com/sneed',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {'unauthorized request': {},},
+        },
+    },
+    {
+        'url': 'core/api/settings/security/password',
+        'label': 'cor_set_sec_pas',
+        'POST': {
+            '200': {
+                'update security password': {
+                    'data': {
+                        'current_password': 'password is very long',
+                        'new_password': 'passw0rd is very long',
+                        'confirm_new_password': 'passw0rd is very long',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {'unauthorized request': {},},
+        },
+    },
+    {
+        'url': 'core/api/settings/security/sessions',
+        'label': 'cor_set_sec_ses',
+        'GET': {
+            '200': {
+                'read security sessions': {
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {'unauthorized request': {},},
+        },
+        'DELETE': {
+            '200': {
+                'update security sessions': {
+                    'data': {
+                        'session_id': '12312313123',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {'unauthorized request': {},},
+        },
+    },
+    {
+        'url': 'core/api/settings/privacy',
+        'label': 'cor_set_pri',
+        'GET': {
+            '200': {
+                'read privacy settings': {
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {'unauthorized request': {},},
+        },
+        'POST': {
+            '200': {
+                'update privacy settings': {
+                    'data': {
+                        'poke': 'everyone',
+                        'post_wall': 'everyone',
+                        'dob': 'everyone',
+                        'see_rel': 'everyone',
+                        'see_basic': 'everyone',
+                        'see_work': 'everyone',
+                        'see_loc': 'everyone',
+                        'see_edu': 'everyone',
+                        'see_other': 'everyone',
+                        'see_friends': 'everyone',
+                        'see_photos': 'everyone',
+                        'see_liked': 'everyone',
+                        'see_groups': 'everyone',
+                        'see_events': 'everyone',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {'unauthorized request': {},},
+            '400': {
+                'bad options': {
+                    'data': {
+                        'poke': 'everyone',
+                        'post_wall': 'foo',
+                        'dob': 'everyone',
+                        'see_rel': 'everyone',
+                        'see_basic': 'everyone',
+                        'see_work': 'bar',
+                        'see_loc': 'everyone',
+                        'see_edu': 'everyone',
+                        'see_other': 'everyone',
+                        'see_friends': 'myself', # should be 'me'
+                        'see_photos': 'everyone',
+                        'see_liked': 'everyone',
+                        'see_groups': 'everyone',
+                        'see_events': 'everyone',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'core/api/settings/notifications',
+        'label': 'cor_set_not',
+        'GET': {
+            '200': {
+                'read notification settings': {
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {'unauthorized request': {},},
+        },
+        'POST': {
+            '200': {
+                'update notification settings': {
+                    'data': {
+                        'sound': True,
+                        'chat_sount': True,
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {'unauthorized request': {},},
+        },
+    },
     # @TODO 'url': 'core/api/settings/affiliates',
-    # @TODO 'url': 'core/api/settings/verification',
+    {
+        'url': 'core/api/settings/verification',
+        'label': 'cor_set_ver',
+        'GET': {
+            '200': {
+                'read verification settings': {
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {'unauthorized request': {},},
+        },
+        'POST': {
+            '200': {
+                'update verification settings': {
+                    'data': {
+                        'photo_file': 'file://me.png',
+                        'passport_file': 'file://passport.png',
+                        'other_info': '$eth R1ch',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {'unauthorized request': {},},
+        },
+    },
     # @TODO 'url': 'core/api/settings/blocking',
-    # @TODO 'url': 'core/api/settings/delete',
-    # @TODO 'url': 'circle/api/_index',
-    # @TODO 'url': 'circle/api/timeline',
+    {
+        'url': 'core/api/settings/delete',
+        'label': 'cor_set_del',
+        'POST': {
+            '200': {
+                'delete my account': {
+                    'data': {
+                        'confirmation_string': 'I am absolutley sure that I, akleinhans, want to PERMINANTLY DELETE my account, and I understand this will PERMINANTLY REMOVE all of my data FOREVER.',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {'unauthorized request': {},},
+        },
+    },
     {
         'url': 'circle/api/timeline',
         'label': 'cir_tim',
@@ -942,13 +1290,13 @@ TESTS = [
         },
     },
     {
-        'url': 'circle/api/USER_NAME/albums/PAGE',
+        'url': 'circle/api/groups/GROUP_NAME/albums/PAGE',
         'label': 'cir_grp_pro_albums',
         'GET': {
             '200': { 
-                'read profile albums': {
+                'read group profile albums': {
                     'path': {
-                        'USER_NAME': 'DrPib',
+                        'GROUP_NAME': 'SomeGroup',
                         'PAGE': '3',
                     },
                 },
@@ -1816,7 +2164,6 @@ TESTS = [
             },
         },
     },
-    # @TODO 'url': 'atrium/api/_index',
     # @TODO 'url': 'atrium/api/timeline',
     # @TODO 'url': 'atrium/api/timeline/PAGE',
     # @TODO 'url': 'atrium/api/post/POST_ID',
@@ -1843,7 +2190,6 @@ TESTS = [
     # @TODO 'url': 'atrium/api/USER_NAME/photos/PAGE',
     # @TODO 'url': 'atrium/api/USER_NAME/albums/PAGE',
     # @TODO 'url': 'atrium/api/USER_NAME/videos/PAGE',
-    # @TODO 'url': 'ads/api/_index',
     # @TODO 'url': 'ads/api/wallet',
     # @TODO 'url': 'ads/api/campaigns',
     # @TODO 'url': 'ads/api/promoted',
@@ -2076,6 +2422,18 @@ DONE_LIST = ['cir_pro_tim','cir_pro','cir_pro_tim_page',
         'cir_msg',
         'cir_msg_cnv',
         'cir_msg_cnv_msg',
+        'cor_set',
+        'cor_set_pro_bas',
+        'cor_set_pro_wrk',
+        'cor_set_pro_loc',
+        'cor_set_pro_edu',
+        'cor_set_pro_soc',
+        'cor_set_sec_pas',
+        'cor_set_sec_ses',
+        'cor_set_pri',
+        'cor_set_not',
+        'cor_set_ver',
+        'cor_set_del',
         ]
 
 if __name__ == '__main__':
