@@ -102,6 +102,7 @@ reference of examples in the `spec.json`, only full layouts of them.
 	circle/api/groups/joined/PAGE
 	circle/api/groups/manage/PAGE
 	circle/api/groups/GROUP_NAME
+	circle/api/groups/GROUP_NAME/actions
 	circle/api/groups/GROUP_NAME/timeline
 	circle/api/groups/GROUP_NAME/timeline/PAGE
 	circle/api/groups/GROUP_NAME/members/PAGE
@@ -115,6 +116,7 @@ reference of examples in the `spec.json`, only full layouts of them.
 	circle/api/events/invited/PAGE
 	circle/api/events/manage/PAGE
 	circle/api/events/EVENT_NAME
+	circle/api/events/EVENT_NAME/actions
 	circle/api/events/EVENT_NAME/timeline
 	circle/api/events/EVENT_NAME/timeline/PAGE
 	circle/api/events/EVENT_NAME/interested/PAGE
@@ -128,6 +130,7 @@ reference of examples in the `spec.json`, only full layouts of them.
 	circle/api/pages/liked/PAGE
 	circle/api/pages/manage/PAGE
 	circle/api/pages/PAGE_NAME
+	circle/api/pages/PAGE_NAME/actions
 	circle/api/pages/PAGE_NAME/timeline
 	circle/api/pages/PAGE_NAME/timeline/PAGE
 	circle/api/pages/PAGE_NAME/photos/PAGE

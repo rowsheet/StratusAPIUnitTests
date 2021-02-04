@@ -1154,6 +1154,74 @@ TESTS = [
         },
     },
     {
+        'url': 'circle/api/groups/GROUP_NAME/action/ACTION',
+        'label': 'cir_grp_pro_act_join',
+        'POST': {
+            '200': { 
+                'join a group': {
+                    'path': {
+                        'GROUP_NAME': 'SomeGroup',
+                        'ACTION': 'join',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/groups/GROUP_NAME/action/ACTION',
+        'label': 'cir_grp_pro_act_unjoin',
+        'POST': {
+            '200': { 
+                'unjoin a group': {
+                    'path': {
+                        'GROUP_NAME': 'SomeGroup',
+                        'ACTION': 'unjoin',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/groups/GROUP_NAME/action/ACTION',
+        'label': 'cir_grp_pro_act_like',
+        'POST': {
+            '200': { 
+                'like a group': {
+                    'path': {
+                        'GROUP_NAME': 'SomeGroup',
+                        'ACTION': 'like',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/groups/GROUP_NAME/action/ACTION',
+        'label': 'cir_grp_pro_act_unlike',
+        'POST': {
+            '200': { 
+                'like a group': {
+                    'path': {
+                        'GROUP_NAME': 'SomeGroup',
+                        'ACTION': 'like',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    {
         'url': 'circle/api/groups/GROUP_NAME/timeline/PAGE',
         'label': 'cir_grp_pro_tim_page',
         'GET': {
@@ -1418,6 +1486,108 @@ TESTS = [
                 'delete a event (I\'m not an admin of)': {
                     'path': {
                         'EVENT_NAME':'Event_I_Dont_Admin_Foo',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/events/EVENT_NAME/action/ACTION',
+        'label': 'cir_evt_pro_act_going',
+        'POST': {
+            '200': { 
+                'going a event': {
+                    'path': {
+                        'EVENT_NAME': 'SomeEvent',
+                        'ACTION': 'going',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/events/EVENT_NAME/action/ACTION',
+        'label': 'cir_evt_pro_act_ungoing',
+        'POST': {
+            '200': { 
+                'ungoing a event': {
+                    'path': {
+                        'EVENT_NAME': 'SomeEvent',
+                        'ACTION': 'ungoing',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/events/EVENT_NAME/action/ACTION',
+        'label': 'cir_evt_pro_act_interested',
+        'POST': {
+            '200': { 
+                'interested a event': {
+                    'path': {
+                        'EVENT_NAME': 'SomeEvent',
+                        'ACTION': 'interested',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/events/EVENT_NAME/action/ACTION',
+        'label': 'cir_evt_pro_act_uninterested',
+        'POST': {
+            '200': { 
+                'uninterested a event': {
+                    'path': {
+                        'EVENT_NAME': 'SomeEvent',
+                        'ACTION': 'uninterested',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/events/EVENT_NAME/action/ACTION',
+        'label': 'cir_evt_pro_act_like',
+        'POST': {
+            '200': { 
+                'like a event': {
+                    'path': {
+                        'EVENT_NAME': 'SomeEvent',
+                        'ACTION': 'like',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/events/EVENT_NAME/action/ACTION',
+        'label': 'cir_evt_pro_act_unlike',
+        'POST': {
+            '200': { 
+                'like a event': {
+                    'path': {
+                        'EVENT_NAME': 'SomeEvent',
+                        'ACTION': 'like',
                     },
                     'cookies': {
                         'sessionid': SESSION_ID,
@@ -1736,6 +1906,40 @@ TESTS = [
                 'delete a page (I\'m not an admin of)': {
                     'path': {
                         'PAGE_NAME':'Page_I_Dont_Admin_Foo',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/pages/PAGE_NAME/action/ACTION',
+        'label': 'cir_pag_pro_act_like',
+        'POST': {
+            '200': { 
+                'like a page': {
+                    'path': {
+                        'PAGE_NAME': 'SomePage',
+                        'ACTION': 'like',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/pages/PAGE_NAME/action/ACTION',
+        'label': 'cir_pag_pro_act_unlike',
+        'POST': {
+            '200': { 
+                'like a page': {
+                    'path': {
+                        'PAGE_NAME': 'SomePage',
+                        'ACTION': 'like',
                     },
                     'cookies': {
                         'sessionid': SESSION_ID,
