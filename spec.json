@@ -1,3 +1,4 @@
+[2J
 {
     "_URL_": {
         "POST": {
@@ -1409,6 +1410,54 @@
                 },
                 "cookies": {
                     "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                }
+            }
+        }
+    },
+    "atrium/api/explore/PAGE": {
+        "GET": {
+            "explore posts": {
+                "path": {
+                    "PAGE": "1"
+                },
+                "data": {
+                    "q": "some query"
+                }
+            }
+        }
+    },
+    "atrium/api/explore/hashtag/PAGE": {
+        "GET": {
+            "explore posts": {
+                "path": {
+                    "PAGE": "1"
+                },
+                "data": {
+                    "q": "some query"
+                }
+            }
+        }
+    },
+    "atrium/api/explore/articles/PAGE": {
+        "GET": {
+            "explore posts": {
+                "path": {
+                    "PAGE": "1"
+                },
+                "data": {
+                    "q": "some query"
+                }
+            }
+        }
+    },
+    "atrium/api/explore/users/PAGE": {
+        "GET": {
+            "explore posts": {
+                "path": {
+                    "PAGE": "1"
+                },
+                "data": {
+                    "q": "some query"
                 }
             }
         }

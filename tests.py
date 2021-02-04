@@ -2435,10 +2435,70 @@ TESTS = [
         },
     },
     # @TODO 'url': 'atrium/api/trending/PAGE',
-    # @TODO 'url': 'atrium/api/explore/PAGE',
-    # @TODO 'url': 'atrium/api/explore/hashtag/PAGE',
-    # @TODO 'url': 'atrium/api/explore/articles/PAGE',
-    # @TODO 'url': 'atrium/api/explore/users/PAGE',
+    {
+        'url': 'atrium/api/explore/PAGE',
+        'label': 'atr_sch_pos',
+        'GET': {
+            '200': {
+                'explore posts': {
+                    'path': {
+                        'PAGE': '1',
+                    },
+                    'data': {
+                        'q': 'some query',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'atrium/api/explore/hashtag/PAGE',
+        'label': 'atr_sch_hsh',
+        'GET': {
+            '200': {
+                'explore posts': {
+                    'path': {
+                        'PAGE': '1',
+                    },
+                    'data': {
+                        'q': 'some query',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'atrium/api/explore/articles/PAGE',
+        'label': 'atr_sch_art',
+        'GET': {
+            '200': {
+                'explore posts': {
+                    'path': {
+                        'PAGE': '1',
+                    },
+                    'data': {
+                        'q': 'some query',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'atrium/api/explore/users/PAGE',
+        'label': 'atr_sch_usr',
+        'GET': {
+            '200': {
+                'explore posts': {
+                    'path': {
+                        'PAGE': '1',
+                    },
+                    'data': {
+                        'q': 'some query',
+                    },
+                },
+            },
+        },
+    },
     # @TODO 'url': 'atrium/api/bookmarks',
     # @TODO 'url': 'atrium/api/bookmarks/BOOKMARK_ID',
     # @TODO 'url': 'atrium/api/bookmarks/PAGE',

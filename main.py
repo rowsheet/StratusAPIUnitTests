@@ -271,6 +271,10 @@ DONE_LIST = [
         'atr_post',
         'atr_tim',
         'atr_tim_page',
+        'atr_sch_pos',
+        'atr_sch_hsh',
+        'atr_sch_art',
+        'atr_sch_usr',
         ]
 
 def print_usage():
