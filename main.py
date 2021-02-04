@@ -176,7 +176,10 @@ def run_label(label, minimal=True):
     return tests_run, tests_passed, tests_failed
 
 # All the tests I've already done.
-DONE_LIST = ['cir_pro_tim','cir_pro','cir_pro_tim_page',
+DONE_LIST = [
+        'cir_pro_tim',
+        'cir_pro',
+        'cir_pro_tim_page',
         'cir_pro_fr',
         'cir_pro_fing',
         'cir_pro_frs',
@@ -256,6 +259,15 @@ DONE_LIST = ['cir_pro_tim','cir_pro','cir_pro_tim_page',
         'atr_msg',
         'atr_msg_cnv',
         'atr_msg_cnv_msg',
+        'atr_pro_tim',
+        'atr_pro',
+        'atr_pro_tim_page',
+        'atr_pro_fr',
+        'atr_pro_fing',
+        'atr_pro_frs',
+        'atr_pro_photos',
+        'atr_pro_albums',
+        'atr_pro_videos',
         ]
 
 def print_usage():

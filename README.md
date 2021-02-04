@@ -135,6 +135,14 @@ reference of examples in the `spec.json`, only full layouts of them.
 	atrium/api/messages
 	atrium/api/messages/CONVERSATION_ID
 	atrium/api/messages/CONVERSATION_ID/MESSAGE_ID
+	atrium/api/USER_NAME
+	atrium/api/USER_NAME/timeline
+	atrium/api/USER_NAME/timeline/PAGE
+	atrium/api/USER_NAME/following/PAGE
+	atrium/api/USER_NAME/followers/PAGE
+	atrium/api/USER_NAME/photos/PAGE
+	atrium/api/USER_NAME/albums/PAGE
+	atrium/api/USER_NAME/videos/PAGE
 
 ## URLs Not Done:
 
@@ -163,14 +171,6 @@ reference of examples in the `spec.json`, only full layouts of them.
 	atrium/api/blogs/PAGE
 	atrium/api/blogs/category/CATEGORY_ID/PAGE
 	atrium/api/blogs/post/POST_ID
-	atrium/api/USER_NAME
-	atrium/api/USER_NAME/timeline
-	atrium/api/USER_NAME/timeline/PAGE
-	atrium/api/USER_NAME/following/PAGE
-	atrium/api/USER_NAME/followers/PAGE
-	atrium/api/USER_NAME/photos/PAGE
-	atrium/api/USER_NAME/albums/PAGE
-	atrium/api/USER_NAME/videos/PAGE
     # Ads
 	ads/api/wallet
 	ads/api/campaigns

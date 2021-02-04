@@ -2336,14 +2336,181 @@ TESTS = [
     # @TODO 'url': 'atrium/api/blogs/PAGE',
     # @TODO 'url': 'atrium/api/blogs/category/CATEGORY_ID/PAGE',
     # @TODO 'url': 'atrium/api/blogs/post/POST_ID',
-    # @TODO 'url': 'atrium/api/USER_NAME',
-    # @TODO 'url': 'atrium/api/USER_NAME/timeline',
-    # @TODO 'url': 'atrium/api/USER_NAME/timeline/PAGE',
-    # @TODO 'url': 'atrium/api/USER_NAME/following/PAGE',
-    # @TODO 'url': 'atrium/api/USER_NAME/followers/PAGE',
-    # @TODO 'url': 'atrium/api/USER_NAME/photos/PAGE',
-    # @TODO 'url': 'atrium/api/USER_NAME/albums/PAGE',
-    # @TODO 'url': 'atrium/api/USER_NAME/videos/PAGE',
+    {
+        'url': 'atrium/api/USER_NAME',
+        'label': 'atr_pro',
+        'GET': {
+            '200': {
+                'load profile': {
+                    'path': {
+                        'USER_NAME': 'akelinhans',
+                    },
+                },
+            },
+            '404': {
+                'alex profile normal': {
+                    'path': {
+                        'USER_NAME': '****',
+                    },
+                },
+            },
+        },
+        'POST': {
+            '405': {
+                'anththing': {
+                    'path': {
+                        'USER_NAME': 'akleinhans',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'atrium/api/USER_NAME/timeline',
+        'label': 'atr_pro_tim', 
+        'POST': {
+            '200': {
+                'post to profile timline': {
+                    'path': {
+                        'USER_NAME': 'DrPib',
+                    },
+                    'data': POST_EXAMPLES['valid_media'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '400': {
+                'post to profile timline (invalid post)': {
+                    'path': {
+                        'USER_NAME': 'DrPib',
+                    },
+                    'data': POST_EXAMPLES['invalid_media_bad_url'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'post to profile timline (bad/no session_id)': {
+                    'path': {
+                        'USER_NAME': 'DrPib',
+                    },
+                    'data': POST_EXAMPLES['valid_media'],
+                    'cookies': {
+                        'sessionid': 'Fake Session ID',
+                    },
+                },
+            },
+        },
+        'GET': {
+            '405': {
+                'get profile timeline without specifying a page': {
+                    'path': {
+                        'USER_NAME': 'DrPib',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'atrium/api/USER_NAME/timeline/PAGE',
+        'label': 'atr_pro_tim_page',
+        'GET': {
+            '200': { 
+                'read profile timeline': {
+                    'path': {
+                        'USER_NAME': 'DrPib',
+                        'PAGE': '3',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'atrium/api/USER_NAME/friends/PAGE',
+        'label': 'atr_pro_tim_fr',
+        'GET': {
+            '200': { 
+                'read profile friend list': {
+                    'path': {
+                        'USER_NAME': 'DrPib',
+                        'PAGE': '3',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'atrium/api/USER_NAME/following/PAGE',
+        'label': 'atr_pro_fing',
+        'GET': {
+            '200': { 
+                'read profile following': {
+                    'path': {
+                        'USER_NAME': 'DrPib',
+                        'PAGE': '3',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'atrium/api/USER_NAME/followers/PAGE',
+        'label': 'atr_pro_frs',
+        'GET': {
+            '200': { 
+                'read profile followers': {
+                    'path': {
+                        'USER_NAME': 'DrPib',
+                        'PAGE': '3',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'atrium/api/USER_NAME/photos/PAGE',
+        'label': 'atr_pro_photos',
+        'GET': {
+            '200': { 
+                'read profile photos': {
+                    'path': {
+                        'USER_NAME': 'DrPib',
+                        'PAGE': '3',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'atrium/api/USER_NAME/albums/PAGE',
+        'label': 'atr_pro_albums',
+        'GET': {
+            '200': { 
+                'read profile albums': {
+                    'path': {
+                        'USER_NAME': 'DrPib',
+                        'PAGE': '3',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'atrium/api/USER_NAME/videos/PAGE',
+        'label': 'atr_pro_videos',
+        'GET': {
+            '200': { 
+                'read profile videos': {
+                    'path': {
+                        'USER_NAME': 'DrPib',
+                        'PAGE': '3',
+                    },
+                },
+            },
+        },
+    },
     # @TODO 'url': 'ads/api/wallet',
     # @TODO 'url': 'ads/api/campaigns',
     # @TODO 'url': 'ads/api/promoted',
