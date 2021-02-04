@@ -2,6 +2,21 @@
 
 ## URLs Done So Far:
 
+    # Core 
+	core/api/settings
+	core/api/settings/profile/basic
+	core/api/settings/profile/work
+	core/api/settings/profile/location
+	core/api/settings/profile/education
+	core/api/settings/profile/social
+	core/api/settings/security/password
+	core/api/settings/security/sessions
+	core/api/settings/privacy
+	core/api/settings/notifications
+	core/api/settings/affiliates
+	core/api/settings/verification
+	core/api/settings/blocking
+	core/api/settings/delete
     # Circle
 	circle/api/timeline
 	circle/api/timeline/PAGE
@@ -67,22 +82,6 @@
 	core/api/signup
 	core/api/signup
 	core/api/siginin
-	core/api/settings
-	core/api/settings/profile
-	core/api/settings/profile/basic
-	core/api/settings/profile/work
-	core/api/settings/profile/location
-	core/api/settings/profile/education
-	core/api/settings/profile/social
-	core/api/settings/security
-	core/api/settings/security/password
-	core/api/settings/security/sessions
-	core/api/settings/privacy
-	core/api/settings/notifications
-	core/api/settings/affiliates
-	core/api/settings/verification
-	core/api/settings/blocking
-	core/api/settings/delete
     # Circle
 	circle/api/timeline
 	circle/api/search/PAGE
