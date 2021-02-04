@@ -2129,9 +2129,201 @@ TESTS = [
     # @TODO 'url': 'atrium/api/timeline',
     # @TODO 'url': 'atrium/api/timeline/PAGE',
     # @TODO 'url': 'atrium/api/post/POST_ID',
-    # @TODO 'url': 'atrium/api/messages',
-    # @TODO 'url': 'atrium/api/messages/CONVERSATION_ID',
-    # @TODO 'url': 'atrium/api/messages/CONVERSATION_ID/MESSAGE_ID',
+    {
+        'url': 'atrium/api/messages',
+        'label': 'atr_msg',
+        'GET': {
+            '200': {
+                'read my message conversations': {
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'read my messages (while not logged in)': {
+                },
+            },
+        },
+        'POST': {
+            '200': {
+                'create a new message conversation': {
+                    'data': {
+                        'user_name': 'myFriendTom',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'create a new message conversation (while not logged in)': {
+                    'data': {
+                        'user_name': 'myFriendTom',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'atrium/api/messages/CONVERSATION_ID',
+        'label': 'atr_msg_cnv',
+        'GET': {
+            '200': {
+                'read my conversation messages': {
+                    'path': {
+                        'CONVERSATION_ID': '123123123',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'read my conversation messages (while not logged in).': {
+                    'path': {
+                        'CONVERSATION_ID': '123123123',
+                    },
+                },
+                'read my conversation messages (to a conversation I don\'t own).': {
+                    'path': {
+                        'CONVERSATION_ID': '000000000000',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+        'POST': {
+            '200': {
+                'create a new message': {
+                    'path': {
+                        'CONVERSATION_ID': '123123123',
+                    },
+                    'data': {
+                        'message_text': 'This is some message text.',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'create a new message (while not logged in).': {
+                    'path': {
+                        'CONVERSATION_ID': '123123123',
+                    },
+                    'data': {
+                        'message_text': 'This is some message text.',
+                    },
+                },
+            },
+        },
+        'DELETE': {
+            '200': {
+                'delete a conversation': {
+                    'path': {
+                        'CONVERSATION_ID': '123123123',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'delete a conversation (while not logged in)': {
+                    'path': {
+                        'CONVERSATION_ID': '123123123',
+                    },
+                },
+                'delete a conversation (that I don\'t own).': {
+                    'path': {
+                        'CONVERSATION_ID': '000000000000',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'atrium/api/message/MESSAGE_ID',
+        'label': 'atr_msg_cnv_msg',
+        'POST': {
+            '200': {
+                'update an old message': {
+                    'path': {
+                        'MESSAGE_ID': '35435345',
+                    },
+                    'data': {
+                        'message_text': 'This is some message text.',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'update an old message (while not logged in).': {
+                    'path': {
+                        'MESSAGE_ID': '35435345',
+                    },
+                    'data': {
+                        'message_text': 'This is some message text.',
+                    },
+                },
+                'update an old message (that I don\'t own).': {
+                    'path': {
+                        'MESSAGE_ID': '00000000000000',
+                    },
+                    'data': {
+                        'message_text': 'This is some message text.',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+        'DELETE': {
+            '200': {
+                'delete an old message': {
+                    'path': {
+                        'MESSAGE_ID': '35435345',
+                    },
+                    'data': {
+                        'message_text': 'This is some message text.',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'delete an old message (while not logged in).': {
+                    'path': {
+                        'MESSAGE_ID': '35435345',
+                    },
+                    'data': {
+                        'message_text': 'This is some message text.',
+                    },
+                },
+                'delete an old message (that I don\'t own).': {
+                    'path': {
+                        'MESSAGE_ID': '00000000000000',
+                    },
+                    'data': {
+                        'message_text': 'This is some message text.',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
     # @TODO 'url': 'atrium/api/trending/PAGE',
     # @TODO 'url': 'atrium/api/explore/PAGE',
     # @TODO 'url': 'atrium/api/explore/hashtag/PAGE',

@@ -253,6 +253,9 @@ DONE_LIST = ['cir_pro_tim','cir_pro','cir_pro_tim_page',
         'cir_pep_page',
         'cir_pep_frn_req_page',
         'cir_pep_frn_req_snt_page',
+        'atr_msg',
+        'atr_msg_cnv',
+        'atr_msg_cnv_msg',
         ]
 
 def print_usage():
