@@ -278,6 +278,20 @@ if __name__ == '__main__':
     label = sys.argv[1]
 
     if label == 'dumpspec':
+        # Dump the 200s for the spec.
+        spec = {}
+        for test in TESTS:
+            spec[test['url']] = {}
+            if test.get('POST') is not None:
+                spec[test['url']]['POST'] = test.get('POST').get('200')
+            if test.get('GET') is not None:
+                spec[test['url']]['GET'] = test.get('GET').get('200')
+            if test.get('DELETE') is not None:
+                spec[test['url']]['DELETE'] = test.get('DELETE').get('200')
+        print(json.dumps(spec, indent=4))
+        exit()
+    if label == 'dumptests':
+        # Dump the all the tests.
         print(json.dumps(TESTS, indent=4))
         exit()
 
