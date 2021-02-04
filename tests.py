@@ -470,6 +470,23 @@ TESTS = [
         },
     },
     {
+        'url': 'circle/api/post/POST_ID/action/ACTION',
+        'label': 'cir_post_act',
+        'POST': {
+            '200': {
+                'like a post': {
+                    'path': {
+                        'POST_ID': '100',
+                        'ACTION': 'like',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    {
         'url': 'circle/api/post/POST_ID',
         'label': 'cir_post',
         'GET': {
@@ -2106,14 +2123,6 @@ TESTS = [
             },
         },
     },
-    # @TODO 'url': 'circle/api/blogs',
-    # @TODO 'url': 'circle/api/blogs/PAGE',
-    # @TODO 'url': 'circle/api/blogs/category/CATEGORY_ID/PAGE',
-    # @TODO 'url': 'circle/api/blogs/post/POST_ID',
-    # @TODO 'url': 'circle/api/market',
-    # @TODO 'url': 'circle/api/market/PAGE',
-    # @TODO 'url': 'circle/api/market/category/CATEGORY_ID/PAGE',
-    # @TODO 'url': 'circle/api/market/post/POST_ID',
     {
         'url': 'circle/api/market/post/POST_ID',
         'label': 'cir_mar_post', 
@@ -2509,6 +2518,23 @@ TESTS = [
         },
     },
     {
+        'url': 'atrium/api/post/POST_ID/action/ACTION',
+        'label': 'atr_post_act',
+        'POST': {
+            '200': {
+                'like a post': {
+                    'path': {
+                        'POST_ID': '100',
+                        'ACTION': 'like',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    {
         'url': 'atrium/api/post/POST_ID',
         'label': 'atr_post',
         'GET': {
@@ -2774,7 +2800,38 @@ TESTS = [
             },
         },
     },
-    # @TODO 'url': 'atrium/api/trending/PAGE',
+    {
+        'url': 'atrium/api/trending/PAGE',
+        'label': 'atr_trn',
+        'GET': {
+            '200': { 
+                'read trending': {
+                    'path': {
+                        'PAGE': '1',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'atrium/api/bookmarks/PAGE',
+        'label': 'atr_bkm',
+        'GET': {
+            '200': { 
+                'read bookmarks': {
+                    'path': {
+                        'PAGE': '1',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
     {
         'url': 'atrium/api/explore/PAGE',
         'label': 'atr_sch_pos',
@@ -2839,13 +2896,6 @@ TESTS = [
             },
         },
     },
-    # @TODO 'url': 'atrium/api/bookmarks',
-    # @TODO 'url': 'atrium/api/bookmarks/BOOKMARK_ID',
-    # @TODO 'url': 'atrium/api/bookmarks/PAGE',
-    # @TODO 'url': 'atrium/api/blogs',
-    # @TODO 'url': 'atrium/api/blogs/PAGE',
-    # @TODO 'url': 'atrium/api/blogs/category/CATEGORY_ID/PAGE',
-    # @TODO 'url': 'atrium/api/blogs/post/POST_ID',
     {
         'url': 'atrium/api/USER_NAME',
         'label': 'atr_pro',
@@ -3163,4 +3213,17 @@ TESTS = [
     # @TODO 'url': 'ads/api/promoted/pages',
     # @TODO 'url': 'ads/api/promoted/posts',
 ]
-
+""" # We're not doing these right now.
+    # @TODO 'url': 'circle/api/blogs',
+    # @TODO 'url': 'circle/api/blogs/PAGE',
+    # @TODO 'url': 'circle/api/blogs/category/CATEGORY_ID/PAGE',
+    # @TODO 'url': 'circle/api/blogs/post/POST_ID',
+    # @TODO 'url': 'circle/api/market',
+    # @TODO 'url': 'circle/api/market/PAGE',
+    # @TODO 'url': 'circle/api/market/category/CATEGORY_ID/PAGE',
+    # @TODO 'url': 'circle/api/market/post/POST_ID',
+    # @TODO 'url': 'atrium/api/blogs',
+    # @TODO 'url': 'atrium/api/blogs/PAGE',
+    # @TODO 'url': 'atrium/api/blogs/category/CATEGORY_ID/PAGE',
+    # @TODO 'url': 'atrium/api/blogs/post/POST_ID',
+"""

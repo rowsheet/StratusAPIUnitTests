@@ -104,7 +104,7 @@ reference of examples in the `spec.json`, only full layouts of them.
 	circle/api/groups/joined/PAGE
 	circle/api/groups/manage/PAGE
 	circle/api/groups/GROUP_NAME
-	circle/api/groups/GROUP_NAME/action
+	circle/api/groups/GROUP_NAME/action/ACTION
 	circle/api/groups/GROUP_NAME/timeline
 	circle/api/groups/GROUP_NAME/timeline/PAGE
 	circle/api/groups/GROUP_NAME/members/PAGE
@@ -118,7 +118,7 @@ reference of examples in the `spec.json`, only full layouts of them.
 	circle/api/events/invited/PAGE
 	circle/api/events/manage/PAGE
 	circle/api/events/EVENT_NAME
-	circle/api/events/EVENT_NAME/action
+	circle/api/events/EVENT_NAME/action/ACTION
 	circle/api/events/EVENT_NAME/timeline
 	circle/api/events/EVENT_NAME/timeline/PAGE
 	circle/api/events/EVENT_NAME/interested/PAGE
@@ -132,14 +132,13 @@ reference of examples in the `spec.json`, only full layouts of them.
 	circle/api/pages/liked/PAGE
 	circle/api/pages/manage/PAGE
 	circle/api/pages/PAGE_NAME
-	circle/api/pages/PAGE_NAME/action
+	circle/api/pages/PAGE_NAME/action/ACTION
 	circle/api/pages/PAGE_NAME/timeline
 	circle/api/pages/PAGE_NAME/timeline/PAGE
 	circle/api/pages/PAGE_NAME/photos/PAGE
 	circle/api/pages/PAGE_NAME/videos/PAGE
-	circle/api/market/post/POST_ID
 	circle/api/USER_NAME
-	circle/api/USER_NAME/action
+	circle/api/USER_NAME/action/ACTION
 	circle/api/USER_NAME/timeline
 	circle/api/USER_NAME/timeline/PAGE
 	circle/api/USER_NAME/friends/PAGE
@@ -154,6 +153,9 @@ reference of examples in the `spec.json`, only full layouts of them.
 	atrium/api/timeline
 	atrium/api/timeline/PAGE
 	atrium/api/post/POST_ID
+	atrium/api/post/POST_ID/action/ACTION
+	atrium/api/trending/PAGE
+	atrium/api/bookmarks/PAGE
 	atrium/api/explore/PAGE
 	atrium/api/explore/hashtag/PAGE
 	atrium/api/explore/articles/PAGE
@@ -162,7 +164,7 @@ reference of examples in the `spec.json`, only full layouts of them.
 	atrium/api/messages/CONVERSATION_ID
 	atrium/api/messages/CONVERSATION_ID/MESSAGE_ID
 	atrium/api/USER_NAME
-	atrium/api/USER_NAME/action
+	atrium/api/USER_NAME/action/ACTION
 	atrium/api/USER_NAME/timeline
 	atrium/api/USER_NAME/timeline/PAGE
 	atrium/api/USER_NAME/following/PAGE
@@ -173,30 +175,13 @@ reference of examples in the `spec.json`, only full layouts of them.
 
 ## URLs Not Done:
 
-    # Circle
-	circle/api/blogs
-	circle/api/blogs/PAGE
-	circle/api/blogs/category/CATEGORY_ID/PAGE
-	circle/api/blogs/post/POST_ID
-	circle/api/market
-	circle/api/market/PAGE
-	circle/api/market/category/CATEGORY_ID/PAGE
-	circle/api/market/post/POST_ID
-    # Atrium
-	atrium/api/trending/PAGE
-	atrium/api/bookmarks
-	atrium/api/bookmarks/BOOKMARK_ID
-	atrium/api/bookmarks/PAGE
-	atrium/api/blogs
-	atrium/api/blogs/PAGE
-	atrium/api/blogs/category/CATEGORY_ID/PAGE
-	atrium/api/blogs/post/POST_ID
     # Ads
-	ads/api/wallet
 	ads/api/campaigns
 	ads/api/promoted
 	ads/api/promoted/pages
 	ads/api/promoted/posts
+    # Ads
+	wallet/api/wallet
 
 ## Diclaimer:
 I started wrting these unit tests today and am most of the way through Circle (which is 80% of the app).
@@ -333,3 +318,18 @@ If everything is okay, you should see `All tests PASSED`, otherwise failed tests
 	    FAILED:         0
 	All tests PASSED
 
+## URLs that are low priority.
+	# Circle
+	circle/api/market
+	circle/api/market/PAGE
+	circle/api/market/category/CATEGORY_ID/PAGE
+	circle/api/market/post/POST_ID
+	circle/api/blogs
+	circle/api/blogs/PAGE
+	circle/api/blogs/category/CATEGORY_ID/PAGE
+	circle/api/blogs/post/POST_ID
+	# Atrium
+	atrium/api/blogs
+	atrium/api/blogs/PAGE
+	atrium/api/blogs/category/CATEGORY_ID/PAGE
+	atrium/api/blogs/post/POST_ID
