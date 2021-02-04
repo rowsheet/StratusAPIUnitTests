@@ -132,6 +132,9 @@ reference of examples in the `spec.json`, only full layouts of them.
 	circle/api/USER_NAME/groups/PAGE
 	circle/api/USER_NAME/events/PAGE
     # Atrium
+	atrium/api/timeline
+	atrium/api/timeline/PAGE
+	atrium/api/post/POST_ID
 	atrium/api/messages
 	atrium/api/messages/CONVERSATION_ID
 	atrium/api/messages/CONVERSATION_ID/MESSAGE_ID
@@ -156,9 +159,6 @@ reference of examples in the `spec.json`, only full layouts of them.
 	circle/api/market/category/CATEGORY_ID/PAGE
 	circle/api/market/post/POST_ID
     # Atrium
-	atrium/api/timeline
-	atrium/api/timeline/PAGE
-	atrium/api/post/POST_ID
 	atrium/api/trending/PAGE
 	atrium/api/explore/PAGE
 	atrium/api/explore/hashtag/PAGE

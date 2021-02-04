@@ -336,7 +336,7 @@
             }
         },
         "GET": {
-            "read my timeline feed": {
+            "read my a post": {
                 "path": {
                     "POST_ID": "100"
                 }
@@ -1250,6 +1250,83 @@
                 "path": {
                     "USER_NAME": "DrPib",
                     "PAGE": "3"
+                }
+            }
+        }
+    },
+    "atrium/api/timeline": {
+        "POST": {
+            "create a post on my own timeline": {
+                "data": {
+                    "text": "The joke is that both the words ending in the same sylable that rhyme.",
+                    "post_type": "media",
+                    "url": "https://google.com/?no=matter&how=fast&i=run",
+                    "provider": "Breitbart Media Outlet",
+                    "type": "photo",
+                    "title": "Title of my post",
+                    "html": "<html>how to meet ladies</html>"
+                },
+                "cookies": {
+                    "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                }
+            }
+        }
+    },
+    "atrium/api/timeline/PAGE": {
+        "GET": {
+            "read my timeline feed": {
+                "path": {
+                    "PAGE": "1"
+                },
+                "cookies": {
+                    "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                }
+            }
+        }
+    },
+    "atrium/api/post/POST_ID": {
+        "POST": {
+            "update a post": {
+                "path": {
+                    "POST_ID": "100"
+                },
+                "data": {
+                    "text": "Im changing the text of this post",
+                    "post_type": "media",
+                    "url": "https://google.com/?no=matter&how=fast&i=run",
+                    "provider": "Breitbart Media Outlet",
+                    "type": "photo",
+                    "title": "Title of my post",
+                    "html": "<html>how to meet ladies</html>"
+                },
+                "cookies": {
+                    "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                }
+            }
+        },
+        "GET": {
+            "read a post": {
+                "path": {
+                    "POST_ID": "100"
+                }
+            }
+        },
+        "DELETE": {
+            "delete a post": {
+                "path": {
+                    "POST_ID": "100"
+                },
+                "data": {
+                    "text": "Im changing the text of this post",
+                    "post_type": "media",
+                    "url": "https://google.com/?no=matter&how=fast&i=run",
+                    "provider": "Breitbart Media Outlet",
+                    "type": "photo",
+                    "title": "Title of my post",
+                    "html": "<html>how to meet ladies</html>"
+                },
+                "cookies": {
+                    "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
                 }
             }
         }

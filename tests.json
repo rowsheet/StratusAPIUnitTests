@@ -517,7 +517,7 @@
         "label": "cir_post",
         "GET": {
             "200": {
-                "read my timeline feed": {
+                "read my a post": {
                     "path": {
                         "POST_ID": "100"
                     }
@@ -2417,6 +2417,167 @@
                     "path": {
                         "USER_NAME": "DrPib",
                         "PAGE": "3"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "atrium/api/timeline",
+        "label": "atr_tim",
+        "POST": {
+            "200": {
+                "create a post on my own timeline": {
+                    "data": {
+                        "text": "The joke is that both the words ending in the same sylable that rhyme.",
+                        "post_type": "media",
+                        "url": "https://google.com/?no=matter&how=fast&i=run",
+                        "provider": "Breitbart Media Outlet",
+                        "type": "photo",
+                        "title": "Title of my post",
+                        "html": "<html>how to meet ladies</html>"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "create a post on my own timeline (while not logged in)": {
+                    "data": {
+                        "text": "The joke is that both the words ending in the same sylable that rhyme.",
+                        "post_type": "media",
+                        "url": "https://google.com/?no=matter&how=fast&i=run",
+                        "provider": "Breitbart Media Outlet",
+                        "type": "photo",
+                        "title": "Title of my post",
+                        "html": "<html>how to meet ladies</html>"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "atrium/api/timeline/PAGE",
+        "label": "atr_tim_page",
+        "GET": {
+            "200": {
+                "read my timeline feed": {
+                    "path": {
+                        "PAGE": "1"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "read my timeline feed (while not logged in)": {
+                    "path": {
+                        "PAGE": "1"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "url": "atrium/api/post/POST_ID",
+        "label": "atr_post",
+        "GET": {
+            "200": {
+                "read a post": {
+                    "path": {
+                        "POST_ID": "100"
+                    }
+                }
+            }
+        },
+        "POST": {
+            "200": {
+                "update a post": {
+                    "path": {
+                        "POST_ID": "100"
+                    },
+                    "data": {
+                        "text": "Im changing the text of this post",
+                        "post_type": "media",
+                        "url": "https://google.com/?no=matter&how=fast&i=run",
+                        "provider": "Breitbart Media Outlet",
+                        "type": "photo",
+                        "title": "Title of my post",
+                        "html": "<html>how to meet ladies</html>"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "update a post (while not logged in)": {
+                    "path": {
+                        "POST_ID": "100"
+                    },
+                    "data": {
+                        "text": "Im changing the text of this post",
+                        "post_type": "media",
+                        "url": "https://google.com/?no=matter&how=fast&i=run",
+                        "provider": "Breitbart Media Outlet",
+                        "type": "photo",
+                        "title": "Title of my post",
+                        "html": "<html>how to meet ladies</html>"
+                    }
+                },
+                "update a post (that I don't own)": {
+                    "path": {
+                        "POST_ID": "200"
+                    },
+                    "data": {
+                        "text": "Im changing the text of this post",
+                        "post_type": "media",
+                        "url": "https://google.com/?no=matter&how=fast&i=run",
+                        "provider": "Breitbart Media Outlet",
+                        "type": "photo",
+                        "title": "Title of my post",
+                        "html": "<html>how to meet ladies</html>"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            }
+        },
+        "DELETE": {
+            "200": {
+                "delete a post": {
+                    "path": {
+                        "POST_ID": "100"
+                    },
+                    "data": {
+                        "text": "Im changing the text of this post",
+                        "post_type": "media",
+                        "url": "https://google.com/?no=matter&how=fast&i=run",
+                        "provider": "Breitbart Media Outlet",
+                        "type": "photo",
+                        "title": "Title of my post",
+                        "html": "<html>how to meet ladies</html>"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                    }
+                }
+            },
+            "401": {
+                "delete a post (while not logged in)": {
+                    "path": {
+                        "POST_ID": "100"
+                    }
+                },
+                "delete a post (that I don't own)": {
+                    "path": {
+                        "POST_ID": "200"
+                    },
+                    "cookies": {
+                        "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
                     }
                 }
             }
