@@ -1,3 +1,4 @@
+[2J
 {
     "_URL_": {
         "POST": {
@@ -1181,6 +1182,19 @@
             }
         }
     },
+    "circle/api/USER_NAME/action/ACTION": {
+        "POST": {
+            "confirm a friend request": {
+                "path": {
+                    "USER_NAME": "SomeUser",
+                    "ACTION": "confirm_friend_request"
+                },
+                "cookies": {
+                    "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                }
+            }
+        }
+    },
     "circle/api/USER_NAME/timeline": {
         "POST": {
             "post to profile timline": {
@@ -1506,6 +1520,19 @@
             "load profile": {
                 "path": {
                     "USER_NAME": "akelinhans"
+                }
+            }
+        }
+    },
+    "atrium/api/USER_NAME/action/ACTION": {
+        "POST": {
+            "confirm a friend request": {
+                "path": {
+                    "USER_NAME": "SomeUser",
+                    "ACTION": "confirm_friend_request"
+                },
+                "cookies": {
+                    "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
                 }
             }
         }

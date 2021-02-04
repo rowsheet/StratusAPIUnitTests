@@ -2157,6 +2157,142 @@ TESTS = [
         },
     },
     {
+        'url': 'circle/api/USER_NAME/action/ACTION',
+        'label': 'cir_pro_act_report',
+        'POST': {
+            '200': { 
+                'report a user': {
+                    'path': {
+                        'USER_NAME': 'SomeUser',
+                        'ACTION': 'report',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/USER_NAME/action/ACTION',
+        'label': 'cir_pro_act_poke',
+        'POST': {
+            '200': { 
+                'poke a user': {
+                    'path': {
+                        'USER_NAME': 'SomeUser',
+                        'ACTION': 'poke',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/USER_NAME/action/ACTION',
+        'label': 'cir_pro_act_block',
+        'POST': {
+            '200': { 
+                'block a user': {
+                    'path': {
+                        'USER_NAME': 'SomeUser',
+                        'ACTION': 'block',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/USER_NAME/action/ACTION',
+        'label': 'cir_pro_act_unfollow',
+        'POST': {
+            '200': { 
+                'unfollow a user': {
+                    'path': {
+                        'USER_NAME': 'SomeUser',
+                        'ACTION': 'unfollow',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/USER_NAME/action/ACTION',
+        'label': 'cir_pro_act_follow',
+        'POST': {
+            '200': { 
+                'follow a user': {
+                    'path': {
+                        'USER_NAME': 'SomeUser',
+                        'ACTION': 'follow',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/USER_NAME/action/ACTION',
+        'label': 'cir_pro_act_frn_req',
+        'POST': {
+            '200': { 
+                'friend request a user': {
+                    'path': {
+                        'USER_NAME': 'SomeUser',
+                        'ACTION': 'friend_request',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/USER_NAME/action/ACTION',
+        'label': 'cir_pro_act_unfrn_req',
+        'POST': {
+            '200': { 
+                'cancel a friend request': {
+                    'path': {
+                        'USER_NAME': 'SomeUser',
+                        'ACTION': 'cancel_friend_request',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'circle/api/USER_NAME/action/ACTION',
+        'label': 'cir_pro_act_frn_req_conf',
+        'POST': {
+            '200': { 
+                'confirm a friend request': {
+                    'path': {
+                        'USER_NAME': 'SomeUser',
+                        'ACTION': 'confirm_friend_request',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    {
         'url': 'circle/api/USER_NAME/timeline',
         'label': 'cir_pro_tim', 
         'POST': {
@@ -2734,6 +2870,142 @@ TESTS = [
                 'anththing': {
                     'path': {
                         'USER_NAME': 'akleinhans',
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'atrium/api/USER_NAME/action/ACTION',
+        'label': 'atr_pro_act_report',
+        'POST': {
+            '200': { 
+                'report a user': {
+                    'path': {
+                        'USER_NAME': 'SomeUser',
+                        'ACTION': 'report',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'atrium/api/USER_NAME/action/ACTION',
+        'label': 'atr_pro_act_poke',
+        'POST': {
+            '200': { 
+                'poke a user': {
+                    'path': {
+                        'USER_NAME': 'SomeUser',
+                        'ACTION': 'poke',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'atrium/api/USER_NAME/action/ACTION',
+        'label': 'atr_pro_act_block',
+        'POST': {
+            '200': { 
+                'block a user': {
+                    'path': {
+                        'USER_NAME': 'SomeUser',
+                        'ACTION': 'block',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'atrium/api/USER_NAME/action/ACTION',
+        'label': 'atr_pro_act_unfollow',
+        'POST': {
+            '200': { 
+                'unfollow a user': {
+                    'path': {
+                        'USER_NAME': 'SomeUser',
+                        'ACTION': 'unfollow',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'atrium/api/USER_NAME/action/ACTION',
+        'label': 'atr_pro_act_follow',
+        'POST': {
+            '200': { 
+                'follow a user': {
+                    'path': {
+                        'USER_NAME': 'SomeUser',
+                        'ACTION': 'follow',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'atrium/api/USER_NAME/action/ACTION',
+        'label': 'atr_pro_act_frn_req',
+        'POST': {
+            '200': { 
+                'friend request a user': {
+                    'path': {
+                        'USER_NAME': 'SomeUser',
+                        'ACTION': 'friend_request',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'atrium/api/USER_NAME/action/ACTION',
+        'label': 'atr_pro_act_unfrn_req',
+        'POST': {
+            '200': { 
+                'cancel a friend request': {
+                    'path': {
+                        'USER_NAME': 'SomeUser',
+                        'ACTION': 'cancel_friend_request',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    {
+        'url': 'atrium/api/USER_NAME/action/ACTION',
+        'label': 'atr_pro_act_frn_req_conf',
+        'POST': {
+            '200': { 
+                'confirm a friend request': {
+                    'path': {
+                        'USER_NAME': 'SomeUser',
+                        'ACTION': 'confirm_friend_request',
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
                     },
                 },
             },
