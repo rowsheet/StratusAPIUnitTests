@@ -1,5 +1,35 @@
 # Stratus API Unit Test Coverage
 
+## Running These Tests:
+
+You need some valid configuration. You can either set the `SESSION_ID` and `BASE_URL`
+in `config.py` or set the values in your environment.
+
+	# config.py
+
+	SESSION_ID = os.getenv('SESSION_ID')
+	if SESSION_ID is None:
+	    SESSION_ID = '8okfl9z8yftehjw8btj3codtbuy46db1'
+
+	BASE_URL =  os.getenv('BASE_URL')
+	if BASE_URL is None:
+	    BASE_URL = 'http://localhost:8000/'
+
+## Tests:
+
+Tests dumped in `spec.json` are simply what's in `tests.py`. `tests.py` is the *master list*
+of tests done. Testing will *not* read from `spec.json`, only write to it. If you want to add
+more tests, but them in `tests.py` and update the spec after by running:
+
+	python3 main.py dumpspec > spec.json
+
+## Example Posts, Groups, etc:
+
+It's useful to have examples of Posts, Groups, Events, and other things, both valid and invalid.
+You can find examples used multiple times in testing in `examples.py`.
+Note that when you dump the spec, those examples are duplciated and there is no such single
+reference of examples in the `spec.json`, only full layouts of them.
+
 ## URLs Done So Far:
 
     # Core 
