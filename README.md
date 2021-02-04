@@ -1,4 +1,15 @@
 # Stratus API Unit Test Coverage
+	      
+## Quickstart:
+
+Run all the tests and make sure they all pass:
+
+	python3 main.py all
+
+Run the test for a successfull 200 response for a POST http request to post to a user's Atrium timeline:
+
+	python3 main.py atr_pro_tim POST 200
+	# atr_pro_tim -> "Atrium Profile Timeline" (see DONELIST in main.py)
 
 ## Usage:
 
@@ -7,14 +18,16 @@
 	Examples:
 	    Dump the current spec:
 	      $ python3 main.py dumpspec > spec.json
-	    Run all tests in the 'donelist':
-	      $ python3 main.py donelist
+	    Run all tests:
+	      $ python3 main.py all
 	    Run a single test for a label, method, and status:
 	      $ python3 main.py [label] [method] [status]
 	    Run all tests for a label:
 	      $ python3 main.py [label]
 
 ## Running These Tests:
+
+First, install requirements by running `pip3 install -r requirments.txt`.
 
 You need some valid configuration. You can either set the `SESSION_ID` and `BASE_URL`
 in `config.py` or set the values in your environment.
@@ -202,7 +215,8 @@ In the file `spec.json`, you'll find the tests that are done so far. They are in
 ## Examples:
 
 Test all timeline posts for non-authorized writes (POST 401)
-`python3 main.py cir_tim 401 POST`
+
+	python3 main.py cir_tim 401 POST
 
 ## Results:
 After running an individual test, you will get a result back like this:

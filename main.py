@@ -321,7 +321,7 @@ if __name__ == '__main__':
         exit()
 
     # Run all previously done tests.
-    if label == 'donelist':
+    if label == 'all':
         tests_run = 0
         tests_failed = 0
         tests_passed = 0
