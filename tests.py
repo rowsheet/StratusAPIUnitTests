@@ -474,7 +474,7 @@ TESTS = [
             '200': {
                 'read my a post': {
                     'path': {
-                        'POST_ID': '8834',
+                        'POST_ID': '4675',
                     },
                 },
             },
