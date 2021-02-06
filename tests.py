@@ -14,12 +14,62 @@ TESTS = [
             '200': {
                 'create a new account': {
                     'data': {
-                        'user_name': 'newusername',
+                        'user_name': 'new_api_test_user',
                         'first_name': 'Firstname',
                         'last_name': 'Lastname',
                         'email_address': 'email@email.com',
                         'password': 'somethinglongerthan12characters',
                         'confirm_password': 'somethinglongerthan12characters',
+                        'newsletter': False,
+                        'terms': True,
+                    },
+                },
+            },
+            '400': {
+                'create a new account (username taken)': {
+                    'data': {
+                        'user_name': 'api_test_user',
+                        'first_name': 'Firstname',
+                        'last_name': 'Lastname',
+                        'email_address': 'email@email.com',
+                        'password': 'somethinglongerthan12characters',
+                        'confirm_password': 'somethinglongerthan12characters',
+                        'newsletter': False,
+                        'terms': True,
+                    },
+                },
+                'create a new account (email already used)': {
+                    'data': {
+                        'user_name': 'new_api_test_user',
+                        'first_name': 'Firstname',
+                        'last_name': 'Lastname',
+                        'email_address': 'Apolloc2020@gmail.com',
+                        'password': 'somethinglongerthan12characters',
+                        'confirm_password': 'somethinglongerthan12characters',
+                        'newsletter': False,
+                        'terms': True,
+                    },
+                },
+                'create a new account (disagree terms)': {
+                    'data': {
+                        'user_name': 'new_api_test_user',
+                        'first_name': 'Firstname',
+                        'last_name': 'Lastname',
+                        'email_address': 'email@email.com',
+                        'password': 'somethinglongerthan12characters',
+                        'confirm_password': 'somethinglongerthan12characters',
+                        'newsletter': False,
+                        'terms': False,
+                    },
+                },
+                'create a new account (bad password match)': {
+                    'data': {
+                        'user_name': 'new_api_test_user',
+                        'first_name': 'Firstname',
+                        'last_name': 'Lastname',
+                        'email_address': 'email@email.com',
+                        'password': 'somethinglongerthan12characters',
+                        'confirm_password': 'doesnt match password',
                         'newsletter': False,
                         'terms': True,
                     },
@@ -34,8 +84,16 @@ TESTS = [
             '200': {
                 'login': {
                     'data': {
-                        'user_name': 'newusername',
+                        'user_name': 'new_api_test_user',
                         'password': 'somethinglongerthan12characters',
+                    },
+                },
+            },
+            '400': {
+                'login': {
+                    'data': {
+                        'user_name': 'new_api_test_user',
+                        'password': 'invlid password',
                     },
                 },
             },
