@@ -1,6 +1,14 @@
 VARIABLES =  {
     'EXAMPLE_PAGE_NAME': 'APITest_ExamplePage',
     'EXAMPLE_PAGE_NAME_CHANGE': 'APITest_ExamplePage_Change',
+    'FAMOUS_PAGE': 'PresidentTrumpNewsFeed',
+
+    'EXAMPLE_GROUP_NAME': 'APITest_ExampleGroup',
+    'EXAMPLE_GROUP_NAME_CHANGE': 'APITest_ExampleGroup',
+    'FAMOUS_GROUP': 'apollofintech',
+
+    # This variable is for PAGINATION, not Page related!
+    'PAGE': '1',
 }
 EVENT_EXAMPLES = {
     'valid_event': {

@@ -5,8 +5,9 @@ import json
 from tests import TESTS
 from config import BASE_URL
 
-def print_test(url, method, result, test_name, wanted, status_code, data, text, minimal=False, mode=None, passed=None,only_200=None):
-    if only_200 == True:
+def print_test(url, method, result, test_name, wanted, status_code, data, text, passed=None, **kwargs):
+
+    if kwargs.get('only_200') == True:
         if passed == True:
             if status_code != 200:
                 return
@@ -15,7 +16,7 @@ def print_test(url, method, result, test_name, wanted, status_code, data, text, 
     except:
         text = "\tUNIT TEST\n\tEXCEPTION: API Responded with a non-JSON response."
 
-    if minimal == True:
+    if kwargs.get('minimal') == True:
         print('--------------------------------------------------------------------------------')
         print('test:   ' + test_name)
         print('url:    ' + url)
@@ -52,7 +53,9 @@ def print_test(url, method, result, test_name, wanted, status_code, data, text, 
         f.write('%s: %s %s %s\n' % (result, label, method, status_code))
         f.close()
 
-def print_summary(tests_run, tests_passed, tests_failed):
+def print_summary(tests_run, tests_passed, tests_failed, **kwargs):
+    if kwargs.get('only_get') == True:
+        return
     print('--------------------------------------------------------------------------------')
     print('--------------------------------------------------------------------------------')
     if tests_run == 0:
@@ -70,7 +73,7 @@ def print_summary(tests_run, tests_passed, tests_failed):
     \033[91mFAILED:         %s \033[0m
         """ % (tests_run, tests_passed, tests_failed))
 
-def run_method_status(chosen_label, chosen_method, chosen_status, minimal=True, mode=None,only_200=None):
+def run_method_status(chosen_label, chosen_method, chosen_status, **kwargs):
     
     # Count tests run.
     tests_run = 0
@@ -111,7 +114,11 @@ def run_method_status(chosen_label, chosen_method, chosen_status, minimal=True, 
             if METHOD_STATUSs is not None:
 
                 for test_name, METHOD_STATUS in METHOD_STATUSs.items():
-                
+               
+                    # Check mode
+                    mode = kwargs.get('mode')
+                    only_get = kwargs.get('only_get')
+
                     url = URL
                     path_vars = METHOD_STATUS.get('path')
                     if path_vars is not None:
@@ -130,6 +137,8 @@ def run_method_status(chosen_label, chosen_method, chosen_status, minimal=True, 
 
                     if method == 'POST':
 
+                        if only_get == True:
+                            continue
                         # Check mode for 'all' run.
                         if mode == 'ONLY_DELETE':
                             continue
@@ -146,6 +155,8 @@ def run_method_status(chosen_label, chosen_method, chosen_status, minimal=True, 
 
                     elif method == 'DELETE':
 
+                        if only_get == True:
+                            continue
                         if mode == 'SKIP_DELETE':
                             continue
 
@@ -158,26 +169,28 @@ def run_method_status(chosen_label, chosen_method, chosen_status, minimal=True, 
                     text = response.text
 
                     if str(status_code) == status:
-                        print_test(url, method, '\033[92mPASSED\033[0m', test_name, status, status_code, data, text,
-                                minimal=minimal, mode=mode, passed=True,only_200=only_200)
+                        print_test(url, method, '\033[92mPASSED\033[0m', test_name,
+                                status, status_code, data, text, passed=True,
+                                **kwargs)
                         tests_run += 1
                         tests_passed += 1
                     else:
-                        print_test(url, method, '\033[91mFAILED\033[0m', test_name, status, status_code, data, text,
-                                minimal=minimal, mode=mode, passed=True,only_200=only_200)
+                        print_test(url, method, '\033[91mFAILED\033[0m', test_name,
+                                status, status_code, data, text, passed=True,
+                                **kwargs)
                         tests_run += 1
                         tests_failed += 1
 
     # Don't print if we're running multiple tests because
     # the summary will print at the end.
-    if minimal == False:
-        print_summary(tests_run, tests_passed, tests_failed)
+    if kwargs.get('minimal') == False:
+        print_summary(tests_run, tests_passed, tests_failed, **kwargs)
 
     return tests_run, tests_passed, tests_failed
 
 # Run all of the tests with this label (for all specified
 # HTTP methods and HTTP status codes). 
-def run_label(label, minimal=True, mode=None,only_200=None):
+def run_label(label, **kwargs):
     tests_run = 0
     tests_failed = 0
     tests_passed = 0
@@ -189,7 +202,7 @@ def run_label(label, minimal=True, mode=None,only_200=None):
             if method in ['POST','GET','DELETE']:
                 for status, test in val.items():
                     _tests_run, _tests_passed, _tests_failed = run_method_status(
-                        label, method, status, minimal=True, mode=mode,only_200=only_200)
+                        label, method, status, **kwargs)
                     tests_run += _tests_run
                     tests_passed += _tests_passed
                     tests_failed += _tests_failed
@@ -197,13 +210,14 @@ def run_label(label, minimal=True, mode=None,only_200=None):
                         if label not in failed_labels:
                             failed_labels[label] = []
                         failed_labels[label].append({method: status})
-    if minimal == False:
-        print_summary(tests_run, tests_passed, tests_failed)
+    if kwargs.get('minimal') == False:
+        print_summary(tests_run, tests_passed, tests_failed, **kwargs)
     return tests_run, tests_passed, tests_failed, failed_labels
 
 # All the tests I've already done.
 DONE_LIST = [
         'cir_pro_tim',
+        'cir_pro_tim_page',
         'cir_pro',
         'cir_pro_act_report',
         'cir_pro_act_poke',
@@ -213,7 +227,6 @@ DONE_LIST = [
         'cir_pro_act_frn_req',
         'cir_pro_act_unfrn_req',
         'cir_pro_act_frn_req_conf',
-        'cir_pro_tim_page',
         'cir_pro_fr',
         'cir_pro_fing',
         'cir_pro_frs',
@@ -230,6 +243,7 @@ DONE_LIST = [
         'cir_pag_man_page',
         'cir_pag_pro',
         'cir_pag_pro_tim',
+        'cir_pag_pro_tim_page',
         'cir_pag_pro_photos',
         'cir_pag_pro_videos',
         'cir_grp',
@@ -307,8 +321,8 @@ DONE_LIST = [
         'atr_msg_cnv_msg',
         'atr_trn',
         'atr_bkm',
-        'atr_pro_tim',
         'atr_pro',
+        'atr_pro_tim',
         'atr_pro_tim_page',
         'atr_pro_act_report',
         'atr_pro_act_poke',
@@ -364,6 +378,11 @@ def dump_spec():
         f.write(string)
         f.close()
 
+def arg(index):
+    if index >= len(sys.argv):
+        return None
+    return sys.argv[index]
+
 if __name__ == '__main__':
 
     print(chr(27) + "[2J")
@@ -389,16 +408,27 @@ if __name__ == '__main__':
         tests_failed = 0
         tests_passed = 0
         failed_labels = []
-        only_200 = False
-       
-        DONE_LIST = list(filter(lambda lab: lab[0:7] == 'cir_pag', DONE_LIST))
-        """
-        only_200 = True 
-        """
+        run_conf = {
+            'only_200': False,
+            'only_get': False,
+            'minimal': True,
+        }
+
+        if arg(2) == 'page_write':
+            DONE_LIST = list(filter(lambda lab: lab[0:7] == 'cir_pag', DONE_LIST))
+
+        if arg(2) == 'page_read':
+            DONE_LIST = list(filter(lambda lab: lab[0:11] == 'cir_pag_pro', DONE_LIST))
+            run_conf = {
+                'only_200': True,
+                'only_get': True,
+                'minimal': False,
+            }
 
         # Run the labels skipping DELETE
         for _label in DONE_LIST:
-            _tests_run, _tests_passed, _tests_failed, _failed_labels = run_label(_label, mode='SKIP_DELETE', only_200=only_200)
+            _tests_run, _tests_passed, _tests_failed, _failed_labels = run_label(
+                    _label, mode='SKIP_DELETE', **run_conf)
             tests_run += _tests_run
             tests_passed += _tests_passed
             tests_failed += _tests_failed
@@ -406,7 +436,8 @@ if __name__ == '__main__':
                 failed_labels.append({_failed_label: methods})
         # Run the labels for only DELETE
         for _label in DONE_LIST:
-            _tests_run, _tests_passed, _tests_failed, _failed_labels = run_label(_label, mode='ONLY_DELETE', only_200=only_200)
+            _tests_run, _tests_passed, _tests_failed, _failed_labels = run_label(
+                    _label, mode='ONLY_DELETE', **run_conf)
             tests_run += _tests_run
             tests_passed += _tests_passed
             tests_failed += _tests_failed

@@ -602,7 +602,7 @@
         "GET": {
             "load groups list": {
                 "path": {
-                    "PAGE": "10"
+                    "PAGE": "1"
                 }
             }
         }
@@ -611,7 +611,7 @@
         "GET": {
             "load joined groups list": {
                 "path": {
-                    "PAGE": "10"
+                    "PAGE": "1"
                 },
                 "cookies": {
                     "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
@@ -623,7 +623,7 @@
         "GET": {
             "load managed groups list": {
                 "path": {
-                    "PAGE": "10"
+                    "PAGE": "1"
                 },
                 "cookies": {
                     "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
@@ -635,7 +635,7 @@
         "POST": {
             "update a group": {
                 "path": {
-                    "GROUP_NAME": "Example_Group"
+                    "GROUP_NAME": "APITest_ExampleGroup"
                 },
                 "data": {
                     "group_name": "New_Name",
@@ -652,14 +652,14 @@
         "GET": {
             "load a group profile": {
                 "path": {
-                    "GROUP_NAME": "some_page_handle"
+                    "GROUP_NAME": "apollofintech"
                 }
             }
         },
         "DELETE": {
             "delete a group": {
                 "path": {
-                    "GROUP_NAME": "Example_Group"
+                    "GROUP_NAME": "APITest_ExampleGroup"
                 },
                 "cookies": {
                     "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
@@ -671,7 +671,7 @@
         "POST": {
             "post to group timline": {
                 "path": {
-                    "GROUP_NAME": "Example_Group"
+                    "GROUP_NAME": "APITest_ExampleGroup"
                 },
                 "data": {
                     "post_type": "media",
@@ -693,7 +693,7 @@
         "POST": {
             "like a group": {
                 "path": {
-                    "GROUP_NAME": "SomeGroup",
+                    "GROUP_NAME": "apollofintech",
                     "ACTION": "like"
                 },
                 "cookies": {
@@ -716,8 +716,8 @@
         "GET": {
             "read group members list": {
                 "path": {
-                    "GROUP_NAME": "SomeGroup",
-                    "PAGE": "3"
+                    "GROUP_NAME": "apollofintech",
+                    "PAGE": "1"
                 }
             }
         }
@@ -726,8 +726,8 @@
         "GET": {
             "read group profile photos": {
                 "path": {
-                    "GROUP_NAME": "SomeGroup",
-                    "PAGE": "3"
+                    "GROUP_NAME": "apollofintech",
+                    "PAGE": "1"
                 }
             }
         }
@@ -736,8 +736,8 @@
         "GET": {
             "read group profile albums": {
                 "path": {
-                    "GROUP_NAME": "SomeGroup",
-                    "PAGE": "3"
+                    "GROUP_NAME": "apollofintech",
+                    "PAGE": "1"
                 }
             }
         }
@@ -746,8 +746,8 @@
         "GET": {
             "read group profile videos": {
                 "path": {
-                    "GROUP_NAME": "SomeGroup",
-                    "PAGE": "3"
+                    "GROUP_NAME": "apollofintech",
+                    "PAGE": "1"
                 }
             }
         }
@@ -776,7 +776,7 @@
         "GET": {
             "load events list": {
                 "path": {
-                    "PAGE": "10"
+                    "PAGE": "1"
                 }
             }
         }
@@ -785,7 +785,7 @@
         "GET": {
             "load going events list": {
                 "path": {
-                    "PAGE": "10"
+                    "PAGE": "1"
                 },
                 "cookies": {
                     "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
@@ -797,7 +797,7 @@
         "GET": {
             "load interested events list": {
                 "path": {
-                    "PAGE": "10"
+                    "PAGE": "1"
                 },
                 "cookies": {
                     "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
@@ -809,7 +809,7 @@
         "GET": {
             "load invited events list": {
                 "path": {
-                    "PAGE": "10"
+                    "PAGE": "1"
                 },
                 "cookies": {
                     "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
@@ -821,7 +821,7 @@
         "GET": {
             "load managed events list": {
                 "path": {
-                    "PAGE": "10"
+                    "PAGE": "1"
                 },
                 "cookies": {
                     "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
@@ -905,7 +905,7 @@
             "read event profile timeline": {
                 "path": {
                     "EVENT_NAME": "SomeEvent",
-                    "PAGE": "3"
+                    "PAGE": "1"
                 }
             }
         }
@@ -915,7 +915,7 @@
             "read event interested list": {
                 "path": {
                     "EVENT_NAME": "SomeEvent",
-                    "PAGE": "3"
+                    "PAGE": "1"
                 }
             }
         }
@@ -925,7 +925,7 @@
             "read event invited list": {
                 "path": {
                     "EVENT_NAME": "SomeEvent",
-                    "PAGE": "3"
+                    "PAGE": "1"
                 }
             }
         }
@@ -935,7 +935,7 @@
             "read event going list": {
                 "path": {
                     "EVENT_NAME": "SomeEvent",
-                    "PAGE": "3"
+                    "PAGE": "1"
                 }
             }
         }
@@ -945,7 +945,7 @@
             "read event profile photos": {
                 "path": {
                     "EVENT_NAME": "SomeEvent",
-                    "PAGE": "3"
+                    "PAGE": "1"
                 }
             }
         }
@@ -955,7 +955,7 @@
             "read profile albums": {
                 "path": {
                     "EVENT_NAME": "DrPib",
-                    "PAGE": "3"
+                    "PAGE": "1"
                 }
             }
         }
@@ -965,7 +965,7 @@
             "read event profile videos": {
                 "path": {
                     "EVENT_NAME": "SomeEvent",
-                    "PAGE": "3"
+                    "PAGE": "1"
                 }
             }
         }
@@ -1074,7 +1074,7 @@
         "GET": {
             "load a page profile": {
                 "path": {
-                    "PAGE_NAME": "some_page_handle"
+                    "PAGE_NAME": "PresidentTrumpNewsFeed"
                 }
             }
         },
@@ -1093,7 +1093,7 @@
         "GET": {
             "load pages list": {
                 "path": {
-                    "PAGE": "10"
+                    "PAGE": "1"
                 }
             }
         }
@@ -1102,7 +1102,7 @@
         "GET": {
             "load liked pages list": {
                 "path": {
-                    "PAGE": "10"
+                    "PAGE": "1"
                 },
                 "cookies": {
                     "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
@@ -1114,7 +1114,7 @@
         "GET": {
             "load managed pages list": {
                 "path": {
-                    "PAGE": "10"
+                    "PAGE": "1"
                 },
                 "cookies": {
                     "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
@@ -1161,8 +1161,8 @@
         "GET": {
             "read page profile timeline": {
                 "path": {
-                    "PAGE_NAME": "SomePage",
-                    "PAGE": "3"
+                    "PAGE_NAME": "PresidentTrumpNewsFeed",
+                    "PAGE": "1"
                 }
             }
         }
@@ -1171,8 +1171,8 @@
         "GET": {
             "read page profile photos": {
                 "path": {
-                    "PAGE_NAME": "SomePage",
-                    "PAGE": "3"
+                    "PAGE_NAME": "PresidentTrumpNewsFeed",
+                    "PAGE": "1"
                 }
             }
         }
@@ -1181,8 +1181,8 @@
         "GET": {
             "read page profile videos": {
                 "path": {
-                    "PAGE_NAME": "SomePage",
-                    "PAGE": "3"
+                    "PAGE_NAME": "PresidentTrumpNewsFeed",
+                    "PAGE": "1"
                 }
             }
         }
@@ -1191,7 +1191,7 @@
         "GET": {
             "list other profiles": {
                 "path": {
-                    "PAGE": "3"
+                    "PAGE": "1"
                 }
             }
         }
@@ -1200,7 +1200,7 @@
         "GET": {
             "list your firend requests": {
                 "path": {
-                    "PAGE": "3"
+                    "PAGE": "1"
                 },
                 "cookies": {
                     "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
@@ -1212,7 +1212,7 @@
         "GET": {
             "list your firend requests sent": {
                 "path": {
-                    "PAGE": "3"
+                    "PAGE": "1"
                 },
                 "cookies": {
                     "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
@@ -1279,7 +1279,7 @@
             "read profile timeline": {
                 "path": {
                     "USER_NAME": "DrPib",
-                    "PAGE": "3"
+                    "PAGE": "1"
                 }
             }
         }
@@ -1289,7 +1289,7 @@
             "read profile friend list": {
                 "path": {
                     "USER_NAME": "DrPib",
-                    "PAGE": "3"
+                    "PAGE": "1"
                 }
             }
         }
@@ -1299,7 +1299,7 @@
             "read profile following": {
                 "path": {
                     "USER_NAME": "DrPib",
-                    "PAGE": "3"
+                    "PAGE": "1"
                 }
             }
         }
@@ -1309,7 +1309,7 @@
             "read profile followers": {
                 "path": {
                     "USER_NAME": "DrPib",
-                    "PAGE": "3"
+                    "PAGE": "1"
                 }
             }
         }
@@ -1319,7 +1319,7 @@
             "read profile photos": {
                 "path": {
                     "USER_NAME": "DrPib",
-                    "PAGE": "3"
+                    "PAGE": "1"
                 }
             }
         }
@@ -1329,7 +1329,7 @@
             "read profile albums": {
                 "path": {
                     "USER_NAME": "DrPib",
-                    "PAGE": "3"
+                    "PAGE": "1"
                 }
             }
         }
@@ -1339,7 +1339,7 @@
             "read profile videos": {
                 "path": {
                     "USER_NAME": "DrPib",
-                    "PAGE": "3"
+                    "PAGE": "1"
                 }
             }
         }
@@ -1349,7 +1349,7 @@
             "read profile groups": {
                 "path": {
                     "USER_NAME": "DrPib",
-                    "PAGE": "3"
+                    "PAGE": "1"
                 }
             }
         }
@@ -1359,7 +1359,7 @@
             "read profile events": {
                 "path": {
                     "USER_NAME": "DrPib",
-                    "PAGE": "3"
+                    "PAGE": "1"
                 }
             }
         }
@@ -1658,7 +1658,7 @@
             "read profile timeline": {
                 "path": {
                     "USER_NAME": "DrPib",
-                    "PAGE": "3"
+                    "PAGE": "1"
                 }
             }
         }
@@ -1668,7 +1668,7 @@
             "read profile friend list": {
                 "path": {
                     "USER_NAME": "DrPib",
-                    "PAGE": "3"
+                    "PAGE": "1"
                 }
             }
         }
@@ -1678,7 +1678,7 @@
             "read profile following": {
                 "path": {
                     "USER_NAME": "DrPib",
-                    "PAGE": "3"
+                    "PAGE": "1"
                 }
             }
         }
@@ -1688,7 +1688,7 @@
             "read profile followers": {
                 "path": {
                     "USER_NAME": "DrPib",
-                    "PAGE": "3"
+                    "PAGE": "1"
                 }
             }
         }
@@ -1698,7 +1698,7 @@
             "read profile photos": {
                 "path": {
                     "USER_NAME": "DrPib",
-                    "PAGE": "3"
+                    "PAGE": "1"
                 }
             }
         }
@@ -1708,7 +1708,7 @@
             "read profile albums": {
                 "path": {
                     "USER_NAME": "DrPib",
-                    "PAGE": "3"
+                    "PAGE": "1"
                 }
             }
         }
@@ -1718,7 +1718,7 @@
             "read profile videos": {
                 "path": {
                     "USER_NAME": "DrPib",
-                    "PAGE": "3"
+                    "PAGE": "1"
                 }
             }
         }

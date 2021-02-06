@@ -973,7 +973,7 @@ TESTS = [
             '200': {
                 'load groups list': {
                     'path': {
-                        'PAGE': '10',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -986,7 +986,7 @@ TESTS = [
             '200': {
                 'load joined groups list': {
                     'path': {
-                        'PAGE': '10',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                     'cookies': {
                         'sessionid': SESSION_ID,
@@ -996,7 +996,7 @@ TESTS = [
             '401': {
                 'load joined groups list (not logged in)': {
                     'path': {
-                        'PAGE': '10',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -1009,7 +1009,7 @@ TESTS = [
             '200': {
                 'load managed groups list': {
                     'path': {
-                        'PAGE': '10',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                     'cookies': {
                         'sessionid': SESSION_ID,
@@ -1019,7 +1019,7 @@ TESTS = [
             '401': {
                 'load managed groups list (not logged in)': {
                     'path': {
-                        'PAGE': '10',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -1032,7 +1032,7 @@ TESTS = [
             '200': {
                 'load a group profile': {
                     'path': {
-                        'GROUP_NAME': 'some_page_handle',
+                        'GROUP_NAME': VARIABLES['FAMOUS_GROUP'],
                     },
                 },
             },
@@ -1041,7 +1041,7 @@ TESTS = [
             '200': {
                 'update a group': {
                     'path': {
-                        'GROUP_NAME':'Example_Group',
+                        'GROUP_NAME': VARIABLES['EXAMPLE_GROUP_NAME'],
                     },
                     'data': GROUP_EXAMPLES['valid_group_for_update'],
                     'cookies': {
@@ -1052,7 +1052,7 @@ TESTS = [
             '401': {
                 'update a group (while not logged in)': {
                     'path': {
-                        'GROUP_NAME':'FExample_Group',
+                        'GROUP_NAME': VARIABLES['EXAMPLE_GROUP_NAME'],
                     },
                 },
                 'update a group (I\'m not an admin of)': {
@@ -1070,7 +1070,7 @@ TESTS = [
             '200': {
                 'delete a group': {
                     'path': {
-                        'GROUP_NAME':'Example_Group',
+                        'GROUP_NAME': VARIABLES['EXAMPLE_GROUP_NAME'],
                     },
                     'cookies': {
                         'sessionid': SESSION_ID,
@@ -1101,7 +1101,7 @@ TESTS = [
             '200': {
                 'post to group timline': {
                     'path': {
-                        'GROUP_NAME':'Example_Group',
+                        'GROUP_NAME': VARIABLES['EXAMPLE_GROUP_NAME'],
                     },
                     'data': POST_EXAMPLES['valid_media'],
                     'cookies': {
@@ -1112,7 +1112,7 @@ TESTS = [
             '400': {
                 'post to group timline (invalid post)': {
                     'path': {
-                        'GROUP_NAME':'Example_Group',
+                        'GROUP_NAME': VARIABLES['FAMOUS_GROUP'],
                     },
                     'data': POST_EXAMPLES['invalid_media_bad_url'],
                     'cookies': {
@@ -1123,7 +1123,7 @@ TESTS = [
             '401': {
                 'post to group timline (bad/no session_id)': {
                     'path': {
-                        'GROUP_NAME':'Example_Group',
+                        'GROUP_NAME': VARIABLES['EXAMPLE_GROUP_NAME'],
                     },
                     'data': POST_EXAMPLES['valid_media'],
                     'cookies': {
@@ -1145,7 +1145,7 @@ TESTS = [
             '405': {
                 'get profile timeline without specifying a page': {
                     'path': {
-                        'GROUP_NAME':'Example_Group',
+                        'GROUP_NAME': VARIABLES['EXAMPLE_GROUP_NAME'],
                     },
                 },
             },
@@ -1158,7 +1158,7 @@ TESTS = [
             '200': { 
                 'join a group': {
                     'path': {
-                        'GROUP_NAME': 'SomeGroup',
+                        'GROUP_NAME': VARIABLES['FAMOUS_GROUP'],
                         'ACTION': 'join',
                     },
                     'cookies': {
@@ -1175,7 +1175,7 @@ TESTS = [
             '200': { 
                 'unjoin a group': {
                     'path': {
-                        'GROUP_NAME': 'SomeGroup',
+                        'GROUP_NAME': VARIABLES['FAMOUS_GROUP'],
                         'ACTION': 'unjoin',
                     },
                     'cookies': {
@@ -1192,7 +1192,7 @@ TESTS = [
             '200': { 
                 'like a group': {
                     'path': {
-                        'GROUP_NAME': 'SomeGroup',
+                        'GROUP_NAME': VARIABLES['FAMOUS_GROUP'],
                         'ACTION': 'like',
                     },
                     'cookies': {
@@ -1209,7 +1209,7 @@ TESTS = [
             '200': { 
                 'like a group': {
                     'path': {
-                        'GROUP_NAME': 'SomeGroup',
+                        'GROUP_NAME': VARIABLES['FAMOUS_GROUP'],
                         'ACTION': 'like',
                     },
                     'cookies': {
@@ -1226,7 +1226,7 @@ TESTS = [
             '200': { 
                 'read group profile timeline': {
                     'path': {
-                        'GROUP_NAME': 'apollofintech',
+                        'GROUP_NAME': VARIABLES['FAMOUS_GROUP'],
                         'PAGE': '9',
                     },
                 },
@@ -1240,8 +1240,8 @@ TESTS = [
             '200': { 
                 'read group members list': {
                     'path': {
-                        'GROUP_NAME': 'SomeGroup',
-                        'PAGE': '3',
+                        'GROUP_NAME': VARIABLES['FAMOUS_GROUP'],
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -1254,8 +1254,8 @@ TESTS = [
             '200': { 
                 'read group profile photos': {
                     'path': {
-                        'GROUP_NAME': 'SomeGroup',
-                        'PAGE': '3',
+                        'GROUP_NAME': VARIABLES['FAMOUS_GROUP'],
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -1268,8 +1268,8 @@ TESTS = [
             '200': { 
                 'read group profile albums': {
                     'path': {
-                        'GROUP_NAME': 'SomeGroup',
-                        'PAGE': '3',
+                        'GROUP_NAME': VARIABLES['FAMOUS_GROUP'],
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -1282,8 +1282,8 @@ TESTS = [
             '200': { 
                 'read group profile videos': {
                     'path': {
-                        'GROUP_NAME': 'SomeGroup',
-                        'PAGE': '3',
+                        'GROUP_NAME': VARIABLES['FAMOUS_GROUP'],
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -1325,7 +1325,7 @@ TESTS = [
             '200': {
                 'load events list': {
                     'path': {
-                        'PAGE': '10',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -1338,7 +1338,7 @@ TESTS = [
             '200': {
                 'load going events list': {
                     'path': {
-                        'PAGE': '10',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                     'cookies': {
                         'sessionid': SESSION_ID,
@@ -1348,7 +1348,7 @@ TESTS = [
             '401': {
                 'load going events list (not logged in)': {
                     'path': {
-                        'PAGE': '10',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -1361,7 +1361,7 @@ TESTS = [
             '200': {
                 'load interested events list': {
                     'path': {
-                        'PAGE': '10',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                     'cookies': {
                         'sessionid': SESSION_ID,
@@ -1371,7 +1371,7 @@ TESTS = [
             '401': {
                 'load interested events list (not logged in)': {
                     'path': {
-                        'PAGE': '10',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -1384,7 +1384,7 @@ TESTS = [
             '200': {
                 'load invited events list': {
                     'path': {
-                        'PAGE': '10',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                     'cookies': {
                         'sessionid': SESSION_ID,
@@ -1394,7 +1394,7 @@ TESTS = [
             '401': {
                 'load invited events list (not logged in)': {
                     'path': {
-                        'PAGE': '10',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -1407,7 +1407,7 @@ TESTS = [
             '200': {
                 'load managed events list': {
                     'path': {
-                        'PAGE': '10',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                     'cookies': {
                         'sessionid': SESSION_ID,
@@ -1417,7 +1417,7 @@ TESTS = [
             '401': {
                 'load managed events list (not logged in)': {
                     'path': {
-                        'PAGE': '10',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -1659,7 +1659,7 @@ TESTS = [
                 'read event profile timeline': {
                     'path': {
                         'EVENT_NAME': 'SomeEvent',
-                        'PAGE': '3',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -1673,7 +1673,7 @@ TESTS = [
                 'read event interested list': {
                     'path': {
                         'EVENT_NAME': 'SomeEvent',
-                        'PAGE': '3',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -1687,7 +1687,7 @@ TESTS = [
                 'read event invited list': {
                     'path': {
                         'EVENT_NAME': 'SomeEvent',
-                        'PAGE': '3',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -1701,7 +1701,7 @@ TESTS = [
                 'read event going list': {
                     'path': {
                         'EVENT_NAME': 'SomeEvent',
-                        'PAGE': '3',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -1715,7 +1715,7 @@ TESTS = [
                 'read event profile photos': {
                     'path': {
                         'EVENT_NAME': 'SomeEvent',
-                        'PAGE': '3',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -1729,7 +1729,7 @@ TESTS = [
                 'read profile albums': {
                     'path': {
                         'EVENT_NAME': 'DrPib',
-                        'PAGE': '3',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -1743,7 +1743,7 @@ TESTS = [
                 'read event profile videos': {
                     'path': {
                         'EVENT_NAME': 'SomeEvent',
-                        'PAGE': '3',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -1793,7 +1793,7 @@ TESTS = [
             '200': {
                 'load a page profile': {
                     'path': {
-                        'PAGE_NAME': 'some_page_handle',
+                        'PAGE_NAME':VARIABLES['FAMOUS_PAGE'],
                     },
                 },
             },
@@ -1882,6 +1882,7 @@ TESTS = [
             },
         },
     },
+    # READ PAGES
     {
         'url': 'circle/api/pages/PAGE',
         'label': 'cir_pag_page',
@@ -1889,7 +1890,7 @@ TESTS = [
             '200': {
                 'load pages list': {
                     'path': {
-                        'PAGE': '10',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -1902,7 +1903,7 @@ TESTS = [
             '200': {
                 'load liked pages list': {
                     'path': {
-                        'PAGE': '10',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                     'cookies': {
                         'sessionid': SESSION_ID,
@@ -1912,7 +1913,7 @@ TESTS = [
             '401': {
                 'load liked pages list (not logged in)': {
                     'path': {
-                        'PAGE': '10',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -1925,7 +1926,7 @@ TESTS = [
             '200': {
                 'load managed pages list': {
                     'path': {
-                        'PAGE': '10',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                     'cookies': {
                         'sessionid': SESSION_ID,
@@ -1935,7 +1936,7 @@ TESTS = [
             '401': {
                 'load managed pages list (not logged in)': {
                     'path': {
-                        'PAGE': '10',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -2039,8 +2040,8 @@ TESTS = [
             '200': { 
                 'read page profile timeline': {
                     'path': {
-                        'PAGE_NAME': 'SomePage',
-                        'PAGE': '3',
+                        'PAGE_NAME':VARIABLES['FAMOUS_PAGE'],
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -2053,8 +2054,8 @@ TESTS = [
             '200': { 
                 'read page profile photos': {
                     'path': {
-                        'PAGE_NAME': 'SomePage',
-                        'PAGE': '3',
+                        'PAGE_NAME':VARIABLES['FAMOUS_PAGE'],
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -2067,8 +2068,8 @@ TESTS = [
             '200': { 
                 'read page profile videos': {
                     'path': {
-                        'PAGE_NAME': 'SomePage',
-                        'PAGE': '3',
+                        'PAGE_NAME':VARIABLES['FAMOUS_PAGE'],
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -2081,7 +2082,7 @@ TESTS = [
             '200': { 
                 'list other profiles': {
                     'path': {
-                        'PAGE': '3',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -2094,7 +2095,7 @@ TESTS = [
             '200': { 
                 'list your firend requests': {
                     'path': {
-                        'PAGE': '3',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                     'cookies': {
                         'sessionid': SESSION_ID,
@@ -2104,7 +2105,7 @@ TESTS = [
             '401': {
                 'list your firend requests (not logged in)': {
                     'path': {
-                        'PAGE': '3',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -2117,7 +2118,7 @@ TESTS = [
             '200': { 
                 'list your firend requests sent': {
                     'path': {
-                        'PAGE': '3',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                     'cookies': {
                         'sessionid': SESSION_ID,
@@ -2127,7 +2128,7 @@ TESTS = [
             '401': {
                 'list your firend requests sent (not logged in)': {
                     'path': {
-                        'PAGE': '3',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -2367,7 +2368,7 @@ TESTS = [
                 'read profile timeline': {
                     'path': {
                         'USER_NAME': 'DrPib',
-                        'PAGE': '3',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -2381,7 +2382,7 @@ TESTS = [
                 'read profile friend list': {
                     'path': {
                         'USER_NAME': 'DrPib',
-                        'PAGE': '3',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -2395,7 +2396,7 @@ TESTS = [
                 'read profile following': {
                     'path': {
                         'USER_NAME': 'DrPib',
-                        'PAGE': '3',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -2409,7 +2410,7 @@ TESTS = [
                 'read profile followers': {
                     'path': {
                         'USER_NAME': 'DrPib',
-                        'PAGE': '3',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -2423,7 +2424,7 @@ TESTS = [
                 'read profile photos': {
                     'path': {
                         'USER_NAME': 'DrPib',
-                        'PAGE': '3',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -2437,7 +2438,7 @@ TESTS = [
                 'read profile albums': {
                     'path': {
                         'USER_NAME': 'DrPib',
-                        'PAGE': '3',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -2451,7 +2452,7 @@ TESTS = [
                 'read profile videos': {
                     'path': {
                         'USER_NAME': 'DrPib',
-                        'PAGE': '3',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -2465,7 +2466,7 @@ TESTS = [
                 'read profile groups': {
                     'path': {
                         'USER_NAME': 'DrPib',
-                        'PAGE': '3',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -2479,7 +2480,7 @@ TESTS = [
                 'read profile events': {
                     'path': {
                         'USER_NAME': 'DrPib',
-                        'PAGE': '3',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -3127,7 +3128,7 @@ TESTS = [
                 'read profile timeline': {
                     'path': {
                         'USER_NAME': 'DrPib',
-                        'PAGE': '3',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -3141,7 +3142,7 @@ TESTS = [
                 'read profile friend list': {
                     'path': {
                         'USER_NAME': 'DrPib',
-                        'PAGE': '3',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -3155,7 +3156,7 @@ TESTS = [
                 'read profile following': {
                     'path': {
                         'USER_NAME': 'DrPib',
-                        'PAGE': '3',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -3169,7 +3170,7 @@ TESTS = [
                 'read profile followers': {
                     'path': {
                         'USER_NAME': 'DrPib',
-                        'PAGE': '3',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -3183,7 +3184,7 @@ TESTS = [
                 'read profile photos': {
                     'path': {
                         'USER_NAME': 'DrPib',
-                        'PAGE': '3',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -3197,7 +3198,7 @@ TESTS = [
                 'read profile albums': {
                     'path': {
                         'USER_NAME': 'DrPib',
-                        'PAGE': '3',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
@@ -3211,7 +3212,7 @@ TESTS = [
                 'read profile videos': {
                     'path': {
                         'USER_NAME': 'DrPib',
-                        'PAGE': '3',
+                        'PAGE': VARIABLES['PAGE'],
                     },
                 },
             },
