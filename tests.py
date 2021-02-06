@@ -2,29 +2,10 @@ from examples import EVENT_EXAMPLES
 from examples import POST_EXAMPLES
 from examples import PAGE_EXAMPLES
 from examples import GROUP_EXAMPLES
+from examples import VARIABLES
 from config import SESSION_ID
 
 TESTS = [
-    # BLANK
-    {
-        'url': '_URL_',
-        'label': '_LABEL_',
-        'POST': {
-        # 'GET': {
-            '200': {
-            # '400': {
-                '_TEST_NAME_': {
-                    'data': {
-                    },
-                    # 'data': None,
-                    'headers': {
-                    # 'headers': None,
-                    },
-                },
-            },
-        },
-    },
-    # TOP 
     #---------------------------------------------------------------------------
     {
         'url': 'core/api/signup',
@@ -493,7 +474,7 @@ TESTS = [
             '200': {
                 'read my a post': {
                     'path': {
-                        'POST_ID': '100',
+                        'POST_ID': '8834',
                     },
                 },
             },
@@ -1245,8 +1226,8 @@ TESTS = [
             '200': { 
                 'read group profile timeline': {
                     'path': {
-                        'GROUP_NAME': 'SomeGroup',
-                        'PAGE': '3',
+                        'GROUP_NAME': 'apollofintech',
+                        'PAGE': '9',
                     },
                 },
             },
@@ -1768,6 +1749,7 @@ TESTS = [
             },
         },
     },
+    # CREATE A NEW PAGE
     {
         'url': 'circle/api/pages',
         'label': 'cir_pag',
@@ -1796,6 +1778,103 @@ TESTS = [
                 },
                 'create a new page (bad social links)': {
                     'data': PAGE_EXAMPLES['invalid_page_bad_socials'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+    },
+    # UPDATE A PAGE
+    {
+        'url': 'circle/api/pages/PAGE_NAME',
+        'label': 'cir_pag_pro',
+        'GET': {
+            '200': {
+                'load a page profile': {
+                    'path': {
+                        'PAGE_NAME': 'some_page_handle',
+                    },
+                },
+            },
+        },
+        'POST': {
+            '200': {
+                'update a page\'s info': {
+                    'path': {
+                        'PAGE_NAME':VARIABLES['EXAMPLE_PAGE_NAME'],
+                    },
+                    'data': PAGE_EXAMPLES['valid_page_update_info'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+                'update a page profile picture': {
+                    'path': {
+                        'PAGE_NAME':VARIABLES['EXAMPLE_PAGE_NAME'],
+                    },
+                    'data': PAGE_EXAMPLES['valid_page_update_profile_pic'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+                'update a page handle': {
+                    'path': {
+                        'PAGE_NAME':VARIABLES['EXAMPLE_PAGE_NAME'],
+                    },
+                    'data': PAGE_EXAMPLES['valid_page_update_handle'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+                'update a page restore': {
+                    'path': {
+                        'PAGE_NAME':VARIABLES['EXAMPLE_PAGE_NAME_CHANGE'],
+                    },
+                    'data': PAGE_EXAMPLES['valid_page'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'update a page (while not logged in)': {
+                    'path': {
+                        'PAGE_NAME':VARIABLES['EXAMPLE_PAGE_NAME'],
+                    },
+                },
+                'update a page (I\'m not an admin of)': {
+                    'path': {
+                        'PAGE_NAME':'Page_I_Dont_Own',
+                    },
+                    'data': PAGE_EXAMPLES['valid_page_update_info'],
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+        },
+        'DELETE': {
+            '200': {
+                'delete a page': {
+                    'path': {
+                        'PAGE_NAME':VARIABLES['EXAMPLE_PAGE_NAME'],
+                    },
+                    'cookies': {
+                        'sessionid': SESSION_ID,
+                    },
+                },
+            },
+            '401': {
+                'delete a page (while not logged in)': {
+                    'path': {
+                        'PAGE_NAME':'FExample_Page',
+                    },
+                },
+                'delete a page (I\'m not an admin of)': {
+                    'path': {
+                        'PAGE_NAME':'Page_I_Dont_Admin_Foo',
+                    },
                     'cookies': {
                         'sessionid': SESSION_ID,
                     },
@@ -1863,75 +1942,6 @@ TESTS = [
         },
     },
     {
-        'url': 'circle/api/pages/PAGE_NAME',
-        'label': 'cir_pag_pro',
-        'GET': {
-            '200': {
-                'load a page profile': {
-                    'path': {
-                        'PAGE_NAME': 'some_page_handle',
-                    },
-                },
-            },
-        },
-        'POST': {
-            '200': {
-                'update a page': {
-                    'path': {
-                        'PAGE_NAME':'Example_Page',
-                    },
-                    'data': PAGE_EXAMPLES['valid_page_for_update'],
-                    'cookies': {
-                        'sessionid': SESSION_ID,
-                    },
-                },
-            },
-            '401': {
-                'update a page (while not logged in)': {
-                    'path': {
-                        'PAGE_NAME':'FExample_Page',
-                    },
-                },
-                'update a page (I\'m not an admin of)': {
-                    'path': {
-                        'PAGE_NAME':'Page_I_Dont_Admin_Foo',
-                    },
-                    'data': PAGE_EXAMPLES['valid_page_for_update'],
-                    'cookies': {
-                        'sessionid': SESSION_ID,
-                    },
-                },
-            },
-        },
-        'DELETE': {
-            '200': {
-                'delete a page': {
-                    'path': {
-                        'PAGE_NAME':'Example_Page',
-                    },
-                    'cookies': {
-                        'sessionid': SESSION_ID,
-                    },
-                },
-            },
-            '401': {
-                'delete a page (while not logged in)': {
-                    'path': {
-                        'PAGE_NAME':'FExample_Page',
-                    },
-                },
-                'delete a page (I\'m not an admin of)': {
-                    'path': {
-                        'PAGE_NAME':'Page_I_Dont_Admin_Foo',
-                    },
-                    'cookies': {
-                        'sessionid': SESSION_ID,
-                    },
-                },
-            },
-        },
-    },
-    {
         'url': 'circle/api/pages/PAGE_NAME/action/ACTION',
         'label': 'cir_pag_pro_act_like',
         'POST': {
@@ -1972,7 +1982,7 @@ TESTS = [
             '200': {
                 'post to page timline': {
                     'path': {
-                        'PAGE_NAME':'Example_Page',
+                        'PAGE_NAME':VARIABLES['EXAMPLE_PAGE_NAME'],
                     },
                     'data': POST_EXAMPLES['valid_media'],
                     'cookies': {
@@ -1983,7 +1993,7 @@ TESTS = [
             '400': {
                 'post to page timline (invalid post)': {
                     'path': {
-                        'PAGE_NAME':'Example_Page',
+                        'PAGE_NAME':VARIABLES['EXAMPLE_PAGE_NAME'],
                     },
                     'data': POST_EXAMPLES['invalid_media_bad_url'],
                     'cookies': {
@@ -1994,7 +2004,7 @@ TESTS = [
             '401': {
                 'post to page timline (bad/no session_id)': {
                     'path': {
-                        'PAGE_NAME':'Example_Page',
+                        'PAGE_NAME':VARIABLES['EXAMPLE_PAGE_NAME'],
                     },
                     'data': POST_EXAMPLES['valid_media'],
                     'cookies': {
@@ -2016,7 +2026,7 @@ TESTS = [
             '405': {
                 'get profile timeline without specifying a page': {
                     'path': {
-                        'PAGE_NAME':'Example_Page',
+                        'PAGE_NAME':VARIABLES['EXAMPLE_PAGE_NAME'],
                     },
                 },
             },

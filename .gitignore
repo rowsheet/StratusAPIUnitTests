@@ -1,3 +1,4 @@
 runs.txt
 __pycache__
 .env
+failed_tests.txt

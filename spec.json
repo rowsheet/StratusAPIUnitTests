@@ -1,12 +1,4 @@
 {
-    "_URL_": {
-        "POST": {
-            "_TEST_NAME_": {
-                "data": {},
-                "headers": {}
-            }
-        }
-    },
     "core/api/signup": {
         "POST": {
             "create a new account": {
@@ -289,13 +281,13 @@
         "POST": {
             "create a post on my own timeline": {
                 "data": {
-                    "text": "The joke is that both the words ending in the same sylable that rhyme.",
                     "post_type": "media",
-                    "url": "https://google.com/?no=matter&how=fast&i=run",
-                    "provider": "Breitbart Media Outlet",
-                    "type": "photo",
-                    "title": "Title of my post",
-                    "html": "<html>how to meet ladies</html>"
+                    "src_text": "The joke is that both the words ending in the same sylable that rhyme.",
+                    "src_url": "https://google.com/?no=matter&how=fast&i=run",
+                    "src_provider": "Breitbart Media Outlet",
+                    "src_type": "photo",
+                    "src_title": "Title of my post",
+                    "src_html": "<html>how to meet ladies</html>"
                 },
                 "cookies": {
                     "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
@@ -335,13 +327,13 @@
                     "POST_ID": "100"
                 },
                 "data": {
-                    "text": "Im changing the text of this post",
                     "post_type": "media",
-                    "url": "https://google.com/?no=matter&how=fast&i=run",
-                    "provider": "Breitbart Media Outlet",
-                    "type": "photo",
-                    "title": "Title of my post",
-                    "html": "<html>how to meet ladies</html>"
+                    "src_text": "Im changing the text of this post",
+                    "src_url": "https://google.com/?no=matter&how=fast&i=run",
+                    "src_provider": "Breitbart Media Outlet",
+                    "src_type": "photo",
+                    "src_title": "Title of my post",
+                    "src_html": "<html>how to meet ladies</html>"
                 },
                 "cookies": {
                     "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
@@ -351,7 +343,7 @@
         "GET": {
             "read my a post": {
                 "path": {
-                    "POST_ID": "100"
+                    "POST_ID": "8834"
                 }
             }
         },
@@ -361,13 +353,13 @@
                     "POST_ID": "100"
                 },
                 "data": {
-                    "text": "Im changing the text of this post",
                     "post_type": "media",
-                    "url": "https://google.com/?no=matter&how=fast&i=run",
-                    "provider": "Breitbart Media Outlet",
-                    "type": "photo",
-                    "title": "Title of my post",
-                    "html": "<html>how to meet ladies</html>"
+                    "src_text": "Im changing the text of this post",
+                    "src_url": "https://google.com/?no=matter&how=fast&i=run",
+                    "src_provider": "Breitbart Media Outlet",
+                    "src_type": "photo",
+                    "src_title": "Title of my post",
+                    "src_html": "<html>how to meet ladies</html>"
                 },
                 "cookies": {
                     "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
@@ -682,13 +674,13 @@
                     "GROUP_NAME": "Example_Group"
                 },
                 "data": {
-                    "text": "The joke is that both the words ending in the same sylable that rhyme.",
                     "post_type": "media",
-                    "url": "https://google.com/?no=matter&how=fast&i=run",
-                    "provider": "Breitbart Media Outlet",
-                    "type": "photo",
-                    "title": "Title of my post",
-                    "html": "<html>how to meet ladies</html>"
+                    "src_text": "The joke is that both the words ending in the same sylable that rhyme.",
+                    "src_url": "https://google.com/?no=matter&how=fast&i=run",
+                    "src_provider": "Breitbart Media Outlet",
+                    "src_type": "photo",
+                    "src_title": "Title of my post",
+                    "src_html": "<html>how to meet ladies</html>"
                 },
                 "cookies": {
                     "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
@@ -714,8 +706,8 @@
         "GET": {
             "read group profile timeline": {
                 "path": {
-                    "GROUP_NAME": "SomeGroup",
-                    "PAGE": "3"
+                    "GROUP_NAME": "apollofintech",
+                    "PAGE": "9"
                 }
             }
         }
@@ -893,13 +885,13 @@
                     "EVENT_NAME": "TheGretaReset"
                 },
                 "data": {
-                    "text": "The joke is that both the words ending in the same sylable that rhyme.",
                     "post_type": "media",
-                    "url": "https://google.com/?no=matter&how=fast&i=run",
-                    "provider": "Breitbart Media Outlet",
-                    "type": "photo",
-                    "title": "Title of my post",
-                    "html": "<html>how to meet ladies</html>"
+                    "src_text": "The joke is that both the words ending in the same sylable that rhyme.",
+                    "src_url": "https://google.com/?no=matter&how=fast&i=run",
+                    "src_provider": "Breitbart Media Outlet",
+                    "src_type": "photo",
+                    "src_title": "Title of my post",
+                    "src_html": "<html>how to meet ladies</html>"
                 },
                 "cookies": {
                     "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
@@ -982,7 +974,7 @@
         "POST": {
             "create a new page": {
                 "data": {
-                    "page_name": "Example_Page",
+                    "page_name": "APITest_ExamplePage",
                     "title": "Exampe Page",
                     "description": "Descriptin of my Page",
                     "category": "CompositionOfMorphisms",
@@ -1000,7 +992,96 @@
                     "youtube_link": "https://www.youtube.com/thispage",
                     "instagram_link": "https://www.instagram.com/thispage",
                     "linkedin_link": "https://www.linkedin.com/thispage",
-                    "vkontate_link": "https://www.example.com/thispage"
+                    "vkontakte_link": "https://www.example.com/thispage"
+                },
+                "cookies": {
+                    "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                }
+            }
+        }
+    },
+    "circle/api/pages/PAGE_NAME": {
+        "POST": {
+            "update a page's info": {
+                "path": {
+                    "PAGE_NAME": "APITest_ExamplePage"
+                },
+                "data": {
+                    "page_name": "APITest_ExamplePage",
+                    "title": "A New Title",
+                    "category": "othercatagory",
+                    "action_text": "Some New Action Text",
+                    "twitter_link": "https://www.twitter.com/newthing"
+                },
+                "cookies": {
+                    "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                }
+            },
+            "update a page profile picture": {
+                "path": {
+                    "PAGE_NAME": "APITest_ExamplePage"
+                },
+                "data": {
+                    "page_name": "APITest_ExamplePage",
+                    "photo": "https://cdn1.stratus.co/231123141312312312.png"
+                },
+                "cookies": {
+                    "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                }
+            },
+            "update a page handle": {
+                "path": {
+                    "PAGE_NAME": "APITest_ExamplePage"
+                },
+                "data": {
+                    "page_name": "APITest_ExamplePage_Change",
+                    "photo": "https://cdn1.stratus.co/231123141312312312.png"
+                },
+                "cookies": {
+                    "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                }
+            },
+            "update a page restore": {
+                "path": {
+                    "PAGE_NAME": "APITest_ExamplePage_Change"
+                },
+                "data": {
+                    "page_name": "APITest_ExamplePage",
+                    "title": "Exampe Page",
+                    "description": "Descriptin of my Page",
+                    "category": "CompositionOfMorphisms",
+                    "company": "Page, LLC",
+                    "phone_number": "911",
+                    "website": "https://www.example.com",
+                    "photo": "https://cdn1.stratus.co/231123141312312312.png",
+                    "pinned_post": "100",
+                    "location": "Exampe Page",
+                    "action_text": "Some Action Text",
+                    "action_url": "https://www.example.com",
+                    "action_color": "primary",
+                    "facebook_link": "https://www.facebook.com/thispage",
+                    "twitter_link": "https://www.twitter.com/thispage",
+                    "youtube_link": "https://www.youtube.com/thispage",
+                    "instagram_link": "https://www.instagram.com/thispage",
+                    "linkedin_link": "https://www.linkedin.com/thispage",
+                    "vkontakte_link": "https://www.example.com/thispage"
+                },
+                "cookies": {
+                    "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
+                }
+            }
+        },
+        "GET": {
+            "load a page profile": {
+                "path": {
+                    "PAGE_NAME": "some_page_handle"
+                }
+            }
+        },
+        "DELETE": {
+            "delete a page": {
+                "path": {
+                    "PAGE_NAME": "APITest_ExamplePage"
                 },
                 "cookies": {
                     "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
@@ -1041,42 +1122,6 @@
             }
         }
     },
-    "circle/api/pages/PAGE_NAME": {
-        "POST": {
-            "update a page": {
-                "path": {
-                    "PAGE_NAME": "Example_Page"
-                },
-                "data": {
-                    "page_name": "New_Name",
-                    "title": "A New Title",
-                    "category": "othercatagory",
-                    "action_text": "Some New Action Text",
-                    "twitter_link": "https://www.twitter.com/newthing"
-                },
-                "cookies": {
-                    "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
-                }
-            }
-        },
-        "GET": {
-            "load a page profile": {
-                "path": {
-                    "PAGE_NAME": "some_page_handle"
-                }
-            }
-        },
-        "DELETE": {
-            "delete a page": {
-                "path": {
-                    "PAGE_NAME": "Example_Page"
-                },
-                "cookies": {
-                    "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
-                }
-            }
-        }
-    },
     "circle/api/pages/PAGE_NAME/action/ACTION": {
         "POST": {
             "like a page": {
@@ -1094,16 +1139,16 @@
         "POST": {
             "post to page timline": {
                 "path": {
-                    "PAGE_NAME": "Example_Page"
+                    "PAGE_NAME": "APITest_ExamplePage"
                 },
                 "data": {
-                    "text": "The joke is that both the words ending in the same sylable that rhyme.",
                     "post_type": "media",
-                    "url": "https://google.com/?no=matter&how=fast&i=run",
-                    "provider": "Breitbart Media Outlet",
-                    "type": "photo",
-                    "title": "Title of my post",
-                    "html": "<html>how to meet ladies</html>"
+                    "src_text": "The joke is that both the words ending in the same sylable that rhyme.",
+                    "src_url": "https://google.com/?no=matter&how=fast&i=run",
+                    "src_provider": "Breitbart Media Outlet",
+                    "src_type": "photo",
+                    "src_title": "Title of my post",
+                    "src_html": "<html>how to meet ladies</html>"
                 },
                 "cookies": {
                     "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
@@ -1214,13 +1259,13 @@
                     "USER_NAME": "DrPib"
                 },
                 "data": {
-                    "text": "The joke is that both the words ending in the same sylable that rhyme.",
                     "post_type": "media",
-                    "url": "https://google.com/?no=matter&how=fast&i=run",
-                    "provider": "Breitbart Media Outlet",
-                    "type": "photo",
-                    "title": "Title of my post",
-                    "html": "<html>how to meet ladies</html>"
+                    "src_text": "The joke is that both the words ending in the same sylable that rhyme.",
+                    "src_url": "https://google.com/?no=matter&how=fast&i=run",
+                    "src_provider": "Breitbart Media Outlet",
+                    "src_type": "photo",
+                    "src_title": "Title of my post",
+                    "src_html": "<html>how to meet ladies</html>"
                 },
                 "cookies": {
                     "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
@@ -1323,13 +1368,13 @@
         "POST": {
             "create a post on my own timeline": {
                 "data": {
-                    "text": "The joke is that both the words ending in the same sylable that rhyme.",
                     "post_type": "media",
-                    "url": "https://google.com/?no=matter&how=fast&i=run",
-                    "provider": "Breitbart Media Outlet",
-                    "type": "photo",
-                    "title": "Title of my post",
-                    "html": "<html>how to meet ladies</html>"
+                    "src_text": "The joke is that both the words ending in the same sylable that rhyme.",
+                    "src_url": "https://google.com/?no=matter&how=fast&i=run",
+                    "src_provider": "Breitbart Media Outlet",
+                    "src_type": "photo",
+                    "src_title": "Title of my post",
+                    "src_html": "<html>how to meet ladies</html>"
                 },
                 "cookies": {
                     "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
@@ -1369,13 +1414,13 @@
                     "POST_ID": "100"
                 },
                 "data": {
-                    "text": "Im changing the text of this post",
                     "post_type": "media",
-                    "url": "https://google.com/?no=matter&how=fast&i=run",
-                    "provider": "Breitbart Media Outlet",
-                    "type": "photo",
-                    "title": "Title of my post",
-                    "html": "<html>how to meet ladies</html>"
+                    "src_text": "Im changing the text of this post",
+                    "src_url": "https://google.com/?no=matter&how=fast&i=run",
+                    "src_provider": "Breitbart Media Outlet",
+                    "src_type": "photo",
+                    "src_title": "Title of my post",
+                    "src_html": "<html>how to meet ladies</html>"
                 },
                 "cookies": {
                     "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
@@ -1395,13 +1440,13 @@
                     "POST_ID": "100"
                 },
                 "data": {
-                    "text": "Im changing the text of this post",
                     "post_type": "media",
-                    "url": "https://google.com/?no=matter&how=fast&i=run",
-                    "provider": "Breitbart Media Outlet",
-                    "type": "photo",
-                    "title": "Title of my post",
-                    "html": "<html>how to meet ladies</html>"
+                    "src_text": "Im changing the text of this post",
+                    "src_url": "https://google.com/?no=matter&how=fast&i=run",
+                    "src_provider": "Breitbart Media Outlet",
+                    "src_type": "photo",
+                    "src_title": "Title of my post",
+                    "src_html": "<html>how to meet ladies</html>"
                 },
                 "cookies": {
                     "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
@@ -1593,13 +1638,13 @@
                     "USER_NAME": "DrPib"
                 },
                 "data": {
-                    "text": "The joke is that both the words ending in the same sylable that rhyme.",
                     "post_type": "media",
-                    "url": "https://google.com/?no=matter&how=fast&i=run",
-                    "provider": "Breitbart Media Outlet",
-                    "type": "photo",
-                    "title": "Title of my post",
-                    "html": "<html>how to meet ladies</html>"
+                    "src_text": "The joke is that both the words ending in the same sylable that rhyme.",
+                    "src_url": "https://google.com/?no=matter&how=fast&i=run",
+                    "src_provider": "Breitbart Media Outlet",
+                    "src_type": "photo",
+                    "src_title": "Title of my post",
+                    "src_html": "<html>how to meet ladies</html>"
                 },
                 "cookies": {
                     "sessionid": "8okfl9z8yftehjw8btj3codtbuy46db1"
